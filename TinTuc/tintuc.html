@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>BATHORA DRESS</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome (icon) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <link rel="stylesheet" href="tintuc.css">
+</head>
+<body>
+<header class="header">
+    <div class="container-fluid d-flex align-items-center justify-content-between">
+
+        <!-- Logo -->
+        <div class="logo">
+            <a href="../trangchu.html">
+                <img src="images/logo.png" alt="Bathora Logo">
+            </a>
+        </div>
+
+        <!-- Menu -->
+        <nav class="menu">
+            <ul class="d-flex align-items-center mb-0">
+                <!--Trang chủ-->
+                <li><a href="../trangchu.html">TRANG CHỦ</a></li>
+                <!--Sale-->
+                <li class="nav-item dropdown">
+                    <a class="nav-link sale-link" href="#" id="saleDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        SALE <i class="fa fa-chevron-down ms-1"></i>
+                    </a>
+                    <ul class="dropdown-menu border-0 shadow-sm" aria-labelledby="saleDropdown">
+                        <li><a class="dropdown-item" href="#">Giảm 5%</a></li>
+                        <li><a class="dropdown-item" href="#">Giảm 10%</a></li>
+                        <li><a class="dropdown-item" href="#">Giảm 15%</a></li>
+                        <li><a class="dropdown-item" href="#">Giảm 20%</a></li>
+                        <li><hr class="dropdown-divider"></li> <!-- Thanh gạch ngang phân cách -->
+                        <li><a class="dropdown-item" href="#">Giảm 30%</a></li>
+                        <li><a class="dropdown-item" href="#">Giảm 40%</a></li>
+                        <li><a class="dropdown-item" title="Đặc biệt" class="dropdown-item fw-bold text-danger" href="#">SIÊU SALE 50%</a></li>
+                    </ul>
+                </li>
+                <!--SẢN PHẨM  -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link" href="#" id="productDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        SẢN PHẨM <i class="fa fa-chevron-down ms-1"></i>
+                    </a>
+                    <ul class="dropdown-menu border-0 shadow-sm" aria-labelledby="productDropdown">
+                        <li><a class="dropdown-item" href="#">ĐẦM</a></li>
+                        <li><a class="dropdown-item" href="#">ÁO</a></li>
+                        <li><a class="dropdown-item" href="#">QUẦN</a></li>
+                        <li><a class="dropdown-item" href="#">CHÂN VÁY</a></li>
+                        <li><a class="dropdown-item" href="#">ÁO KHOÁC</a></li>
+                        <li><a class="dropdown-item" href="#">TÚI XÁCH</a></li>
+                        <li><a class="dropdown-item" href="#">PHỤ KIỆN</a></li>
+                        <li><a class="dropdown-item" href="#">GIÀY</a></li>
+                    </ul>
+                </li>
+                <!-- Các mục còn lại -->
+                <li><a href="tintuc.html">TIN TỨC</a></li>
+                <li><a href="#">VỀ CHÚNG TÔI</a></li>
+            </ul>
+        </nav>
+
+        <!-- Icon -->
+    <div class="icons d-flex align-items-center">
+    
+        <!-- Wishlist -->
+        <div class="icon">
+            <a href="../YeuThich/yeuthich.html">
+                <i class="fa-regular fa-heart"></i>
+            </a>
+        </div>
+
+        <!-- Cart -->
+        <div class="icon">
+            <a href="cart.html">
+                <i class="fa-solid fa-bag-shopping"></i>
+            </a>
+        </div>
+
+        <!-- User (Login) -->
+        <div class="icon">
+            <a href="login.html">
+                <i class="fa-regular fa-user"></i>
+            </a>
+        </div>
+    </div>
+
+    </div>
+</header>
+
+
+
+<!--breadcrumb-->
+<section class="breadcrumb-bg">
+    <div class="container">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb mb-2">
+                <li class="breadcrumb-item">
+                    <a href="../trangchu.html">Trang chủ</a>
+                </li>
+                <li class="breadcrumb-item active">Tin tức</li>
+            </ol>
+            <h2 class="page-title">TIN TỨC & XU HƯỚNG</h2>
+        </nav>
+    </div>
+    </section>
+
+<div class="container py-4">
+    <!-- Filter Tags -->
+    <div class="d-flex gap-2 mb-4 overflow-auto pb-2">
+        <button class="btn btn-outline-dark rounded-pill px-4 active">Tất cả</button>
+        <button class="btn btn-outline-dark rounded-pill px-4">Sự kiện</button>
+        <button class="btn btn-outline-dark rounded-pill px-4">Xu hướng</button>
+        <button class="btn btn-outline-dark rounded-pill px-4">Khuyến mãi</button>
+           <button class="btn btn-outline-dark rounded-pill px-4">Tips</button>
+    </div>
+
+
+
+
+    <!--TIN MỚI NHẤT-->
+    <section class="mb-5">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h5 class="fw-bold m-0">Tin mới nhất</h5>
+            <a href="#" class="text-muted text-decoration-none small">Xem tất cả <i class="fa-solid fa-chevron-right ms-1"></i></a>
+        </div>
+        <div class="row g-3">
+            <!-- Card 1 -->
+            <div class="col-6 col-md-3">
+                <div class="card border-0 h-100 news-card">
+                    <div class="position-relative">
+                        <img src="images/tinmoi1.jpg" class="card-img-top rounded-3" alt="“Yêu và Được Yêu” – Khi thời trang trở thành ngôn ngữ của cảm xúc">
+                        <span class="badge bg-white text-dark position-absolute top-0 start-0 m-2 rounded-pill shadow-sm">Sự kiện</span>
+                    </div>
+                    <div class="card-body px-0">
+                        <h6 class="card-title fw-bold text-truncate-2">“Yêu và Được Yêu” – Khi thời trang trở thành ngôn ngữ của cảm xúc</h6>
+                        <p class="card-text small text-muted"><i class="fa-regular fa-clock me-1"></i> 20/05/2026</p>
+                    </div>
+                </div>
+            </div>
+             <!-- Card 2 -->
+            <div class="col-6 col-md-3">
+                <div class="card border-0 h-100 news-card">
+                    <div class="position-relative">
+                        <img src="images/tinmoi2.jpg" class="card-img-top rounded-3" alt="Paris Fashion Week tiếp tục định hình xu hướng thời trang toàn cầu">
+                        <span class="badge bg-white text-dark position-absolute top-0 start-0 m-2 rounded-pill shadow-sm">Sự kiện</span>
+                    </div>
+                    <div class="card-body px-0">
+                        <h6 class="card-title fw-bold text-truncate-2">Paris Fashion Week tiếp tục định hình xu hướng thời trang toàn cầu</h6>
+                        <p class="card-text small text-muted"><i class="fa-regular fa-clock me-1"></i> 17/05/2026</p>
+                    </div>
+                </div>
+            </div>
+             <!-- Card 3 -->
+            <div class="col-6 col-md-3">
+                <div class="card border-0 h-100 news-card">
+                    <div class="position-relative">
+                        <img src="images/tinmoi3.jpg" class="card-img-top rounded-3" alt="Flash Sale cuối tuần – Ưu đãi lên đến 40% chỉ trong 48 giờ">
+                        <span class="badge bg-white text-dark position-absolute top-0 start-0 m-2 rounded-pill shadow-sm">Khuyến mãi</span>
+                    </div>
+                    <div class="card-body px-0">
+                        <h6 class="card-title fw-bold text-truncate-2">Flash Sale cuối tuần – Ưu đãi lên đến 50% chỉ trong 48 giờ</h6>
+                        <p class="card-text small text-muted"><i class="fa-regular fa-clock me-1"></i> 16/05/2026</p>
+                    </div>
+                </div>
+            </div>
+             <!-- Card 4 -->
+            <div class="col-6 col-md-3">
+                <div class="card border-0 h-100 news-card">
+                    <div class="position-relative">
+                        <img src="images/tinmoi4.jpg" class="card-img-top rounded-3" alt="Zendaya trở thành biểu tượng thời trang thế hệ mới">
+                        <span class="badge bg-white text-dark position-absolute top-0 start-0 m-2 rounded-pill shadow-sm">Xu hướng</span>
+                    </div>
+                    <div class="card-body px-0">
+                        <h6 class="card-title fw-bold text-truncate-2">Zendaya trở thành biểu tượng thời trang thế hệ mới</h6>
+                        <p class="card-text small text-muted"><i class="fa-regular fa-clock me-1"></i> 13/05/2026</p>
+                    </div>
+                </div>
+            </div>
+    
+        </div>
+    </section>
+
+
+
+
+    <!--TIPS-->
+    <section class="mb-5 bg-light p-4 rounded-4 shadow-sm">
+        <div class="row g-4">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+            <h5 class="fw-bold m-0">Tips hay mỗi ngày</h5>
+            <a href="#" class="text-muted text-decoration-none small">Xem tất cả <i class="fa-solid fa-chevron-right ms-1"></i></a>
+        </div>
+            <!-- Bài lớn bên trái -->
+            <div class="col-lg-7">
+                <div class="card border-0 text-white overflow-hidden rounded-4 main-feature">
+                    <img src="images/tip0.jpg" class="card-img h-100 object-fit-cover" alt="Bí quyết phối đồ phong cách tối giản cho mùa Hè 2026">
+                    <div class="card-img-overlay d-flex flex-column justify-content-end p-4 gradient-overlay">
+                        <span class="badge bg-primary mb-2 align-self-start">Xu hướng</span>
+                        <h3 class="fw-bold">Bí quyết phối đồ phong cách tối giản cho mùa Hè 2026</h3>
+                        <p class="small m-0"><i class="fa-regular fa-clock"></i> 30/04/2026</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Danh sách bài nhỏ bên phải -->
+            <div class="col-lg-5">
+    <div class="d-flex flex-column gap-3">
+        <!-- Bài viết 1 -->
+        <div class="d-flex gap-3 align-items-center side-item">
+            <img src="images/tip1.jpg" class="rounded-3 side-img" alt="Phối màu trang phục">
+            <div>
+                <span class="text-primary x-small fw-bold text-uppercase">Xu hướng</span>
+                <h6 class="fw-bold mb-1">Phối màu trang phục – Bí quyết tạo nên phong cách tinh tế</h6>
+                <p class="x-small text-muted m-0">28/04/2026</p>
+            </div>
+        </div>
+        
+        <hr class="my-1 text-muted opacity-25">
+        
+        <!-- Bài viết 2 -->
+        <div class="d-flex gap-3 align-items-center side-item">
+            <img src="images/tip2.jpg" class="rounded-3 side-img" alt="Mở khóa tủ đồ xa hoa của Phu nhân đại quân IU trong Perfect Crown">
+            <div>
+                <span class="text-primary x-small fw-bold text-uppercase">Xu hướng</span>
+                <h6 class="fw-bold mb-1">Mở khóa tủ đồ xa hoa của "Phu nhân đại quân" IU trong "Perfect Crown"</h6>
+                <p class="x-small text-muted m-0">27/04/2026</p>
+            </div>
+        </div>
+
+        <hr class="my-1 text-muted opacity-25">
+        
+        <!-- Bài viết 3 -->
+        <div class="d-flex gap-3 align-items-center side-item">
+            <img src="images/tip3.jpg" class="rounded-3 side-img" alt="Phụ kiện tối giản – Điểm nhấn tinh tế cho outfit">
+            <div>
+                <span class="text-primary x-small fw-bold text-uppercase">Xu hướng</span>
+                <h6 class="fw-bold mb-1">Phụ kiện tối giản – Điểm nhấn tinh tế cho outfit</h6>
+                <p class="x-small text-muted m-0">25/04/2026</p>
+            </div>
+        </div>
+    </div>
+</div>
+        </div>
+    </section>
+</div>
+
+
+
+<!--FOOTER-->
+<footer class="footer-section">
+    <div class="container py-5">
+
+        <div class="row g-4 justify-content-center">
+
+            <!-- ABOUT -->
+            <div class="col-lg-3 col-md-6">
+                <h5 class="footer-title">BATHORA DRESS</h5>
+                <p class="footer-text">
+                    Tại Bathora, chúng tôi tin rằng thời trang không chỉ là những bộ trang phục khoác lên mình,
+                    mà là ngôn ngữ tôn vinh giá trị nội tại của người phụ nữ hiện đại.
+                </p>
+            </div>
+
+            <!-- SOCIAL -->
+            <div class="col-lg-3 col-md-6">
+                <h5 class="footer-title">THEO DÕI CHÚNG TÔI</h5>
+                <ul class="footer-list">
+                    <li><a href="#"><i class="fab fa-facebook-f facebook"></i> Facebook</a></li>
+                    <li><a href="#"><i class="fab fa-instagram instagram"></i> Instagram</a></li>
+                    <li><a href="#"><i class="fab fa-youtube youtube"></i> Youtube</a></li>
+                    <li><a href="#"><i class="fa-regular fa-envelope email"></i> marketing@bbathora.com</a></li>
+                </ul>
+            </div>
+
+            <!-- SUPPORT -->
+            <div class="col-lg-3 col-md-6">
+                <h5 class="footer-title">CHĂM SÓC KHÁCH HÀNG</h5>
+                <ul class="footer-list">
+                    <li><a href="#">Hướng dẫn mua hàng</a></li>
+                    <li><a href="#">Chính sách vận chuyển</a></li>
+                    <li><a href="#">Chính sách tích điểm</a></li>
+                    <li><a href="#">Chính sách đổi trả hàng</a></li>
+                    <li><a href="#">Chế độ bảo hành trọn đời</a></li>
+                </ul>
+            </div>
+
+            <!-- NEWSLETTER -->
+            <div class="col-lg-3 col-md-6">
+                <h5 class="footer-title">ĐĂNG KÝ NHẬN ƯU ĐÃI</h5>
+
+                <div class="newsletter-box">
+                    <input type="email" placeholder="Nhập email của bạn">
+                    <button>GỬI</button>
+                </div>
+
+                <p class="footer-note">
+                    Bằng cách đăng ký, bạn đồng ý với chính sách bảo mật.
+                    <br>
+                    Đã có tài khoản? <a href="#">Đăng nhập</a>
+                </p>
+            </div>
+
+        </div>
+    </div>
+    <!--copyright-->
+    <div class="copyright">
+        <div class="container text-center">
+            <small>© 2026 BATHORA. Powered by NHOM10</small>
+        </div>
+    </div>
+</footer>
+
+<!-- Nút quay lại đầu trang -->
+<button id="backToTop" title="Lên đầu trang">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="12" y1="19" x2="12" y2="5"></line>
+        <polyline points="5 12 12 5 19 12"></polyline>
+    </svg>
+</button>
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- JS riêng -->
+<script src="tintuc.js"></script>
+
+</body>
+</html>
