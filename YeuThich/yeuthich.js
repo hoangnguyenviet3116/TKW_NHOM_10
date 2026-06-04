@@ -23,6 +23,22 @@ window.addEventListener('scroll', function() {
     lastScrollTop = scrollTop;
 });
 
+// ===========================================
+// HÀM CẬP NHẬT VÀ ẨN/HIỆN SỐ LƯỢNG TRÊN MENU 
+// ===========================================
+function updateMenuWishlistBadge(totalItems) {
+    const wishlistBadge = document.getElementById("wishlist-badge");
+    if (wishlistBadge) {
+        wishlistBadge.innerText = totalItems;
+        
+        // Sử dụng style trực tiếp để tránh xung đột thuộc tính display của Bootstrap
+        if (totalItems === 0) {
+            wishlistBadge.style.display = "none";
+        } else {
+            wishlistBadge.style.display = "flex";
+        }
+    }
+}
 
 /*thêm, xóa yêu thích*/
 document.addEventListener("DOMContentLoaded", function () {
@@ -32,25 +48,38 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let favs = JSON.parse(localStorage.getItem("favorites")) || [];
 
-    count.innerText = favs.length;
+    // Cập nhật số lượng ở chữ tiêu đề trang
+    if (count) {
+        count.innerText = favs.length;
+    }
+
+    // Gọi hàm này để ẩn số lượng trên icon menu ngay khi tải trang nếu bằng 0
+    updateMenuWishlistBadge(favs.length);
 
     if (favs.length === 0) {
-        emptyMsg.classList.remove("d-none");
+        if (emptyMsg) emptyMsg.classList.remove("d-none");
+        if (content) content.innerHTML = ""; // Xóa sạch bảng nếu trống
         return;
     }
 
-    content.innerHTML = favs.map(item => `
-        <tr>
-            <td><img src="${item.img}" width="80"></td>
-            <td class="text-start">${item.name}</td>
-            <td class="text-danger fw-bold">${item.price}</td>
-            <td>
-                <button onclick="removeFav('${item.id}')" class="btn btn-danger btn-sm">
-                    Xóa
-                </button>
-            </td>
-        </tr>
-    `).join("");
+    if (emptyMsg) {
+        emptyMsg.classList.add("d-none");
+    }
+
+    if (content) {
+        content.innerHTML = favs.map(item => `
+            <tr>
+                <td><img src="${item.img}" width="80"></td>
+                <td class="text-start">${item.name}</td>
+                <td class="text-danger fw-bold">${item.price}</td>
+                <td>
+                    <button onclick="removeFav('${item.id}')" class="btn btn-danger btn-sm">
+                        Xóa
+                    </button>
+                </td>
+            </tr>
+        `).join("");
+    }
 });
 
 function removeFav(id) {
@@ -60,10 +89,11 @@ function removeFav(id) {
 
     localStorage.setItem("favorites", JSON.stringify(favs));
 
+    // Cập nhật lại số lượng badge menu về 0 trước khi tải lại trang
+    updateMenuWishlistBadge(favs.length);
+
     location.reload();
 }
-
-
 
 /*Back to top*/
 const backToTopBtn = document.querySelector('#backToTop');
@@ -84,4 +114,3 @@ if (backToTopBtn) {
         });
     });
 }
-

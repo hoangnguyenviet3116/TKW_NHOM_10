@@ -1,5 +1,5 @@
-body {
-    font-family: Arial, sans-serif;
+body{
+    font-family:'Manrope', sans-serif;
 }
 
 /*POP-UP*/
@@ -199,6 +199,30 @@ position: fixed;
     color: #c9a45c;
 }
 
+/* Số lượng mặt hàng trên icon yêu thích */
+.badge-count {
+    position: absolute;
+    top: -8px;       /* Đẩy lên phía trên icon */
+    right: -10px;    /* Đẩy sang bên phải icon */
+    background-color: #c9a45c;
+    color: #ffffff;
+    font-size: 10px;
+    font-weight: bold;
+    min-width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 4px;
+    transition: all 0.3s ease;
+}
+
+/* Ẩn badge đi khi không có sản phẩm nào yêu thích */
+.badge-count.d-none {
+    display: none !important;
+}
+
 /*DROPDOWN SALE*/
 
 /* Định dạng menu xổ xuống */
@@ -379,7 +403,6 @@ position: fixed;
 .category-card {
     position: relative;
     display: block;
-    border-radius: 20px;
     overflow: hidden;
     aspect-ratio: 3 / 4;
     transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s ease;
@@ -481,43 +504,48 @@ position: fixed;
     object-fit: cover;
 }
 
-.heart-btn {
-    position: absolute;
-    top: 12px;
-    right: 12px;
-    width: 35px;
-    height: 35px;
-    background: #fff;
-    border-radius: 50%;
+.price-heart-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.product-price {
+    font-weight: 700;
+    color: #d0021b;
+    font-size: 16px;
+    margin: 0;
+}
+
+.wishlist-btn {
+    border: none;
+    background: transparent;
+
+    padding: 0;
+    margin-left: auto;
+
     display: flex;
     align-items: center;
     justify-content: center;
-    
-    font-size: 16px;
-    color: #333;
+
     cursor: pointer;
-
-    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-    transition: 0.3s;
 }
 
-.heart-btn:hover {
-    transform: scale(1.1);
+.heart-btn {
+    font-size: 20px;
+    color: #b58a3c;
+    transition: all 0.25s ease;
 }
 
-.heart-btn.fa-solid {
-    color: red;
+.heart-btn.active {
+    color: #e53935;
 }
 
-
-.toast-custom {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    background: #111;
-    color: #fff;
-    padding: 12px 20px;
-    border-radius: 8px;
+.wishlist-btn:hover .heart-btn {
+    transform: scale(1.12);
 }
 
 
@@ -549,6 +577,18 @@ position: fixed;
     color: #888;
 }
 
+.product-img{
+    overflow:hidden;
+}
+
+.product-img img{
+    transition:0.5s ease;
+}
+
+.product-card:hover .product-img img{
+    transform:scale(1.05);
+}
+
 .rating i {
     color: #ccc; /* Sao chưa đánh giá màu xám */
     margin-right: 2px;
@@ -571,6 +611,234 @@ position: fixed;
     width: 25px; /* Kéo dài chấm đang chọn cho đẹp */
     border-radius: 5px;
 }
+
+
+/*QUẢNG CÁO BST*/
+.collection-banner{
+    position:relative;
+    width:100%;
+    height:100vh;
+    background:url('images/banner-collection.jpg') center/cover no-repeat;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+}
+
+/* Overlay tối sang */
+.collection-overlay{
+    position:absolute;
+    inset:0;
+
+    background:
+    linear-gradient(
+        to right,
+        rgba(90,55,10,0.45),
+        rgba(0,0,0,0.75)
+    );
+}
+
+/* Nội dung */
+.collection-content{
+    position:relative;
+    z-index:2;
+    text-align:center;
+    color:#fff;
+    max-width:720px;
+    padding:20px;
+}
+
+/* Subtitle */
+.collection-subtitle{
+    display:block;
+    font-size:12px;
+    font-weight:500;
+    letter-spacing:5px;
+    margin-bottom:24px;
+    color:#c7a56a;
+}
+
+/* Title lớn */
+.collection-title{
+    font-family:'Cormorant Garamond', serif;
+    font-size:82px;
+    font-weight:500;
+    line-height:1.08;
+    letter-spacing:-1px;
+    margin-bottom:28px;
+    color:#f8f6f2;
+}
+
+/* Mô tả */
+.collection-desc{
+    font-size:18px;
+    font-weight:300;
+    color:#d4d4d4;
+    letter-spacing:1px;
+    margin-bottom:55px;
+}
+
+/* Button */
+.discover-btn{
+    position:relative;
+    color:#f5f5f5;
+    text-decoration:none;
+    font-size:13px;
+    font-weight:500;
+    letter-spacing:4px;
+    padding-bottom:16px;
+    transition:0.35s ease;
+}
+
+/* Gạch dọc dưới nút */
+.discover-btn::after{
+    content:"";
+    position:absolute;
+    left:50%;
+    transform:translateX(-50%);
+    top:38px;
+    width:1px;
+    height:50px;
+    background:#b9b9b9;
+
+    transition:0.3s;
+}
+
+/* Hover */
+.discover-btn:hover{
+    color:#d4b06a;
+}
+
+.discover-btn:hover::after{
+    height:65px;
+    background:#d4b06a;
+}
+@media(max-width:768px){
+    .collection-title{
+        font-size:52px;
+        line-height:1.15;
+    }
+    .collection-desc{
+        font-size:15px;
+    }
+
+}
+
+
+/*SẢN PHẨM TIÊU BIỂU*/
+/* --- SECTION BIÊN TẬP (EDITORIAL SPOTLIGHT) --- */
+.editorial-spotlight {
+    border-top: 1px solid #f2f2f2;
+    border-bottom: 1px solid #f2f2f2;
+    overflow: hidden;
+    background-color: #fcf9f5; /* Nền kem beige tĩnh lặng phong cách Aesop */
+}
+
+/* Khung chứa ảnh bên trái */
+.editorial-img-box {
+    height: 600px; /* Chiều cao vừa vặn cho nội dung ngắn */
+    position: relative;
+}
+
+.editorial-caption {
+    position: absolute;
+    bottom: 40px;
+    left: 40px;
+    color: #fff;
+    z-index: 2;
+    text-align: left;
+}
+
+.caption-tag {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 5px;
+    opacity: 0.8;
+}
+
+.caption-heading {
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 1.4;
+    font-family: 'Playfair Display', serif;
+}
+
+/* Khung nội dung chữ bên phải */
+.editorial-content-wrapper {
+    padding: 60px 50px;
+    max-width: 480px; /* Thu hẹp lại một chút để đoạn văn ngắn nhìn vuông vắn, đẹp mắt */
+    margin: 0 auto;
+}
+
+/* Dòng chữ nhỏ trên tiêu đề */
+.brand-philosophy {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 4px; /* Giãn chữ rộng tạo cảm giác cao cấp */
+    color: #888;
+    display: block;
+    margin-bottom: 15px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Tiêu đề chính */
+.spotlight-title {
+    font-size: 28px;
+    font-weight: 400;
+    letter-spacing: 2px;
+    color: #1a1a1a;
+    margin-bottom: 25px;
+    font-family: 'Playfair Display', serif; /* Font chữ có chân thanh lịch */
+}
+
+/* Đoạn văn tả bộ sưu tập */
+.spotlight-desc {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.9; /* Giãn dòng rộng giúp người đọc không bị mỏi mắt */
+    margin-bottom: 35px;
+    font-weight: 300;
+}
+
+/* Nút Khám phá ngay (Outline Button) */
+.btn-discover {
+    display: inline-block;
+    border: 1px solid #1a1a1a;
+    color: #1a1a1a;
+    padding: 12px 45px;
+    text-decoration: none;
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-weight: 600;
+    transition: all 0.4s ease;
+}
+
+/* Hiệu ứng di chuột vào nút */
+.btn-discover:hover {
+    background: #1a1a1a;
+    color: #fff !important;
+}
+
+/* Tối ưu hiển thị mượt mà trên Điện thoại */
+@media (max-width: 768px) {
+    .editorial-img-box {
+        height: 380px; /* Giảm chiều cao ảnh trên mobile */
+    }
+    .editorial-content-wrapper {
+        padding: 50px 25px;
+    }
+    .spotlight-title {
+        font-size: 24px;
+    }
+    .spotlight-desc {
+        font-size: 13px;
+        line-height: 1.7;
+    }
+}
+
 
 
 /*TIN TỨC*/
@@ -601,7 +869,6 @@ position: fixed;
 
 /* Thẻ bài viết (Blog Card) */
 .blog-card {
-    border-radius: 8px;
     overflow: hidden;
     background: #fff;
     transition: transform 0.3s ease;
@@ -611,7 +878,6 @@ position: fixed;
     position: relative;
     overflow: hidden;
     aspect-ratio: 4 / 3;
-    border-radius: 8px;
 }
 
 .blog-img-wrapper img {
@@ -625,17 +891,6 @@ position: fixed;
     transform: scale(1.1); /* Phóng to nhẹ ảnh khi hover */
 }
 
-/* Ngày tháng */
-.blog-date {
-    position: absolute;
-    top: 15px;
-    left: 15px;
-    background: rgba(255, 255, 255, 0.9);
-    padding: 4px 12px;
-    font-size: 11px;
-    font-weight: 600;
-    border-radius: 4px;
-}
 
 /* Nội dung văn bản */
 .blog-content {

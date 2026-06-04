@@ -4,14 +4,18 @@ window.addEventListener('load', function() {
     const closeBtn = document.querySelector('.close-popup');
 
     // Tự động hiện sau 2 giây
-    setTimeout(() => {
-        popup.classList.add('active');
-    }, 2000);
+    if (popup) {
+        setTimeout(() => {
+            popup.classList.add('active');
+        }, 2000);
+    }
 
     // Đóng khi click vào nút X
-    closeBtn.addEventListener('click', () => {
-        popup.classList.remove('active');
-    });
+    if (closeBtn) {
+        closeBtn.addEventListener('click', () => {
+            popup.classList.remove('active');
+        });
+    }
 
     // Đóng khi click ra ngoài vùng trắng
     window.addEventListener('click', (e) => {
@@ -20,7 +24,6 @@ window.addEventListener('load', function() {
         }
     });
 });
-
 
 
 /*MENU*/
@@ -49,7 +52,6 @@ window.addEventListener('scroll', function() {
 });
 
 
-
 /*DANH MỤC SẢN PHẨM*/
 var swiper = new Swiper(".categorySwiper", {
     slidesPerView: 1,      /* Mobile hiện 1 cái */
@@ -61,16 +63,13 @@ var swiper = new Swiper(".categorySwiper", {
     },
     breakpoints: {
         640: { slidesPerView: 2 },
-        1024: { slidesPerView: 4 }, /* Laptop hiện 4 cái như hình của bạn */
+        1024: { slidesPerView: 4 }, /* Laptop hiện 4 cái */
     },
 });
 
 
-
-
 /*SẢN PHẨM NỔI BẬT*/
 const swiperFeatured = new Swiper('.featuredSwiper', {
-    // Cấu hình cơ bản
     slidesPerView: 5,           // Hiển thị đúng 5 ảnh trên màn hình máy tính
     slidesPerGroup: 5,          // Khi trượt sẽ nhảy qua cả cụm 5 ảnh
     spaceBetween: 20,           // Khoảng cách giữa các ảnh
@@ -78,19 +77,16 @@ const swiperFeatured = new Swiper('.featuredSwiper', {
     loop: true,                 // Lặp lại vô hạn
     speed: 800,                 // Tốc độ trượt (800ms cho mượt)
 
-    // Tự động chạy (nếu muốn)
     autoplay: {
         delay: 5000,            // 5 giây đổi một lần
         disableOnInteraction: false,
     },
 
-    // Chấm phân trang
     pagination: {
         el: ".swiper-pagination",
         clickable: true,
     },
 
-    // Cấu hình linh hoạt cho các màn hình khác
     breakpoints: {
         320: {
             slidesPerView: 2,   // Điện thoại hiện 2 ảnh
@@ -112,7 +108,7 @@ const swiperFeatured = new Swiper('.featuredSwiper', {
 
 
 // =======================
-// CLICK TRÁI TIM
+// CLICK TRÁI TIM & CẬP NHẬT SỐ LƯỢNG
 // =======================
 const hearts = document.querySelectorAll(".heart-btn");
 
@@ -120,6 +116,7 @@ hearts.forEach(icon => {
   icon.addEventListener("click", function () {
 
     const card = this.closest(".product-card");
+    if (!card) return;
 
     const product = {
       id: card.dataset.id,
@@ -129,30 +126,46 @@ hearts.forEach(icon => {
     };
 
     let favs = JSON.parse(localStorage.getItem("favorites")) || [];
-
     const index = favs.findIndex(item => item.id === product.id);
 
     if (index === -1) {
       favs.push(product);
-      this.classList.replace("fa-regular", "fa-solid");
-      showToast("❤️ Đã thêm vào yêu thích");
+     this.classList.add("active");
     } else {
       favs.splice(index, 1);
-      this.classList.replace("fa-solid", "fa-regular");
-      showToast("💔 Đã bỏ khỏi yêu thích");
+     this.classList.remove("active");
     }
 
+    // Lưu danh sách mới vào LocalStorage
     localStorage.setItem("favorites", JSON.stringify(favs));
+
+    // Gọi hàm cập nhật lại số lượng hiển thị trên menu ngay lập tức
+    updateHeartIcons();
   });
 });
 
 
 // =======================
-// LOAD TRẠNG THÁI TIM
+// HÀM CẬP NHẬT TRẠNG THÁI TIM VÀ SỐ LƯỢNG BADGE
 // =======================
 function updateHeartIcons() {
+    // 1. Lấy danh sách yêu thích từ localStorage
     let favs = JSON.parse(localStorage.getItem("favorites")) || [];
 
+    // 2. Cập nhật số lượng hiển thị bên cạnh icon trái tim trên Header
+    const wishlistBadge = document.getElementById("wishlist-badge");
+    if (wishlistBadge) {
+        wishlistBadge.innerText = favs.length;
+        
+        // Nếu không có sản phẩm nào, ẩn số đi cho thanh lịch. Có sản phẩm thì hiện lại.
+        if (favs.length === 0) {
+            wishlistBadge.classList.add("d-none");
+        } else {
+            wishlistBadge.classList.remove("d-none");
+        }
+    }
+
+    // 3. Đổi màu trạng thái icon trái tim tại các thẻ sản phẩm tương ứng
     document.querySelectorAll(".product-card").forEach(card => {
         const id = card.dataset.id;
         const heart = card.querySelector(".heart-btn");
@@ -160,32 +173,16 @@ function updateHeartIcons() {
         if (!heart) return;
 
         if (favs.find(item => item.id === id)) {
-            heart.classList.replace("fa-regular", "fa-solid");
+            heart.classList.add("active");
         } else {
-            heart.classList.replace("fa-solid", "fa-regular");
+            heart.classList.remove("active");
         }
     });
 }
 
 
 // =======================
-// TOAST
-// =======================
-function showToast(message) {
-    const toast = document.createElement("div");
-    toast.innerText = message;
-    toast.className = "toast-custom";
-
-    document.body.appendChild(toast);
-
-    setTimeout(() => {
-        toast.remove();
-    }, 2000);
-}
-
-
-// =======================
-// LOAD KHI VÀO TRANG
+// KHỞI CHẠY KHI TẢI TRANG
 // =======================
 document.addEventListener("DOMContentLoaded", () => {
     updateHeartIcons();
@@ -211,4 +208,3 @@ if (backToTopBtn) {
         });
     });
 }
-
