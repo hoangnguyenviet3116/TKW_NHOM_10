@@ -22,6 +22,31 @@ window.addEventListener('scroll', function() {
 
     lastScrollTop = scrollTop;
 });
+// =========================================================
+// HÀM CẬP NHẬT VÀ TỰ ĐỘNG ẨN SỐ LƯỢNG YÊU THÍCH TRÊN MENU
+// =========================================================
+function updateMenuWishlistBadge() {
+    const wishlistBadge = document.getElementById("wishlist-badge");
+    if (wishlistBadge) {
+        // Lấy danh sách từ localStorage dùng chung của hệ thống
+        let favs = JSON.parse(localStorage.getItem("favorites")) || [];
+        wishlistBadge.innerText = favs.length;
+        
+        // Sử dụng style.display trực tiếp để ẩn hoàn toàn số 0, tránh xung đột CSS
+        if (favs.length === 0) {
+            wishlistBadge.style.display = "none";
+        } else {
+            wishlistBadge.style.display = "flex";
+        }
+    }
+}
+
+// Tự động kiểm tra và cập nhật số lượng ngay khi người dùng vừa vào trang tin tức
+document.addEventListener("DOMContentLoaded", () => {
+    updateMenuWishlistBadge();
+});
+
+
 
 
 
