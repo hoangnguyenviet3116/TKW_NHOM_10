@@ -134,43 +134,29 @@ if (galleryImages.length > 0) {
     }, 1500);
 }
 
+/*VIDEO*/
 window.addEventListener("load", () => {
+    const introOverlay = document.getElementById("introOverlay");
+    const introVideo = document.getElementById("introVideo");
 
-    const introOverlay =
-        document.getElementById("introOverlay");
+    if (!introOverlay || !introVideo) return;
 
-    const introVideo =
-        document.getElementById("introVideo");
-
-    if(!introOverlay || !introVideo) return;
-
-    if(sessionStorage.getItem("about_intro_seen")){
-
+    if (sessionStorage.getItem("about_intro_seen")) {
         introOverlay.remove();
-
         return;
     }
 
     document.body.classList.add("intro-playing");
 
     introVideo.addEventListener("ended", () => {
-
-        sessionStorage.setItem(
-            "about_intro_seen",
-            "true"
-        );
+        sessionStorage.setItem("about_intro_seen", "true");
 
         introOverlay.classList.add("hide");
-
         document.body.classList.remove("intro-playing");
 
         setTimeout(() => {
-
             introOverlay.remove();
-
-        },1200);
-
+        }, 1200);
     });
-
 });
 

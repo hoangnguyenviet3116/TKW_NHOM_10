@@ -1294,3 +1294,91 @@ position: fixed;
 #backToTop:hover svg {
     transform: translateY(-3px); /* Mũi tên nhích nhẹ lên trên khi di chuột vào */
 }
+
+/* ==========================
+   INTRO VIDEO FULLSCREEN
+========================== */
+
+#introOverlay{
+    position: fixed;
+    inset: 0;
+
+    z-index: 999999;
+
+    background: #000;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: opacity 1.2s ease;
+}
+
+#introOverlay.hide{
+    opacity: 0;
+    pointer-events: none;
+}
+
+#introVideo{
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
+/* Ẩn nội dung trang lúc đầu */
+
+body.intro-playing main,
+body.intro-playing footer{
+    opacity: 0;
+}
+
+main,
+footer{
+    transition: opacity 1.2s ease;
+}
+
+/* =========================
+   INTRO VIDEO BATHORA
+========================= */
+
+#introOverlay{
+    position: fixed;
+    inset: 0;
+
+    background: #000;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    z-index: 99999;
+
+    transition: opacity 1s ease;
+}
+
+#introOverlay.hide{
+    opacity: 0;
+    pointer-events: none;
+}
+
+#introVideo{
+    width: 85%;
+    max-width: 1200px;
+
+    max-height: 85vh;
+
+    object-fit: contain;
+
+    border-radius: 8px;
+}
+
+/* Mobile */
+@media (max-width:768px){
+
+    #introVideo{
+        width: 92%;
+        max-height: 70vh;
+    }
+
+}
