@@ -201,3 +201,14 @@ if (backToTopBtn) {
         });
     });
 }
+
+//Hiệu ứng cuộn trang
+window.addEventListener("load", function () {
+
+    AOS.init({
+        duration: 1200,
+        once: true,
+        offset: 120
+    });
+
+});

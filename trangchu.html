@@ -16,8 +16,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
     <link rel="stylesheet" href="trangchu.css">
 </head>
 
@@ -180,7 +181,7 @@
 
 
 <!--DANH MỤC SẢN PHẨM-->
-<section class="category-section py-5">
+<section class="category-section py-5" data-aos="fade-up">
     <div class="container position-relative">
         
         <div class="swiper categorySwiper">
@@ -277,7 +278,7 @@
 
 
 <!-- Banner chạy ngang -->
-<section class="marquee-banner-container">
+<section class="marquee-banner-container" data-aos="fade-up">
     <div class="marquee-track">
         
         <!-- CỤM ẢNH GỐC -->
@@ -307,11 +308,9 @@
 
 
 <!--SẢN PHẨM NỔI BẬT-->
-<section class="featured-products py-5">
+<section class="featured-products py-5" data-aos="fade-up" data-aos-delay="100">
     <div class="container">
-        <h2 class="text-center mb-5 fw-bold text-uppercase">SẢN PHẨM NỔI BẬT</h2>
-        
-        <div class="swiper featuredSwiper">
+        <h2 class="section-luxury-title text-center mb-5">SẢN PHẨM NỔI BẬT</h2>        <div class="swiper featuredSwiper">
             <div class="swiper-wrapper">
                 <!-- Sản phẩm 1 -->
                 <div class="swiper-slide">
@@ -358,7 +357,7 @@
                             <h3 class="product-title">Đầm xuân hè vắt tà cổ tùng đổ</h3>
                              <div class="price-heart-wrapper">
                               <div class="product-price">
-                                    1,150,000đ
+                                    895,000đ
                                 </div>
                                 <button class="wishlist-btn">
                                     <i class="fa-regular fa-heart heart-btn"></i>
@@ -388,7 +387,7 @@
                             <h3 class="product-title">Áo len suông có khoá kéo</h3>
                             <div class="price-heart-wrapper">
                               <div class="product-price">
-                                    1,150,000đ
+                                    855,000đ
                                 </div>
                                 <button class="wishlist-btn">
                                     <i class="fa-regular fa-heart heart-btn"></i>
@@ -418,7 +417,7 @@
                             <h3 class="product-title">Quần Resort 2 ly bung</h3>
                              <div class="price-heart-wrapper">
                               <div class="product-price">
-                                    1,150,000đ
+                                    655,000đ
                                 </div>
                                 <button class="wishlist-btn">
                                     <i class="fa-regular fa-heart heart-btn"></i>
@@ -447,7 +446,7 @@
                             <h3 class="product-title">Áo dạ suông cổ tròn bèo 2 nắp túi</h3>
                             <div class="price-heart-wrapper">
                               <div class="product-price">
-                                    1,150,000đ
+                                    1,385,000đ
                                 </div>
                                 <button class="wishlist-btn">
                                     <i class="fa-regular fa-heart heart-btn"></i>
@@ -477,7 +476,7 @@
                             <h3 class="product-title">Đầm Xuân Hè 2 dây nhún tầng dài</h3>
                             <div class="price-heart-wrapper">
                               <div class="product-price">
-                                    1,150,000đ
+                                    875,000đ
                                 </div>
                                 <button class="wishlist-btn">
                                     <i class="fa-regular fa-heart heart-btn"></i>
@@ -507,7 +506,7 @@
                             <h3 class="product-title">Chân váy Resort dài nhún eo</h3>
                             <div class="price-heart-wrapper">
                               <div class="product-price">
-                                    1,150,000đ
+                                    595,000đ
                                 </div>
                                 <button class="wishlist-btn">
                                     <i class="fa-regular fa-heart heart-btn"></i>
@@ -537,7 +536,7 @@
                             <h3 class="product-title">Đầm Xuân Hè cổ sen cách điệu, phối chân xếp ly chụm</h3>
                             <div class="price-heart-wrapper">
                                 <div class="product-price">
-                                    1,150,000đ
+                                    895,000đ
                                 </div>
                                 <button class="wishlist-btn">
                                     <i class="fa-regular fa-heart heart-btn"></i>
@@ -567,7 +566,7 @@
                             <h3 class="product-title">Đầm Xuân Hè tay bồng, xếp ly eo, dây nơ cổ</h3>
                            <div class="price-heart-wrapper">
                               <div class="product-price">
-                                    1,150,000đ
+                                    855,000đ
                                 </div>
                                 <button class="wishlist-btn">
                                     <i class="fa-regular fa-heart heart-btn"></i>
@@ -596,7 +595,7 @@
                             <h3 class="product-title">Áo xuân hè cổ tròn phối bèo dọc</h3>
                             <div class="price-heart-wrapper">
                               <div class="product-price">
-                                    1,150,000đ
+                                    755,000đ
                                 </div>
                                 <button class="wishlist-btn">
                                     <i class="fa-regular fa-heart heart-btn"></i>
@@ -622,7 +621,7 @@
 
 
 <!--BST-->
-<section class="editorial-spotlight">
+<section class="editorial-spotlight" data-aos="fade-up">
     <div class="container-fluid p-0">
         <div class="row g-0">
             <div class="col-md-6 position-relative">
@@ -657,12 +656,14 @@
 
 
 <!-- Section Tin Tức -->
-<section class="blog-section py-5">
+<section class="blog-section py-5" data-aos="fade-up">
     <div class="container">
         <!-- Header: Tiêu đề và Bộ lọc -->
         <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-end mb-4 gap-3">
             <div>
-                <h2 class="blog-main-title text-uppercase fw-bold mb-0">Tin tức</h2>
+                <h2 class="blog-main-title text-uppercase mb-0">Tin tức</h2>
+                
+                <!-- Bộ lọc tab -->
                 <div class="blog-filters d-flex gap-2 mt-3">
                     <button class="filter-btn active" data-filter="all">Tất cả</button>
                     <button class="filter-btn" data-filter="event">Sự kiện</button>
@@ -671,22 +672,24 @@
                     <button class="filter-btn" data-filter="tips">Tips</button>
                 </div>
             </div>
-            <a href="TinTuc/tintuc.html" class="view-all-link d-none d-md-block">
-                Xem tất cả <i class="fa-solid fa-arrow-right-long ms-2"></i>
-            </a>
+            <!-- Link Xem tất cả trên Desktop (Chỉ hiện từ màn hình md trở lên) -->
+            <a href="TinTuc/tintuc.html" class="view-all-link d-none d-md-block">Xem tất cả</a>
         </div>
 
-        <!-- Danh sách bài viết -->
+        <!-- Danh sách Bài viết -->
         <div class="row g-4" id="blog-grid">
+            
             <!-- Bài viết 1 -->
             <div class="col-12 col-md-6 col-lg-3 blog-item" data-category="trend">
                 <article class="blog-card">
                     <div class="blog-img-wrapper">
-                        <img src="images/Tintuc1.jpg" alt="Xu hướng thanh lịch 2026">
+                        <a href="xu-huong-thanh-lich-2026.html">
+                            <img src="images/Tintuc1.jpg" alt="Xu hướng thanh lịch 2026">
+                        </a>
                     </div>
                     <div class="blog-content">
                         <h3 class="blog-title">
-                            <a href="#">BATHORA “gây sốt” với xu hướng thanh lịch 2026 – Nàng đã bắt kịp chưa?</a>
+                            <a href="xu-huong-thanh-lich-2026.html">BATHORA “gây sốt” với xu hướng thanh lịch 2026 – Nàng đã bắt kịp chưa?</a>
                         </h3>
                         <p class="blog-excerpt">Khám phá những xu hướng thời trang nổi bật năm 2026 với phong cách tối giản, tinh tế.</p>
                     </div>
@@ -697,26 +700,30 @@
             <div class="col-12 col-md-6 col-lg-3 blog-item" data-category="event">
                 <article class="blog-card">
                     <div class="blog-img-wrapper">
-                        <img src="images/Tintuc2.jpg" alt="Sự kiện Bathora">
+                        <a href="su-kien-bathora.html">
+                            <img src="images/Tintuc2.jpg" alt="Sự kiện Bathora">
+                        </a>
                     </div>
                     <div class="blog-content">
                         <h3 class="blog-title">
-                            <a href="#">Trải nghiệm thời trang đỉnh cao cùng BATHORA – Sự kiện bạn không thể bỏ lỡ!</a>
+                            <a href="su-kien-bathora.html">Trải nghiệm thời trang đỉnh cao cùng BATHORA – Sự kiện bạn không thể bỏ lỡ!</a>
                         </h3>
                         <p class="blog-excerpt">Chuỗi sự kiện độc quyền mang đến cơ hội trải nghiệm trực tiếp các thiết kế mới nhất.</p>
                     </div>
                 </article>
             </div>
 
-            <!-- Bài viết 3 (Ví dụ thêm) -->
+            <!-- Bài viết 3 -->
             <div class="col-12 col-md-6 col-lg-3 blog-item" data-category="promo">
                 <article class="blog-card">
                     <div class="blog-img-wrapper">
-                        <img src="images/Tintuc3.jpg" alt="Sale sốc">
+                        <a href="khuyen-mai-dac-biet.html">
+                            <img src="images/Tintuc3.jpg" alt="Sale sốc">
+                        </a>
                     </div>
                     <div class="blog-content">
                         <h3 class="blog-title">
-                            <a href="#">SALE SỐC tại BATHORA – Giảm đến 50%, cơ hội vàng trong thời gian ngắn!</a>
+                            <a href="khuyen-mai-dac-biet.html">SALE SỐC tại BATHORA – Giảm đến 50%, cơ hội vàng trong thời gian ngắn!</a>
                         </h3>
                         <p class="blog-excerpt">Chương trình khuyến mãi đặc biệt dành cho khách hàng với hàng loạt sản phẩm hấp dẫn.</p>
                     </div>
@@ -727,21 +734,24 @@
             <div class="col-12 col-md-6 col-lg-3 blog-item" data-category="trend">
                 <article class="blog-card">
                     <div class="blog-img-wrapper">
-                        <img src="images/Tintuc4.png" alt="Soft Elegance">
+                        <a href="bst-soft-elegance.html">
+                            <img src="images/Tintuc4.png" alt="Soft Elegance">
+                        </a>
                     </div>
                     <div class="blog-content">
                         <h3 class="blog-title">
-                            <a href="#">Ra mắt “Soft Elegance” – Khi sự tối giản trở thành đỉnh cao của sang trọng</a>
+                            <a href="bst-soft-elegance.html">Ra mắt “Soft Elegance” – Khi sự tối giản trở thành đỉnh cao của sang trọng</a>
                         </h3>
                         <p class="blog-excerpt">Bộ sưu tập mới lấy cảm hứng từ vẻ đẹp nhẹ nhàng, nữ tính và chất liệu cao cấp.</p>
                     </div>
                 </article>
             </div>
+
         </div>
 
-        <!-- Nút Xem tất cả cho Mobile -->
-        <div class="text-center d-md-none mt-4">
-            <a href="TinTuc/tintuc.html" class="btn btn-outline-dark px-5 py-2 fw-bold" style="border-radius: 0;">XEM TẤT CẢ</a>
+        <!-- Link Xem tất cả trên Mobile (Chỉ xuất hiện trên màn hình nhỏ d-md-none) -->
+        <div class="text-center mt-5 d-block d-md-none">
+            <a href="TinTuc/tintuc.html" class="view-all-link">Xem tất cả</a>
         </div>
     </div>
 </section>
@@ -749,7 +759,7 @@
 
 
 <!-- DỊCH VỤ / TIỆN ÍCH -->
-<section class="services-section py-5">
+<section class="services-section py-5" data-aos="fade-up">
     <div class="container">
         <div class="row g-0 services-wrapper">
             
@@ -894,6 +904,6 @@
 
 <!-- JS riêng -->
 <script src="trangchu.js"></script>
-
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 </body>
 </html>
