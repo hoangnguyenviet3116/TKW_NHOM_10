@@ -119,39 +119,31 @@
         </nav>
     </div>
     </section>
-
+<!--nội dung-->
 <div class="container py-4">
     <div class="container mt-5">
-    <div class="text-center mb-5">
-        <h2 class="text-uppercase fw-bold">Sản phẩm yêu thích</h2>
-        <p>Có <span id="wishlist-count" class="fw-bold">0</span> sản phẩm trong mục ưa thích của bạn</p>
-    </div>
+        <div class="text-center mb-5">
+            <h2 class="text-uppercase fw-bold">Sản phẩm yêu thích</h2>
+            <p>Có <span id="wishlist-count" class="fw-bold">0</span> sản phẩm trong mục ưa thích của bạn</p>
+        </div>
 
-    <div class="table-responsive">
-        <table class="table align-middle text-center">
-            <thead class="table-light">
-                <tr>
-                    <th scope="col" style="width: 30%;">Hình ảnh</th>
-                    <th scope="col" style="width: 40%;">Thông tin</th>
-                    <th scope="col" style="width: 20%;">Giá tiền</th>
-                    <th scope="col" style="width: 10%;"></th>
-                </tr>
-            </thead>
-            <tbody id="wishlist-content">
-                <!-- JavaScript sẽ đổ dữ liệu vào đây -->
-            </tbody>
-        </table>
-    </div>
-        <div id="empty-message" class="text-center py-4 d-none">
-            <p class="fw-bold">Bạn chưa có sản phẩm yêu thích nào !</p>
+        <!-- ĐÃ THAY BẢNG THÀNH LƯỚI ẢNH GRID CAO CẤP -->
+        <div id="wishlist-grid" class="row g-4 justify-content-start">
+            <!-- JavaScript sẽ tự động đổ dữ liệu Card thời trang vào đây -->
+        </div>
+
+        <!-- Thông báo khi không có sản phẩm yêu thích -->
+        <div id="empty-message" class="text-center py-5 d-none">
+            <p class="fw-bold fs-5 text-muted">Bạn chưa có sản phẩm yêu thích nào !</p>
         </div>
     </div>
+
+    <!-- Nút tiếp tục mua sắm -->
     <div class="continue-shopping-wrapper">
         <a href="sanpham.html" class="btn-continue-shopping">
             <i class="fa-solid fa-chevron-left me-2"></i> TIẾP TỤC MUA SẮM
         </a>
     </div>
-</div>
 </div>
 </main>
 
