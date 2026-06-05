@@ -69,39 +69,32 @@ var swiper = new Swiper(".categorySwiper", {
 
 
 /*SẢN PHẨM NỔI BẬT*/
-const swiperFeatured = new Swiper('.featuredSwiper', {
-    slidesPerView: 5,           // Hiển thị đúng 5 ảnh trên màn hình máy tính
-    slidesPerGroup: 5,          // Khi trượt sẽ nhảy qua cả cụm 5 ảnh
-    spaceBetween: 20,           // Khoảng cách giữa các ảnh
-    grabCursor: true,           // Hiện bàn tay để kéo bằng chuột
-    loop: true,                 // Lặp lại vô hạn
-    speed: 800,                 // Tốc độ trượt (800ms cho mượt)
+var swiper = new Swiper(".featuredSwiper", {
+    slidesPerView:4,
+    spaceBetween:25,
+    loop:true, // tạo vòng lặp khi kéo hết ảnh
+    grabCursor:false,
 
-    autoplay: {
-        delay: 5000,            // 5 giây đổi một lần
-        disableOnInteraction: false,
+    pagination:{
+        el:".swiper-pagination",
+        clickable:true,
     },
 
-    pagination: {
-        el: ".swiper-pagination",
-        clickable: true,
-    },
+    breakpoints:{
+        0:{
+            slidesPerView:1.2
+        },
 
-    breakpoints: {
-        320: {
-            slidesPerView: 2,   // Điện thoại hiện 2 ảnh
-            slidesPerGroup: 2,
-            spaceBetween: 10
+        576:{
+            slidesPerView:2
         },
-        768: {
-            slidesPerView: 3,   // Máy tính bảng hiện 3 ảnh
-            slidesPerGroup: 3,
-            spaceBetween: 15
+
+        768:{
+            slidesPerView:3
         },
-        1024: {
-            slidesPerView: 5,   // Laptop/PC hiện đúng 5 ảnh
-            slidesPerGroup: 5,
-            spaceBetween: 20
+
+        1200:{
+            slidesPerView:4
         }
     }
 });

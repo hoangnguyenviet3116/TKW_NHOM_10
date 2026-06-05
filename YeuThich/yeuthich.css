@@ -1,81 +1,58 @@
-body {
-    font-family: Arial, sans-serif;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}
-
 html, body {
     height: 100%;
     margin: 0;
 }
-.header {
-    flex-shrink: 0; /* Đảm bảo menu không bị bóp nghẹt */
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 2000;
+
+body {
+    font-family: 'Manrope', sans-serif;
+    color: #222222;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
     background-color: #ffffff;
-    height: 80px; /* Thiết lập chiều cao cố định cho menu */
-    margin: 0;
 }
 
-/* Phần main sẽ tự động co giãn để lấp đầy khoảng trống dư thừa */
+/* Khối main tự động co giãn để đẩy footer xuống đáy */
 main {
     flex: 1 0 auto;
-    margin-top: 80px; 
+    margin-top: 70px; /* Khớp với chiều cao logo trang chủ */
 }
 
-/* Giữ Footer luôn ở dưới cùng và không bị co lại */
-.header, .footer-section {
-    flex-shrink: 0;
-}
-
-/* Tối ưu riêng cho Mobile */
-@media (max-width: 767px) {
-    .header {
-        height: 70px; /* Menu mobile thường gọn hơn */
-    }
-    main {
-        margin-top: 70px;
-    }
-    .breadcrumb-bg {
-        padding: 30px 0; /* Thu nhỏ khoảng cách breadcrumb trên mobile */
-    }
-}
-
-
-
-/* HEADER */
+/*Header*/
 .header {
-position: fixed;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     z-index: 2000;
     background-color: #ffffff;
     transition: transform 0.3s ease-in-out;
-    transform: translateY(0); /* Mặc định là hiển thị */
-     box-shadow: 0 4px 20px rgba(116, 116, 116, 0.1);
+    transform: translateY(0); 
+    box-shadow: 0 4px 20px rgba(116, 116, 116, 0.1);
+    flex-shrink: 0;
 }
 
 .header-hidden {
     transform: translateY(-100%);
 }
+
 .header .container-fluid {
-    padding-left: 60px;  /* Khoảng cách bên trái cho Logo */
-    padding-right: 60px; /* Khoảng cách bên phải cho Icons */
+    padding-left: 60px;  
+    padding-right: 60px; 
 }
+
 /* LOGO */
 .logo img {
-    height: 70px;   /* chỉnh kích thước */
+    height: 70px;   
     object-fit: contain;
 }
 
-/* MENU */
+/* MENU CHÍNH */
 .menu ul {
     list-style: none;
     gap: 25px;
+    margin-bottom: 0;
+    padding-left: 0;
 }
 
 .menu a {
@@ -88,12 +65,11 @@ position: fixed;
 }
 
 .menu a:hover {
-    transform: scale(1.1); /* phóng to 10% */
+    transform: scale(1.1); 
     color: #c9a45c;
 }
 
-
-/* ICON */
+/* ICONS (GIỎ HÀNG / YÊU THÍCH) */
 .icons {
     gap: 20px;
 }
@@ -103,6 +79,7 @@ position: fixed;
     cursor: pointer;
     font-size: 18px;
 }
+
 .icons .icon a {
     color: #000;
     transition: 0.3s;
@@ -111,11 +88,11 @@ position: fixed;
 .icons .icon a:hover {
     color: #c9a45c;
 }
-/* Số lượng mặt hàng trên icon yêu thích */
+
 .badge-count {
     position: absolute;
-    top: -8px;       /* Đẩy lên phía trên icon */
-    right: -10px;    /* Đẩy sang bên phải icon */
+    top: -8px;       
+    right: -10px;    
     background-color: #c9a45c;
     color: #ffffff;
     font-size: 10px;
@@ -130,39 +107,18 @@ position: fixed;
     transition: all 0.3s ease;
 }
 
-/* Ẩn badge đi khi không có sản phẩm nào yêu thích */
 .badge-count.d-none {
     display: none !important;
 }
 
-/*DROPDOWN SALE*/
-
-/* Định dạng menu xổ xuống */
+/* DROPDOWN MENU CAO CẤP */
 .dropdown-menu {
-    border-radius: 0;
-    margin-top: 0;
+    border-radius: 12px !important; 
     padding: 10px 0;
-    min-width: 160px;
-}
-
-.dropdown-item {
-    font-size: 14px;
-    padding: 8px 20px;
-    color: #333;
-    transition: all 0.2s;
-}
-
-.dropdown-item:hover {
-    background-color: #f8f9fa;
-    padding-left: 25px; /* Hiệu ứng dịch chuyển nhẹ */
-}
-/*SẢN PHẨM*/
-/* Tùy chỉnh chung cho các Dropdown Menu */
-.dropdown-menu {
-    border-radius: 12px; /* Bo góc menu thả xuống */
-    padding: 10px 0;
-    margin-top: 15px !important; /* Khoảng cách từ menu xuống dropdown */
-    animation: fadeIn 0.3s ease; /* Hiệu ứng hiện ra nhẹ nhàng */
+    margin-top: 15px !important; 
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    border: none;
+    animation: fadeIn 0.3s ease; 
 }
 
 .dropdown-item {
@@ -174,18 +130,17 @@ position: fixed;
 }
 
 .dropdown-item:hover {
-    background-color: #f8f9fa; /* Màu nền khi di chuột vào */
-    color: #c9a45c; /* Màu vàng kim loại sang trọng */
-    padding-left: 30px; /* Hiệu ứng dịch chữ nhẹ khi hover */
+    background-color: #f8f9fa; 
+    color: #c9a45c; 
+    padding-left: 30px; 
 }
 
-/* Hiệu ứng hiện menu mượt mà */
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* Hiệu ứng hiển thị Dropdown khi di chuột qua (Hover) */
+/* Hiển thị mượt mà khi Hover chuột */
 @media (min-width: 992px) {
     .dropdown:hover .dropdown-menu {
         display: block;
@@ -204,16 +159,25 @@ position: fixed;
     }
 }
 
-/* Tùy chỉnh icon mũi tên nhỏ lại */
 .fa-chevron-down {
     font-size: 10px;
     transition: transform 0.3s;
 }
 
 .dropdown:hover .fa-chevron-down {
-    transform: rotate(180deg); /* Xoay mũi tên khi mở menu */
+    transform: rotate(180deg); 
 }
 
+/* RESPONSIVE CHO MOBILE */
+@media (max-width: 768px) {
+    .header .container-fluid {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    main {
+        margin-top: 70px;
+    }
+}
 
 
 
