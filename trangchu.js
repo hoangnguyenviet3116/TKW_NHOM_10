@@ -201,3 +201,29 @@ if (backToTopBtn) {
         });
     });
 }
+
+/*VIDEO*/
+window.addEventListener("load", () => {
+    const introOverlay = document.getElementById("introOverlay");
+    const introVideo = document.getElementById("introVideo");
+
+    if (!introOverlay || !introVideo) return;
+
+    if (sessionStorage.getItem("home_intro_seen")) {
+        introOverlay.remove();
+        return;
+    }
+
+    document.body.classList.add("intro-playing");
+
+    introVideo.addEventListener("ended", () => {
+        sessionStorage.setItem("home_intro_seen", "true");
+
+        introOverlay.classList.add("hide");
+        document.body.classList.remove("intro-playing");
+
+        setTimeout(() => {
+            introOverlay.remove();
+        }, 1200);
+    });
+});
