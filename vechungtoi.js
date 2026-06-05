@@ -117,24 +117,60 @@ $(document).ready(function () {
     });
 });
 
-const galleryImages =
-document.querySelectorAll(".gallery-img");
-
+const galleryImages = document.querySelectorAll(".gallery-img");
 let currentImage = 0;
 
-setInterval(() => {
+if (galleryImages.length > 0) {
+    setInterval(() => {
+        galleryImages[currentImage].classList.remove("active");
 
-    galleryImages[currentImage]
-        .classList.remove("active");
+        currentImage++;
 
-    currentImage++;
+        if (currentImage >= galleryImages.length) {
+            currentImage = 0;
+        }
 
-    if(currentImage >= galleryImages.length){
-        currentImage = 0;
+        galleryImages[currentImage].classList.add("active");
+    }, 1500);
+}
+
+window.addEventListener("load", () => {
+
+    const introOverlay =
+        document.getElementById("introOverlay");
+
+    const introVideo =
+        document.getElementById("introVideo");
+
+    if(!introOverlay || !introVideo) return;
+
+    if(sessionStorage.getItem("about_intro_seen")){
+
+        introOverlay.remove();
+
+        return;
     }
 
-    galleryImages[currentImage]
-        .classList.add("active");
+    document.body.classList.add("intro-playing");
 
-}, 1500);
+    introVideo.addEventListener("ended", () => {
+
+        sessionStorage.setItem(
+            "about_intro_seen",
+            "true"
+        );
+
+        introOverlay.classList.add("hide");
+
+        document.body.classList.remove("intro-playing");
+
+        setTimeout(() => {
+
+            introOverlay.remove();
+
+        },1200);
+
+    });
+
+});
 
