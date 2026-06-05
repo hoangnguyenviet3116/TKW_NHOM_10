@@ -227,3 +227,11 @@ window.addEventListener("load", () => {
         }, 1200);
     });
 });
+//Hiệu ứng cuộn trang
+window.addEventListener("load", function () {
+
+    AOS.init({
+        duration: 1200,
+        once: true,
+        offset: 120
+    });

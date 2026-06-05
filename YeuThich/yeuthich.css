@@ -356,7 +356,7 @@ h2 {
 .wishlist-item-price {
     font-size: 14px;
     font-weight: 600;
-    color: #c9a45c; /* Đổi sang màu vàng gold đồng bộ branding thương hiệu */
+    color: #c9a45c; 
     margin-bottom: 15px;
 }
 
@@ -447,8 +447,6 @@ h2 {
         transform: translateY(0);
     }
 }
-
-/* --- GIỮ NGUYÊN VÀ ĐỒNG BỘ CÁC KHỐI THÔNG BÁO / NÚT TIẾP TỤC MUA SẮM CỦA BẠN --- */
 
 /* Thông báo xóa bảng (Toast) */
 .toast-custom {
