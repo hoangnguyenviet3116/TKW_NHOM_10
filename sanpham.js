@@ -754,5 +754,3 @@ function updateCartBadge() {
         badge.classList.remove("d-none");
     }
 }
-
-
