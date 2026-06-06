@@ -18,7 +18,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     
-    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
     <link rel="stylesheet" href="trangchu.css">
 </head>
 
@@ -26,6 +25,7 @@
 
 <body>
 <!--VIDEO-->
+<!--
 <div id="introOverlay">
 
     <video
@@ -33,12 +33,10 @@
         autoplay
         muted
         playsinline>
-
-        <!-- VIDEO CẦN THAY -->
         <source src="videos/Intro.mp4" type="video/mp4">
     </video>
 </div>
-
+-->
 <!--POP-UP-->
 <div id="promoPopup" class="popup-overlay">
     <div class="popup-content">
@@ -322,309 +320,11 @@
 <!--SẢN PHẨM NỔI BẬT-->
 <section class="featured-products py-5" data-aos="fade-up" data-aos-delay="100">
     <div class="container">
-        <h2 class="section-luxury-title text-center mb-5">SẢN PHẨM NỔI BẬT</h2>        <div class="swiper featuredSwiper">
-            <div class="swiper-wrapper">
-                <!-- Sản phẩm 1 -->
-                <div class="swiper-slide">
-                    <div class="product-card"
-                        data-id="1"
-                        data-name="Áo dạ cổ 2 ve dáng suông, túi ốp tròn"
-                        data-price="1,150,000đ"
-                        data-img="images/SPNB1.jpg">
-                        
-                        <div class="product-img">
-                            <img src="images/SPNB1.jpg" alt="Áo dạ cổ 2 ve dáng suông, túi ốp tròn">
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-title">Áo dạ cổ 2 ve dáng suông, túi ốp tròn</h3>    
-                            <div class="price-heart-wrapper">
-                              <div class="product-price">
-                                    1,150,000đ
-                                </div>
-                                <button class="wishlist-btn">
-                                    <i class="fa-regular fa-heart heart-btn"></i>
-                                </button>
-                              </div>
-                            <div class="product-meta d-flex justify-content-between align-items-center">
-                                <div class="rating">
-                                    <i class="fa-solid fa-star"></i> (0)
-                                </div>
-                                <div class="sold-count">(0 đã bán)</div>
-                            </div>
-                        </div>
-                    </div>
+        <h2 class="section-luxury-title text-center mb-5">SẢN PHẨM NỔI BẬT</h2>        
+        <div class="swiper featuredSwiper">
+            <div class="swiper-wrapper" id="featuredProducts">
                 </div>
-                <!-- Sản phẩm 2 -->
-                <div class="swiper-slide">
-                    <div class="product-card"
-                        data-id="2"
-                        data-name="Đầm xuân hè vắt tà cổ tùng đổ"
-                        data-price="895,000đ"
-                        data-img="images/SPNB2.jpg">
 
-                        <div class="product-img">
-                            <img src="images/SPNB2.jpg" alt="Đầm xuân hè vắt tà cổ tùng đổ">
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-title">Đầm xuân hè vắt tà cổ tùng đổ</h3>
-                             <div class="price-heart-wrapper">
-                              <div class="product-price">
-                                    895,000đ
-                                </div>
-                                <button class="wishlist-btn">
-                                    <i class="fa-regular fa-heart heart-btn"></i>
-                                </button>
-                              </div>
-                            <div class="product-meta d-flex justify-content-between align-items-center">
-                                <div class="rating">
-                                    <i class="fa-solid fa-star"></i> (0)
-                                </div>
-                                <div class="sold-count">(0 đã bán)</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Sản phẩm 3 -->
-                <div class="swiper-slide">
-                    <div class="product-card"
-                        data-id="3"
-                        data-name="Áo len suông có khoá kéo"
-                        data-price="855,000đ"
-                        data-img="images/SPNB3.jpg">
-
-                        <div class="product-img">
-                            <img src="images/SPNB3.jpg" alt="Áo len suông có khoá kéo">
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-title">Áo len suông có khoá kéo</h3>
-                            <div class="price-heart-wrapper">
-                              <div class="product-price">
-                                    855,000đ
-                                </div>
-                                <button class="wishlist-btn">
-                                    <i class="fa-regular fa-heart heart-btn"></i>
-                                </button>
-                              </div>
-                            <div class="product-meta d-flex justify-content-between align-items-center">
-                                <div class="rating">
-                                    <i class="fa-solid fa-star"></i> (0)
-                                </div>
-                                <div class="sold-count">(0 đã bán)</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Sản phẩm 4 -->
-                <div class="swiper-slide">
-                    <div class="product-card"
-                        data-id="4"
-                        data-name="Quần Resort 2 ly bung"
-                        data-price="655,000đ"
-                        data-img="images/SPNB4.jpg">
-
-                        <div class="product-img">
-                            <img src="images/SPNB4.jpg" alt="Quần Resort 2 ly bung">
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-title">Quần Resort 2 ly bung</h3>
-                             <div class="price-heart-wrapper">
-                              <div class="product-price">
-                                    655,000đ
-                                </div>
-                                <button class="wishlist-btn">
-                                    <i class="fa-regular fa-heart heart-btn"></i>
-                                </button>
-                              </div>
-                            <div class="product-meta d-flex justify-content-between align-items-center">
-                                <div class="rating">
-                                    <i class="fa-solid fa-star"></i> (0)
-                                </div>
-                                <div class="sold-count">(0 đã bán)</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Sản phẩm 5 -->
-                <div class="swiper-slide">
-                    <div class="product-card"
-                        data-id="5"
-                        data-name="Áo dạ suông cổ tròn bèo 2 nắp túi"
-                        data-price="1,385,000đ"
-                        data-img="images/SPNB5.jpg">
-                        <div class="product-img">
-                            <img src="images/SPNB5.jpg" alt="Áo dạ suông cổ tròn bèo 2 nắp túi">
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-title">Áo dạ suông cổ tròn bèo 2 nắp túi</h3>
-                            <div class="price-heart-wrapper">
-                              <div class="product-price">
-                                    1,385,000đ
-                                </div>
-                                <button class="wishlist-btn">
-                                    <i class="fa-regular fa-heart heart-btn"></i>
-                                </button>
-                              </div>
-                            <div class="product-meta d-flex justify-content-between align-items-center">
-                                <div class="rating">
-                                    <i class="fa-solid fa-star"></i> (0)
-                                </div>
-                                <div class="sold-count">(0 đã bán)</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Sản phẩm 6 -->
-                <div class="swiper-slide">
-                    <div class="product-card"
-                        data-id="6"
-                        data-name="Đầm Xuân Hè 2 dây nhún tầng dài"
-                        data-price="875,000đ"
-                        data-img="images/SPNB6.jpg">
-
-                        <div class="product-img">
-                            <img src="images/SPNB6.jpg" alt="Đầm Xuân Hè 2 dây nhún tầng dài">
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-title">Đầm Xuân Hè 2 dây nhún tầng dài</h3>
-                            <div class="price-heart-wrapper">
-                              <div class="product-price">
-                                    875,000đ
-                                </div>
-                                <button class="wishlist-btn">
-                                    <i class="fa-regular fa-heart heart-btn"></i>
-                                </button>
-                              </div>
-                            <div class="product-meta d-flex justify-content-between align-items-center">
-                                <div class="rating">
-                                    <i class="fa-solid fa-star"></i> (0)
-                                </div>
-                                <div class="sold-count">(0 đã bán)</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Sản phẩm 7 -->
-                <div class="swiper-slide">
-                    <div class="product-card"
-                        data-id="7"
-                        data-name="Chân váy Resort dài nhún eo"
-                        data-price="595,000đ"
-                        data-img="images/SPNB7.jpg">
-
-                        <div class="product-img">
-                            <img src="images/SPNB7.jpg" alt="Chân váy Resort dài nhún eo">
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-title">Chân váy Resort dài nhún eo</h3>
-                            <div class="price-heart-wrapper">
-                              <div class="product-price">
-                                    595,000đ
-                                </div>
-                                <button class="wishlist-btn">
-                                    <i class="fa-regular fa-heart heart-btn"></i>
-                                </button>
-                              </div>
-                            <div class="product-meta d-flex justify-content-between align-items-center">
-                                <div class="rating">
-                                    <i class="fa-solid fa-star"></i> (0)
-                                </div>
-                                <div class="sold-count">(0 đã bán)</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Sản phẩm 8 -->
-                <div class="swiper-slide">
-                    <div class="product-card"
-                        data-id="8"
-                        data-name="Đầm Xuân Hè cổ sen cách điệu, phối chân xếp ly chụm"
-                        data-price="895,000đ"
-                        data-img="images/SPNB8.jpg">
-
-                        <div class="product-img">
-                            <img src="images/SPNB8.jpg" alt="Đầm Xuân Hè cổ sen cách điệu, phối chân xếp ly chụm">
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-title">Đầm Xuân Hè cổ sen cách điệu, phối chân xếp ly chụm</h3>
-                            <div class="price-heart-wrapper">
-                                <div class="product-price">
-                                    895,000đ
-                                </div>
-                                <button class="wishlist-btn">
-                                    <i class="fa-regular fa-heart heart-btn"></i>
-                                </button>
-                            </div>
-                            <div class="product-meta d-flex justify-content-between align-items-center">
-                                <div class="rating">
-                                    <i class="fa-solid fa-star"></i> (0)
-                                </div>
-                                <div class="sold-count">(0 đã bán)</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>                
-                <!-- Sản phẩm 9 -->
-                <div class="swiper-slide">
-                    <div class="product-card"
-                        data-id="9"
-                        data-name="Đầm Xuân Hè tay bồng, xếp ly eo, dây nơ cổ"
-                        data-price="855,000đ"
-                        data-img="images/SPNB9.jpg">
-
-                        <div class="product-img">
-                            <img src="images/SPNB9.jpg" alt="Đầm Xuân Hè tay bồng, xếp ly eo, dây nơ cổ">
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-title">Đầm Xuân Hè tay bồng, xếp ly eo, dây nơ cổ</h3>
-                           <div class="price-heart-wrapper">
-                              <div class="product-price">
-                                    855,000đ
-                                </div>
-                                <button class="wishlist-btn">
-                                    <i class="fa-regular fa-heart heart-btn"></i>
-                                </button>
-                              </div>
-                            <div class="product-meta d-flex justify-content-between align-items-center">
-                                <div class="rating">
-                                    <i class="fa-solid fa-star"></i> (0)
-                                </div>
-                                <div class="sold-count">(0 đã bán)</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Sản phẩm 10 -->
-                <div class="swiper-slide">
-                    <div class="product-card"
-                        data-id="10"
-                        data-name="Áo xuân hè cổ tròn phối bèo dọc"
-                        data-price="755,000đ"
-                        data-img="images/SPNB10.jpg">
-                        <div class="product-img">                            
-                            <img src="images/SPNB10.jpg" alt="Áo xuân hè cổ tròn phối bèo dọc">
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-title">Áo xuân hè cổ tròn phối bèo dọc</h3>
-                            <div class="price-heart-wrapper">
-                              <div class="product-price">
-                                    755,000đ
-                                </div>
-                                <button class="wishlist-btn">
-                                    <i class="fa-regular fa-heart heart-btn"></i>
-                                </button>
-                              </div>
-                            <div class="product-meta d-flex justify-content-between align-items-center">
-                                <div class="rating">
-                                    <i class="fa-solid fa-star"></i> (0)
-                                </div>
-                                <div class="sold-count">(0 đã bán)</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Các chấm phân trang ở dưới -->
             <div class="swiper-pagination mt-4"></div>
         </div>
     </div>
