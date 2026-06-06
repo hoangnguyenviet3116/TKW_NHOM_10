@@ -726,18 +726,22 @@ body {
     line-height: 1.05;
     color: #171717;
     margin-bottom: 22px;
+    text-align: justify;
 }
+
 
 .about-text {
     color: #666;
     line-height: 1.9;
     font-size: 15px;
+    text-align: justify;
 }
 
 .about-hero {
     margin-top: 0;
     background: #fbf7f1;
     overflow: hidden;
+    text-align: justify;
 }
 
 .about-hero-content {
@@ -755,6 +759,7 @@ body {
     line-height: .98;
     letter-spacing: -1px;
     margin-bottom: 28px;
+    text-align: justify;
 }
 
 .about-hero-content p {
@@ -1014,6 +1019,7 @@ body {
     font-family: 'Cormorant Garamond', serif;
     font-size: clamp(34px, 5vw, 56px);
     margin-bottom: 14px;
+    text-align: justify;
 }
 
 .contact-panel p {
