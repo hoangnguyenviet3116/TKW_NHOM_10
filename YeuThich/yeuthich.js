@@ -111,19 +111,11 @@ function saveCart(cart) {
 }
 
 function updateCartBadge() {
-
     const cart = getCart();
-
     const cartBadge = document.getElementById("cart-badge");
-
     if (!cartBadge) return;
-
-    const totalQuantity = cart.reduce((sum, item) => {
-        return sum + item.quantity;
-    }, 0);
-
+    const totalQuantity = cart.reduce((sum, item) => {return sum + item.quantity;}, 0);
     cartBadge.innerText = totalQuantity;
-
     if (totalQuantity === 0) {
         cartBadge.style.display = "none";
     } else {
