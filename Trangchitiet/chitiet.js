@@ -325,6 +325,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Cập nhật số lượng giỏ hàng đã lưu trước đó
     updateCartBadgeFromStorage();
+    updateWishlistBadgeFromStorage();
 });
 
 function renderReviews(product) {
@@ -608,23 +609,75 @@ function bindActionsEvents() {
     });
 
     // Trái tim trên thanh Menu điều hướng tăng chỉ số
-    document.getElementById("wishlistActionBtn").addEventListener("click", () => {
-        hasLikedProduct = !hasLikedProduct;
-        const heartIco = document.querySelector("#wishlistActionBtn i");
-        const badge = document.getElementById("wishlist-badge");
-        
-        if(hasLikedProduct) {
-            countWishlistItems = 1; heartIco.className = "fa-solid fa-heart text-danger";
-            badge.classList.remove("d-none");
-            fireAlertNotification("Đã lưu mẫu trang phục này vào mục yêu thích!");
-        } else {
-            countWishlistItems = 0; heartIco.className = "fa-regular fa-heart";
-            badge.classList.add("d-none");
-            fireAlertNotification("Đã xoá khỏi danh mục yêu thích.");
-        }
-        badge.textContent = countWishlistItems;
-    });
+function getWishlistKey() {
+    const user = getCurrentUser();
 
+    if (!user) return null;
+
+    return "favorites_" + user.email;
+}
+
+function getFavorites() {
+    const wishlistKey = getWishlistKey();
+
+    if (!wishlistKey) return [];
+
+    return JSON.parse(localStorage.getItem(wishlistKey)) || [];
+}
+
+function saveFavorites(favs) {
+    const wishlistKey = getWishlistKey();
+
+    if (!wishlistKey) return;
+
+    localStorage.setItem(wishlistKey, JSON.stringify(favs));
+}
+
+function updateWishlistBadgeFromStorage() {
+    const badge = document.getElementById("wishlist-badge");
+    const favs = getFavorites();
+
+    if (!badge) return;
+
+    badge.textContent = favs.length;
+
+    if (favs.length > 0) {
+        badge.classList.remove("d-none");
+    } else {
+        badge.classList.add("d-none");
+    }
+}
+
+document.getElementById("wishlistActionBtn").addEventListener("click", () => {
+    if (!requireLoginBeforeBuy()) return;
+
+    const heartIco = document.querySelector("#wishlistActionBtn i");
+    const currentImagesList = getAllImages();
+    const selectedImage = currentImagesList[selectedImageIndex].src;
+
+    const product = {
+        id: currentActiveProduct.id,
+        name: currentActiveProduct.title,
+        price: currentActiveProduct.price,
+        img: selectedImage
+    };
+
+    let favs = getFavorites();
+    const index = favs.findIndex(item => item.id === product.id);
+
+    if (index === -1) {
+        favs.push(product);
+        heartIco.className = "fa-solid fa-heart text-danger";
+        fireAlertNotification("Đã lưu mẫu trang phục này vào mục yêu thích!");
+    } else {
+        favs.splice(index, 1);
+        heartIco.className = "fa-regular fa-heart";
+        fireAlertNotification("Đã xoá khỏi danh mục yêu thích.");
+    }
+
+    saveFavorites(favs);
+    updateWishlistBadgeFromStorage();
+});
     // CHUYỂN CHUỖI GIÁ "755.000₫" THÀNH SỐ 755000
 function parsePriceToNumber(priceText) {
     return Number(
@@ -734,6 +787,8 @@ const execAddCartLogic = () => {
         size: selectedSize,
         color: selectedColor,
         quantity: quantityOrder,
+        type: "ao",
+        selected: true,
 
         // cartKey dùng để phân biệt cùng sản phẩm nhưng khác size/màu
         cartKey: `${currentActiveProduct.id}-${selectedSize}-${selectedColor}`
@@ -805,6 +860,9 @@ function buyNowProduct() {
     window.location.href = "../GioHang/giohang.html";
 }
 const buyNowBtn = document.getElementById("buyNowActionBtn");
+if (stickyBuyNowBtn) {
+    stickyBuyNowBtn.addEventListener("click", buyNowProduct);
+}
 
 if (buyNowBtn) {
     buyNowBtn.addEventListener("click", buyNowProduct);

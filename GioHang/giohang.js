@@ -59,8 +59,28 @@ function saveCart(cart) {
 }
 
 /* CẬP NHẬT BADGE YÊU THÍCH */
+function getWishlistKey() {
+    const user = getCurrentUser();
+
+    if (!user) {
+        return null;
+    }
+
+    return "favorites_" + user.email;
+}
+
+function getFavorites() {
+    const wishlistKey = getWishlistKey();
+
+    if (!wishlistKey) {
+        return [];
+    }
+
+    return JSON.parse(localStorage.getItem(wishlistKey)) || [];
+}
+
 function updateWishlistBadge() {
-    const favs = JSON.parse(localStorage.getItem("favorites")) || [];
+    const favs = getFavorites();
     const wishlistBadge = document.getElementById("wishlist-badge");
 
     if (!wishlistBadge) return;
@@ -68,7 +88,6 @@ function updateWishlistBadge() {
     wishlistBadge.innerText = favs.length;
     wishlistBadge.style.display = favs.length === 0 ? "none" : "flex";
 }
-
 /* CẬP NHẬT BADGE GIỎ HÀNG */
 function updateCartBadge() {
     const cart = getCart();
