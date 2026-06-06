@@ -144,7 +144,7 @@ var swiper = new Swiper(".categorySwiper", {
     },
     breakpoints: {
         640: { slidesPerView: 2 },
-        1024: { slidesPerView: 4 },
+        1024: { slidesPerView: 4 }, /* Laptop hiện 4 cái */
     },
 });
 
@@ -174,11 +174,6 @@ var swiper = new Swiper(".featuredSwiper", {
         1200: {
             slidesPerView: 4
         }
-
-        localStorage.setItem("favorites", JSON.stringify(favs));
-
-        // Cập nhật lại số lượng badge menu ngay lập tức
-        updateHeartIcons();
     }
 });
 
@@ -251,30 +246,32 @@ document.addEventListener("click", function (e) {
 
 // =======================
 // HÀM CẬP NHẬT TRẠNG THÁI TIM VÀ SỐ LƯỢNG BADGE
-// ============================================
+// =======================
 function updateHeartIcons() {
     // 1. Lấy danh sách yêu thích từ localStorage
     let favs = getFavorites();
 
+    // 2. Cập nhật số lượng hiển thị bên cạnh icon trái tim trên Header
     const wishlistBadge = document.getElementById("wishlist-badge");
     if (wishlistBadge) {
         wishlistBadge.innerText = favs.length;
 
         // Nếu không có sản phẩm nào, ẩn số đi cho thanh lịch. Có sản phẩm thì hiện lại.
         if (favs.length === 0) {
-            wishlistBadge.style.display = "none";
+            wishlistBadge.classList.add("d-none");
         } else {
-            wishlistBadge.style.display = "flex";
+            wishlistBadge.classList.remove("d-none");
         }
     }
 
+    // 3. Đổi màu trạng thái icon trái tim tại các thẻ sản phẩm tương ứng
     document.querySelectorAll(".product-card").forEach(card => {
         const id = card.dataset.id;
         const heart = card.querySelector(".heart-btn");
 
         if (!heart) return;
 
-        if (favs.find(item => item.id == id)) {
+        if (favs.find(item => item.id === id)) {
             heart.classList.add("active");
         } else {
             heart.classList.remove("active");
@@ -283,29 +280,9 @@ function updateHeartIcons() {
 }
 
 
-// =========================================================
-// HÀM CẬP NHẬT VÀ TỰ ĐỘNG ẨN/HIỆN SỐ LƯỢNG GIỎ HÀNG TRÊN MENU
-// =========================================================
-function updateMenuCartBadge() {
-    const cartBadge = document.getElementById("cart-badge");
-    if (cartBadge) {
-        const cart = JSON.parse(localStorage.getItem("cart")) || [];
-        const totalItems = cart.reduce((total, item) => total + (parseInt(item.quantity) || 1), 0);
-
-        cartBadge.innerText = totalItems;
-        
-        if (totalItems === 0) {
-            cartBadge.style.display = "none";
-        } else {
-            cartBadge.style.display = "flex";
-        }
-    }
-}
-
-
-// =========================================================
-// SỰ KIỆN KÍCH HOẠT ĐỒNG BỘ TOÀN BỘ DATA KHI VỪA MỞ TRANG CHỦ
-// =========================================================
+// =======================
+// KHỞI CHẠY KHI TẢI TRANG
+// =======================
 document.addEventListener("DOMContentLoaded", () => {
     renderBestSellingProducts();
     updateHeartIcons();
@@ -314,7 +291,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
 /*Back to top*/
 const backToTopBtn = document.querySelector('#backToTop');
+
+if (backToTopBtn) {
+    window.addEventListener('scroll', function () {
+        if (window.pageYOffset > 300) {
+            backToTopBtn.classList.add('show');
         } else {
+            backToTopBtn.classList.remove('show');
         }
     });
 
