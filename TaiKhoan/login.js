@@ -53,6 +53,25 @@ function saveUsers(users) {
 function getCurrentUser() {
     return JSON.parse(sessionStorage.getItem("bathora_current_user"));
 }
+function getWishlistKey() {
+    const user = getCurrentUser();
+
+    if (!user) {
+        return null;
+    }
+
+    return "favorites_" + user.email;
+}
+
+function getFavorites() {
+    const wishlistKey = getWishlistKey();
+
+    if (!wishlistKey) {
+        return [];
+    }
+
+    return JSON.parse(localStorage.getItem(wishlistKey)) || [];
+}
 
 
 function setCurrentUser(user) {
@@ -65,7 +84,7 @@ function clearCurrentUser() {
 
 /* BADGE */
 function updateWishlistBadge() {
-    const favs = JSON.parse(localStorage.getItem("favorites")) || [];
+    const favs = getFavorites();
     const badge = document.getElementById("wishlist-badge");
 
     if (!badge) return;

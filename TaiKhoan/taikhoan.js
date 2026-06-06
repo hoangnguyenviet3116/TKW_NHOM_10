@@ -26,7 +26,7 @@ function getCurrentUser() {
 
 /* CẬP NHẬT BADGE */
 function updateWishlistBadge() {
-    const favs = JSON.parse(localStorage.getItem("favorites")) || [];
+    const favs = getFavorites();
     const badge = document.getElementById("wishlist-badge");
 
     if (!badge) return;
@@ -74,7 +74,7 @@ function getUserOrders(user) {
 }
 
 function buildDashboardData(user) {
-    const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+    const favorites = getFavorites();
     const orders = getUserOrders(user);
 
     const totalOrders = orders.length;
@@ -100,6 +100,25 @@ function buildDashboardData(user) {
         joinDate: user.joinDate || "Chưa cập nhật",
         address: user.address || "Bạn chưa cập nhật địa chỉ giao hàng."
     };
+}
+function getWishlistKey() {
+    const user = getCurrentUser();
+
+    if (!user) {
+        return null;
+    }
+
+    return "favorites_" + user.email;
+}
+
+function getFavorites() {
+    const wishlistKey = getWishlistKey();
+
+    if (!wishlistKey) {
+        return [];
+    }
+
+    return JSON.parse(localStorage.getItem(wishlistKey)) || [];
 }
 
 function getMemberLevel(points) {
