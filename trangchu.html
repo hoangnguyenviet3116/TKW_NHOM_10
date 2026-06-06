@@ -1,13 +1,18 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
     <title>BATHORA DRESS</title>
     <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Manrope:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
 
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -17,605 +22,637 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    
+
     <link rel="stylesheet" href="trangchu.css">
 </head>
 
 
 
 <body>
-<!--VIDEO-->
-<!--
-<div id="introOverlay">
+    <!--VIDEO-->
+    <div id="introOverlay">
 
-    <video
-        id="introVideo"
-        autoplay
-        muted
-        playsinline>
-        <source src="videos/Intro.mp4" type="video/mp4">
-    </video>
-</div>
--->
-<!--POP-UP-->
-<div id="promoPopup" class="popup-overlay">
-    <div class="popup-content">
-        <button class="close-popup">&times;</button>
-        <div class="popup-body d-flex">
-            <!-- Hình ảnh bên trái-->
-            <div class="popup-image d-none d-md-block">
-                <img src="images/popup.jpg" alt="Sale Season">
-            </div>
-            <!-- Nội dung bên phải -->
-            <div class="popup-text">
-                <span class="popup-sub">LIMITED OFFER</span>
-                <h2 class="popup-title">MID SEASON SALE</h2>
-                <p class="popup-desc">Đừng bỏ lỡ ưu đãi lớn nhất mùa hè này. Giảm giá lên đến 45% cho tất cả các sản phẩm trong bộ sưu tập mới nhất.</p>
-                
-                <div class="promo-code">
-                    <span>Mã:</span> <strong>BATHORA50</strong>
-                </div>
-                
-                <a href="#" class="btn-shop-now">MUA NGAY</a>
-                
-                <div class="popup-footer">
-                    *Áp dụng từ 01/05 đến 31/05
-                </div>
-            </div>
-        </div>
+        <video id="introVideo" autoplay muted playsinline>
+            <source src="videos/Intro.mp4" type="video/mp4">
+        </video>
     </div>
-</div>
-
-
-
-<header class="header">
-    <div class="container-fluid d-flex align-items-center justify-content-between">
-
-        <!-- LOGO -->
-        <div class="logo">
-            <a href="trangchu.html">
-                <img src="images/logo.png" alt="Bathora Logo">
-            </a>
-        </div>
-
-        <!-- MENU -->
-        <nav class="menu">
-            <ul class="d-flex align-items-center mb-0">
-                
-                <li><a href="trangchu.html">TRANG CHỦ</a></li>
-              
-                <li class="nav-item dropdown">
-                    <a class="nav-link sale-link" href="sanpham.html" id="saleDropdown" role="button"  aria-expanded="false">
-                        SALE <i class="fa fa-chevron-down ms-1"></i>
-                    </a>
-                    <ul class="dropdown-menu border-0 shadow-sm" aria-labelledby="saleDropdown">
-                        <li><a class="dropdown-item" href="#">Giảm 5%</a></li>
-                        <li><a class="dropdown-item" href="#">Giảm 10%</a></li>
-                        <li><a class="dropdown-item" href="#">Giảm 15%</a></li>
-                        <li><a class="dropdown-item" href="#">Giảm 20%</a></li>
-                        <li><hr class="dropdown-divider"></li> <!-- Thanh gạch ngang phân cách -->
-                        <li><a class="dropdown-item" href="#">Giảm 30%</a></li>
-                        <li><a class="dropdown-item" href="#">Giảm 40%</a></li>
-                        <li><a class="dropdown-item" title="Đặc biệt" class="dropdown-item fw-bold text-danger" href="#">SIÊU SALE 50%</a></li>
-                    </ul>
-                </li>
-                
-                <li class="nav-item dropdown">
-                    <a class="nav-link" href="#" id="productDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        SẢN PHẨM <i class="fa fa-chevron-down ms-1"></i>
-                    </a>
-                    <ul class="dropdown-menu border-0 shadow-sm" aria-labelledby="productDropdown">
-                        <li><a class="dropdown-item" href="#">ĐẦM</a></li>
-                        <li><a class="dropdown-item" href="#">ÁO</a></li>
-                        <li><a class="dropdown-item" href="#">QUẦN</a></li>
-                        <li><a class="dropdown-item" href="#">CHÂN VÁY</a></li>
-                        <li><a class="dropdown-item" href="#">ÁO KHOÁC</a></li>
-                        <li><a class="dropdown-item" href="#">TÚI XÁCH</a></li>
-                        <li><a class="dropdown-item" href="#">PHỤ KIỆN</a></li>
-                        <li><a class="dropdown-item" href="#">GIÀY</a></li>
-                    </ul>
-                </li>
-                <li><a href="#">BỘ SƯU TẬP</a></li>
-                <li><a href="TinTuc/tintuc.html">TIN TỨC</a></li>
-                <li><a href="vechungtoi.html">VỀ CHÚNG TÔI</a></li>
-            </ul>
-        </nav>
-
-    <!-- Icon -->
-    <div class="icons d-flex align-items-center">
-    
-        <!-- Wishlist -->
-        <div class="icon">
-            <a href="YeuThich/yeuthich.html" title="Yêu thích">
-                <i class="fa-regular fa-heart"></i>
-                <span id="wishlist-badge" class="badge-count">0</span>
-            </a>
-        </div>
-
-        <!-- Cart -->
-        <div class="icon">
-            <a href="GioHang/giohang.html" title="Giỏ hàng">
-                <i class="fa-solid fa-bag-shopping"></i>
-                 <span id="cart-badge" class="badge-count">0</span>
-            </a>
-        </div>
-
-        <!-- User (Login) -->
-        <div class="icon">
-            <a href="TaiKhoan/taikhoan.html" title="Tài khoản">
-                <i class="fa-regular fa-user"></i>
-            </a>
-        </div>
-    </div>
-</div>
-</header>
-
-
-
-<!--BANNER-->
-<section class="hero-section">
-    <div id="bannerCarousel" class="carousel slide" data-bs-ride="carousel">
-        
-        <!-- Các chấm gạch nhỏ báo hiệu số lượng ảnh (Tùy chọn) -->
-        <div class="carousel-indicators">
-            <button type="button" data-bs-target="#bannerCarousel" data-bs-slide-to="0" class="active"></button>
-            <button type="button" data-bs-target="#bannerCarousel" data-bs-slide-to="1"></button>
-            <button type="button" data-bs-target="#bannerCarousel" data-bs-slide-to="2"></button>
-        </div>
-
-        <div class="carousel-inner banner-container">
-            <!-- Ảnh 1 -->
-            <div class="carousel-item active" data-bs-interval="4000">
-                <img src="images/banner1.jpg" alt="Chuyện nhẹ tênh" class="d-block w-100 hero-banner">
-            </div>
-            <!-- Ảnh 2 -->
-            <div class="carousel-item" data-bs-interval="4000">
-                <img src="images/banner2.jpg" alt="ShangHai" class="d-block w-100 hero-banner">
-            </div>
-            <!-- Ảnh 3 -->
-            <div class="carousel-item" data-bs-interval="4000">
-                <img src="images/banner3.jpg" alt="Khoảnh khắc thảnh thơi" class="d-block w-100 hero-banner">
-            </div>
-        </div>
-
-        <!--Thanh tìm kiếm-->
-        <div class="search-bar-container">
-            <div class="search-box search-elegant d-flex">
-                <input type="text" placeholder="Bạn muốn tìm sản phẩm gì ?" class="search-input">
-                <button class="search-btn">Tìm kiếm ngay</button>
-            </div>
-        </div>
-    </div>
-</section>
-
-
-
-<!--DANH MỤC SẢN PHẨM-->
-<section class="category-section py-5" data-aos="fade-up">
-    <div class="container position-relative">
-        
-        <div class="swiper categorySwiper">
-            <div class="swiper-wrapper">
-                <!-- Danh mục 1 -->
-                <div class="swiper-slide">
-                    <a href="#" class="category-card">
-                        <img src="images/Dam.jpg" alt="Đầm">
-                        <div class="category-info">
-                             <h3 class="category-name">ĐẦM</h3>
-                            <span class="see-more">< XEM THÊM ></span>
-                        </div>
-                    </a>
+    <!--POP-UP-->
+    <div id="promoPopup" class="popup-overlay">
+        <div class="popup-content">
+            <button class="close-popup">&times;</button>
+            <div class="popup-body d-flex">
+                <!-- Hình ảnh bên trái-->
+                <div class="popup-image d-none d-md-block">
+                    <img src="images/popup.jpg" alt="Sale Season">
                 </div>
-                <!-- Danh mục 2 -->
-                <div class="swiper-slide">
-                    <a href="#" class="category-card">
-                        <img src="images/Ao.jpg" alt="Áo">
-                        <div class="category-info">
-                             <h3 class="category-name">ÁO</h3>
-                            <span class="see-more">< XEM THÊM ></span>
-                        </div>
-                    </a>
-                </div>
-                <!-- Danh mục 3 -->
-                <div class="swiper-slide">
-                    <a href="#" class="category-card">
-                        <img src="images/Quan.jpg" alt="Quần">
-                        <div class="category-info">
-                            <h3 class="category-name">QUẦN</h3>
-                            <span class="see-more">< XEM THÊM ></span>
-                        </div>
-                    </a>
-                </div>
-                <!-- Danh mục 4 -->
-                <div class="swiper-slide">
-                    <a href="#" class="category-card">
-                        <img src="images/AoKhoac.jpg" alt="Áo khoác">
-                        <div class="category-info">
-                            <h3 class="category-name">ÁO KHOÁC</h3>
-                            <span class="see-more">< XEM THÊM ></span>
-                        </div>
-                    </a>
-                </div>
-                <!-- Danh mục 5 -->
-                <div class="swiper-slide">
-                    <a href="#" class="category-card">
-                        <img src="images/Chanvay.jpg" alt="Chân váy">
-                        <div class="category-info">
-                             <h3 class="category-name">CHÂN VÁY</h3>
-                            <span class="see-more">< XEM THÊM ></span>
-                        </div>
-                    </a>
-                </div>
-                <!-- Danh mục 6 -->
-                <div class="swiper-slide">
-                    <a href="#" class="category-card">
-                        <img src="images/Phukien.jpg" alt="Phụ kiện">
-                        <div class="category-info">
-                            <h3 class="category-name">PHỤ KIỆN</h3>
-                            <span class="see-more">< XEM THÊM ></span>
-                        </div>
-                    </a>
-                </div>
-                <!-- Danh mục 7 -->
-                <div class="swiper-slide">
-                    <a href="#" class="category-card">
-                        <img src="images/Giaycaogot.jpg" alt="Giày cao gót">
-                        <div class="category-info">
-                            <h3 class="category-name">GIÀY</h3>
-                            <span class="see-more">< XEM THÊM ></span>
-                        </div>
-                    </a>
-                </div>
-                <!-- Danh mục 8 -->
-                <div class="swiper-slide">
-                    <a href="#" class="category-card">
-                        <img src="images/Tuixach.jpg" alt="Túi xách">
-                        <div class="category-info">
-                            <h3 class="category-name">TÚI XÁCH</h3>
-                            <span class="see-more">< XEM THÊM ></span>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            
-            <!-- Nút mũi tên -->
-            <div class="swiper-button-next custom-arrow"></div>
-            <div class="swiper-button-prev custom-arrow"></div>
-        </div>
-    </div>
-</section>
+                <!-- Nội dung bên phải -->
+                <div class="popup-text">
+                    <span class="popup-sub">LIMITED OFFER</span>
+                    <h2 class="popup-title">MID SEASON SALE</h2>
+                    <p class="popup-desc">Đừng bỏ lỡ ưu đãi lớn nhất mùa hè này. Giảm giá lên đến 45% cho tất cả các sản
+                        phẩm trong bộ sưu tập mới nhất.</p>
+
+                    <div class="promo-code">
+                        <span>Mã:</span> <strong>BATHORA50</strong>
+                    </div>
+
+                    <a href="#" class="btn-shop-now">MUA NGAY</a>
 
 
-
-<!-- Banner chạy ngang -->
-<section class="marquee-banner-container" data-aos="fade-up">
-    <div class="marquee-track">
-        
-        <!-- CỤM ẢNH GỐC -->
-        <div class="marquee-group">
-            <div class="marquee-item"><img src="images/banner1.jpg" alt="Bathora Lookbook 1"></div>
-            <div class="marquee-item"><img src="images/banner2.jpg" alt="Bathora Lookbook 2"></div>
-            <div class="marquee-item"><img src="images/banner3.jpg" alt="Bathora Lookbook 3"></div>
-            <div class="marquee-item"><img src="images/banner5.jpg" alt="Bathora Lookbook 1"></div>
-            <div class="marquee-item"><img src="images/banner6.jpg" alt="Bathora Lookbook 2"></div>
-            <div class="marquee-item"><img src="images/banner7.jpg" alt="Bathora Lookbook 3"></div>
-            <div class="marquee-item"><img src="images/banner8.jpg" alt="Bathora Lookbook 4"></div>
-        </div>
-        
-        <!-- CỤM ẢNH NHÂN ĐÔI -->
-        <div class="marquee-group" aria-hidden="true">
-            <div class="marquee-item"><img src="images/banner1.jpg" alt="Bathora Lookbook 1"></div>
-            <div class="marquee-item"><img src="images/banner2.jpg" alt="Bathora Lookbook 2"></div>
-            <div class="marquee-item"><img src="images/banner3.jpg" alt="Bathora Lookbook 3"></div>
-            <div class="marquee-item"><img src="images/banner5.jpg" alt="Bathora Lookbook 1"></div>
-            <div class="marquee-item"><img src="images/banner6.jpg" alt="Bathora Lookbook 2"></div>
-            <div class="marquee-item"><img src="images/banner7.jpg" alt="Bathora Lookbook 3"></div>
-            <div class="marquee-item"><img src="images/banner8.jpg" alt="Bathora Lookbook 4"></div>
-        </div>
-    </div>
-</section>
-
-
-
-<!--SẢN PHẨM NỔI BẬT-->
-<section class="featured-products py-5" data-aos="fade-up" data-aos-delay="100">
-    <div class="container">
-        <h2 class="section-luxury-title text-center mb-5">SẢN PHẨM NỔI BẬT</h2>        
-        <div class="swiper featuredSwiper">
-            <div class="swiper-wrapper" id="featuredProducts">
-                </div>
-
-            <div class="swiper-pagination mt-4"></div>
-        </div>
-    </div>
-</section>
-
-
-
-<!--BST-->
-<section class="editorial-spotlight" data-aos="fade-up">
-    <div class="container-fluid p-0">
-        <div class="row g-0">
-            <div class="col-md-6 position-relative">
-                <div class="editorial-img-box">
-                    <img src="images/TieuBieu.jpg" alt="" class="editorial-main-img">
-                    <img src="images/TieuBieu2.jpg" alt="" class="editorial-hover-img">
-                    <div class="editorial-caption">
-                        <span class="caption-tag">THANH LỊCH & KIÊU KỲ</span>
-                        <h3 class="caption-heading">Tái định nghĩa nét kiêu sa từ sự tối giản.</h3>
+                    <div class="popup-footer">
+                        *Áp dụng từ 01/05 đến 31/05
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 d-flex align-items-center justify-content-center bg-editorial">
-                <div class="editorial-content-wrapper text-center">
-                    <span class="brand-philosophy">Quý cô thanh lịch thập kỉ mới</span>
-                    <h2 class="spotlight-title">JASMINE BLOOMING</h2>
-                    
-                    <p class="spotlight-desc">
-                        Khi mùa hạ chạm ngõ, Bathora mở ra một chương mới của sự thanh lịch, tự tại và trọn vẹn.<br><br>
-                        Bộ sưu tập là kết tinh của vẻ đẹp tinh tế, nơi những lớp voan lụa bay bổng khéo léo tôn vinh khí chất sẵn có, giúp nàng tự tin tỏa sáng kiêu sa dưới ánh nắng đầu hạ.
+        </div>
+    </div>
+
+
+
+    <header class="header">
+        <div class="container-fluid d-flex align-items-center justify-content-between">
+
+            <!-- LOGO -->
+            <div class="logo">
+                <a href="trangchu.html">
+                    <img src="images/logo.png" alt="Bathora Logo">
+                </a>
+            </div>
+
+            <!-- MENU -->
+            <nav class="menu">
+                <ul class="d-flex align-items-center mb-0">
+
+                    <li><a href="trangchu.html">TRANG CHỦ</a></li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link sale-link" href="#" id="saleDropdown" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            SALE <i class="fa fa-chevron-down ms-1"></i>
+                        </a>
+                        <ul class="dropdown-menu border-0 shadow-sm" aria-labelledby="saleDropdown">
+                            <li><a class="dropdown-item" href="#">Giảm 5%</a></li>
+                            <li><a class="dropdown-item" href="#">Giảm 10%</a></li>
+                            <li><a class="dropdown-item" href="#">Giảm 15%</a></li>
+                            <li><a class="dropdown-item" href="#">Giảm 20%</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li> <!-- Thanh gạch ngang phân cách -->
+                            <li><a class="dropdown-item" href="#">Giảm 30%</a></li>
+                            <li><a class="dropdown-item" href="#">Giảm 40%</a></li>
+                            <li><a class="dropdown-item" title="Đặc biệt" class="dropdown-item fw-bold text-danger"
+                                    href="#">SIÊU SALE 50%</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" href="sanpham.html" id="productDropdown" role="button"
+                            aria-expanded="false">
+                            SẢN PHẨM <i class="fa fa-chevron-down ms-1"></i>
+                        </a>
+                        <ul class="dropdown-menu border-0 shadow-sm" aria-labelledby="productDropdown">
+                            <li><a class="dropdown-item" href="sanpham.html?loai=dam">ĐẦM</a></li>
+                            <li><a class="dropdown-item" href="sanpham.html?loai=ao">ÁO</a></li>
+                            <li><a class="dropdown-item" href="sanpham.html?loai=quan">QUẦN</a></li>
+                            <li><a class="dropdown-item" href="sanpham.html?loai=chanvay">CHÂN VÁY</a></li>
+                            <li><a class="dropdown-item" href="sanpham.html?loai=aokhoac">ÁO KHOÁC</a></li>
+                            <li><a class="dropdown-item" href="sanpham.html?loai=tuixach">TÚI XÁCH</a></li>
+                            <li><a class="dropdown-item" href="sanpham.html?loai=phukien">PHỤ KIỆN</a></li>
+                            <li><a class="dropdown-item" href="sanpham.html?loai=giay">GIÀY</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a href="TinTuc/tintuc.html">TIN TỨC</a></li>
+
+                    <li><a href="vechungtoi.html">VỀ CHÚNG TÔI</a></li>
+                </ul>
+            </nav>
+
+            <!-- Icon -->
+            <div class="icons d-flex align-items-center">
+
+                <!-- Wishlist -->
+                <div class="icon">
+                    <a href="YeuThich/yeuthich.html" title="Yêu thích">
+                        <i class="fa-regular fa-heart"></i>
+                        <span id="wishlist-badge" class="badge-count">0</span>
+                    </a>
+                </div>
+
+                <!-- Cart -->
+                <div class="icon">
+                    <a href="GioHang/giohang.html" title="Giỏ hàng">
+                        <i class="fa-solid fa-bag-shopping"></i>
+                        <span id="cart-badge" class="badge-count">0</span>
+                    </a>
+                </div>
+
+                <!-- User (Login) -->
+                <div class="icon">
+                    <a href="TaiKhoan/taikhoan.html" title="Tài khoản">
+                        <i class="fa-regular fa-user"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+
+    <!--BANNER-->
+    <section class="hero-section">
+        <div id="bannerCarousel" class="carousel slide" data-bs-ride="carousel">
+
+            <!-- Các chấm gạch nhỏ báo hiệu số lượng ảnh (Tùy chọn) -->
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#bannerCarousel" data-bs-slide-to="0" class="active"></button>
+                <button type="button" data-bs-target="#bannerCarousel" data-bs-slide-to="1"></button>
+                <button type="button" data-bs-target="#bannerCarousel" data-bs-slide-to="2"></button>
+            </div>
+
+            <div class="carousel-inner banner-container">
+                <!-- Ảnh 1 -->
+                <div class="carousel-item active" data-bs-interval="4000">
+                    <img src="images/banner1.jpg" alt="Chuyện nhẹ tênh" class="d-block w-100 hero-banner">
+                </div>
+                <!-- Ảnh 2 -->
+                <div class="carousel-item" data-bs-interval="4000">
+                    <img src="images/banner2.jpg" alt="ShangHai" class="d-block w-100 hero-banner">
+                </div>
+                <!-- Ảnh 3 -->
+                <div class="carousel-item" data-bs-interval="4000">
+                    <img src="images/banner3.jpg" alt="Khoảnh khắc thảnh thơi" class="d-block w-100 hero-banner">
+                </div>
+            </div>
+
+            <!--Thanh tìm kiếm-->
+            <div class="search-bar-container">
+                <div class="search-box search-elegant d-flex">
+                    <input type="text" placeholder="Bạn muốn tìm sản phẩm gì ?" class="search-input">
+                    <button class="search-btn">Tìm kiếm ngay</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!--DANH MỤC SẢN PHẨM-->
+    <section class="category-section py-5" data-aos="fade-up">
+        <div class="container position-relative">
+
+            <div class="swiper categorySwiper">
+                <div class="swiper-wrapper">
+                    <!-- Danh mục 1 -->
+                    <div class="swiper-slide">
+                        <a href="Trangchitiet/chitiet1.html" class="category-card">
+                            <img src="images/Dam.jpg" alt="Đầm">
+                            <div class="category-info">
+                                <h3 class="category-name">ĐẦM</h3>
+                                <span class="see-more">
+                                    < XEM THÊM>
+                                </span>
+                            </div>
+                        </a>
+                    </div>
+                    <!-- Danh mục 2 -->
+                    <div class="swiper-slide">
+                        <a href="Trangchitiet/chitiet1.html" class="category-card">
+                            <img src="images/Ao.jpg" alt="Áo">
+                            <div class="category-info">
+                                <h3 class="category-name">ÁO</h3>
+                                <span class="see-more">
+                                    < XEM THÊM>
+                                </span>
+                            </div>
+                        </a>
+                    </div>
+                    <!-- Danh mục 3 -->
+                    <div class="swiper-slide">
+                        <a href="Trangchitiet/chitiet1.html" class="category-card">
+                            <img src="images/Quan.jpg" alt="Quần">
+                            <div class="category-info">
+                                <h3 class="category-name">QUẦN</h3>
+                                <span class="see-more">
+                                    < XEM THÊM>
+                                </span>
+                            </div>
+                        </a>
+                    </div>
+                    <!-- Danh mục 4 -->
+                    <div class="swiper-slide">
+                        <a href="Trangchitiet/chitiet1.html" class="category-card">
+                            <img src="images/AoKhoac.jpg" alt="Áo khoác">
+                            <div class="category-info">
+                                <h3 class="category-name">ÁO KHOÁC</h3>
+                                <span class="see-more">
+                                    < XEM THÊM>
+                                </span>
+                            </div>
+                        </a>
+                    </div>
+                    <!-- Danh mục 5 -->
+                    <div class="swiper-slide">
+                        <a href="Trangchitiet/chitiet1.html" class="category-card">
+                            <img src="images/Chanvay.jpg" alt="Chân váy">
+                            <div class="category-info">
+                                <h3 class="category-name">CHÂN VÁY</h3>
+                                <span class="see-more">
+                                    < XEM THÊM>
+                                </span>
+                            </div>
+                        </a>
+                    </div>
+                    <!-- Danh mục 6 -->
+                    <div class="swiper-slide">
+                        <a href="Trangchitiet/chitiet1.html" class="category-card">
+                            <img src="images/Phukien.jpg" alt="Phụ kiện">
+                            <div class="category-info">
+                                <h3 class="category-name">PHỤ KIỆN</h3>
+                                <span class="see-more">
+                                    < XEM THÊM>
+                                </span>
+                            </div>
+                        </a>
+                    </div>
+                    <!-- Danh mục 7 -->
+                    <div class="swiper-slide">
+                        <a href="Trangchitiet/chitiet1.html" class="category-card">
+                            <img src="images/Giaycaogot.jpg" alt="Giày cao gót">
+                            <div class="category-info">
+                                <h3 class="category-name">GIÀY</h3>
+                                <span class="see-more">
+                                    < XEM THÊM>
+                                </span>
+                            </div>
+                        </a>
+                    </div>
+                    <!-- Danh mục 8 -->
+                    <div class="swiper-slide">
+                        <a href="Trangchitiet/chitiet1.html" class="category-card">
+                            <img src="images/Tuixach.jpg" alt="Túi xách">
+                            <div class="category-info">
+                                <h3 class="category-name">TÚI XÁCH</h3>
+                                <span class="see-more">
+                                    < XEM THÊM>
+                                </span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Nút mũi tên -->
+                <div class="swiper-button-next custom-arrow"></div>
+                <div class="swiper-button-prev custom-arrow"></div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Banner chạy ngang -->
+    <section class="marquee-banner-container" data-aos="fade-up">
+        <div class="marquee-track">
+
+            <!-- CỤM ẢNH GỐC -->
+            <div class="marquee-group">
+                <div class="marquee-item"><img src="images/banner1.jpg" alt="Bathora Lookbook 1"></div>
+                <div class="marquee-item"><img src="images/banner2.jpg" alt="Bathora Lookbook 2"></div>
+                <div class="marquee-item"><img src="images/banner3.jpg" alt="Bathora Lookbook 3"></div>
+                <div class="marquee-item"><img src="images/banner5.jpg" alt="Bathora Lookbook 1"></div>
+                <div class="marquee-item"><img src="images/banner6.jpg" alt="Bathora Lookbook 2"></div>
+                <div class="marquee-item"><img src="images/banner7.jpg" alt="Bathora Lookbook 3"></div>
+                <div class="marquee-item"><img src="images/banner8.jpg" alt="Bathora Lookbook 4"></div>
+            </div>
+
+            <!-- CỤM ẢNH NHÂN ĐÔI -->
+            <div class="marquee-group" aria-hidden="true">
+                <div class="marquee-item"><img src="images/banner1.jpg" alt="Bathora Lookbook 1"></div>
+                <div class="marquee-item"><img src="images/banner2.jpg" alt="Bathora Lookbook 2"></div>
+                <div class="marquee-item"><img src="images/banner3.jpg" alt="Bathora Lookbook 3"></div>
+                <div class="marquee-item"><img src="images/banner5.jpg" alt="Bathora Lookbook 1"></div>
+                <div class="marquee-item"><img src="images/banner6.jpg" alt="Bathora Lookbook 2"></div>
+                <div class="marquee-item"><img src="images/banner7.jpg" alt="Bathora Lookbook 3"></div>
+                <div class="marquee-item"><img src="images/banner8.jpg" alt="Bathora Lookbook 4"></div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!--SẢN PHẨM NỔI BẬT-->
+    <section class="featured-products py-5" data-aos="fade-up" data-aos-delay="100">
+        <div class="container">
+            <h2 class="section-luxury-title text-center mb-5">SẢN PHẨM NỔI BẬT</h2>
+            <div class="swiper featuredSwiper">
+                <div class="swiper-wrapper" id="featuredProducts">
+                </div>
+
+                <div class="swiper-pagination mt-4"></div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!--BST-->
+    <section class="editorial-spotlight" data-aos="fade-up">
+        <div class="container-fluid p-0">
+            <div class="row g-0">
+                <div class="col-md-6 position-relative">
+                    <div class="editorial-img-box">
+                        <img src="images/TieuBieu.jpg" alt="" class="editorial-main-img">
+                        <img src="images/TieuBieu2.jpg" alt="" class="editorial-hover-img">
+                        <div class="editorial-caption">
+                            <span class="caption-tag">THANH LỊCH & KIÊU KỲ</span>
+                            <h3 class="caption-heading">Tái định nghĩa nét kiêu sa từ sự tối giản.</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 d-flex align-items-center justify-content-center bg-editorial">
+                    <div class="editorial-content-wrapper text-center">
+                        <span class="brand-philosophy">Quý cô thanh lịch thập kỉ mới</span>
+                        <h2 class="spotlight-title">JASMINE BLOOMING</h2>
+
+                        <p class="spotlight-desc">
+                            Khi mùa hạ chạm ngõ, Bathora mở ra một chương mới của sự thanh lịch, tự tại và trọn
+                            vẹn.<br><br>
+                            Bộ sưu tập là kết tinh của vẻ đẹp tinh tế, nơi những lớp voan lụa bay bổng khéo léo tôn vinh
+                            khí chất sẵn có, giúp nàng tự tin tỏa sáng kiêu sa dưới ánh nắng đầu hạ.
+                        </p>
+
+                        <div class="editorial-action">
+                            <a href="#" class="btn-discover">KHÁM PHÁ NGAY</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Section Tin Tức -->
+    <section class="blog-section py-5" data-aos="fade-up">
+        <div class="container">
+            <!-- Header: Tiêu đề và Bộ lọc -->
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-end mb-4 gap-3">
+                <div>
+                    <h2 class="blog-main-title text-uppercase mb-0">Tin tức</h2>
+
+                    <!-- Bộ lọc tab -->
+                    <div class="blog-filters d-flex gap-2 mt-3">
+                        <button class="filter-btn active" data-filter="all">Tất cả</button>
+                        <button class="filter-btn" data-filter="event">Sự kiện</button>
+                        <button class="filter-btn" data-filter="trend">Xu hướng</button>
+                        <button class="filter-btn" data-filter="promo">Khuyến mãi</button>
+                        <button class="filter-btn" data-filter="tips">Tips</button>
+                    </div>
+                </div>
+                <!-- Link Xem tất cả trên Desktop (Chỉ hiện từ màn hình md trở lên) -->
+                <a href="TinTuc/tintuc.html" class="view-all-link d-none d-md-block">Xem tất cả</a>
+            </div>
+
+            <!-- Danh sách Bài viết -->
+            <div class="row g-4" id="blog-grid">
+
+                <!-- Bài viết 1 -->
+                <div class="col-12 col-md-6 col-lg-3 blog-item" data-category="trend">
+                    <article class="blog-card">
+                        <div class="blog-img-wrapper">
+                            <a href="xu-huong-thanh-lich-2026.html">
+                                <img src="images/Tintuc1.jpg" alt="Xu hướng thanh lịch 2026">
+                            </a>
+                        </div>
+                        <div class="blog-content">
+                            <h3 class="blog-title">
+                                <a href="xu-huong-thanh-lich-2026.html">BATHORA “gây sốt” với xu hướng thanh lịch 2026 –
+                                    Nàng đã bắt kịp chưa?</a>
+                            </h3>
+                            <p class="blog-excerpt">Khám phá những xu hướng thời trang nổi bật năm 2026 với phong cách
+                                tối giản, tinh tế.</p>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Bài viết 2 -->
+                <div class="col-12 col-md-6 col-lg-3 blog-item" data-category="event">
+                    <article class="blog-card">
+                        <div class="blog-img-wrapper">
+                            <a href="su-kien-bathora.html">
+                                <img src="images/Tintuc2.jpg" alt="Sự kiện Bathora">
+                            </a>
+                        </div>
+                        <div class="blog-content">
+                            <h3 class="blog-title">
+                                <a href="su-kien-bathora.html">Trải nghiệm thời trang đỉnh cao cùng BATHORA – Sự kiện
+                                    bạn không thể bỏ lỡ!</a>
+                            </h3>
+                            <p class="blog-excerpt">Chuỗi sự kiện độc quyền mang đến cơ hội trải nghiệm trực tiếp các
+                                thiết kế mới nhất.</p>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Bài viết 3 -->
+                <div class="col-12 col-md-6 col-lg-3 blog-item" data-category="promo">
+                    <article class="blog-card">
+                        <div class="blog-img-wrapper">
+                            <a href="khuyen-mai-dac-biet.html">
+                                <img src="images/Tintuc3.jpg" alt="Sale sốc">
+                            </a>
+                        </div>
+                        <div class="blog-content">
+                            <h3 class="blog-title">
+                                <a href="khuyen-mai-dac-biet.html">SALE SỐC tại BATHORA – Giảm đến 50%, cơ hội vàng
+                                    trong thời gian ngắn!</a>
+                            </h3>
+                            <p class="blog-excerpt">Chương trình khuyến mãi đặc biệt dành cho khách hàng với hàng loạt
+                                sản phẩm hấp dẫn.</p>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Bài viết 4 -->
+                <div class="col-12 col-md-6 col-lg-3 blog-item" data-category="trend">
+                    <article class="blog-card">
+                        <div class="blog-img-wrapper">
+                            <a href="bst-soft-elegance.html">
+                                <img src="images/Tintuc4.png" alt="Soft Elegance">
+                            </a>
+                        </div>
+                        <div class="blog-content">
+                            <h3 class="blog-title">
+                                <a href="bst-soft-elegance.html">Ra mắt “Soft Elegance” – Khi sự tối giản trở thành đỉnh
+                                    cao của sang trọng</a>
+                            </h3>
+                            <p class="blog-excerpt">Bộ sưu tập mới lấy cảm hứng từ vẻ đẹp nhẹ nhàng, nữ tính và chất
+                                liệu cao cấp.</p>
+                        </div>
+                    </article>
+                </div>
+
+            </div>
+
+            <!-- Link Xem tất cả trên Mobile (Chỉ xuất hiện trên màn hình nhỏ d-md-none) -->
+            <div class="text-center mt-5 d-block d-md-none">
+                <a href="TinTuc/tintuc.html" class="view-all-link">Xem tất cả</a>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- DỊCH VỤ / TIỆN ÍCH -->
+    <section class="services-section py-5" data-aos="fade-up">
+        <div class="container">
+            <div class="row g-0 services-wrapper">
+
+                <!-- Khối 1: Giao hàng -->
+                <div class="col-12 col-md-6 col-lg-3 service-item">
+                    <div class="service-box">
+                        <div class="service-icon">
+                            <i class="fa-solid fa-rocket"></i>
+                        </div>
+                        <h4 class="service-title">Giao hàng miễn phí</h4>
+                        <p class="service-desc">với đơn hàng từ 500k trở lên</p>
+                    </div>
+                </div>
+
+                <!-- Khối 2: Hỗ trợ -->
+                <div class="col-12 col-md-6 col-lg-3 service-item">
+                    <div class="service-box">
+                        <div class="service-icon">
+                            <i class="fa-solid fa-headset"></i>
+                        </div>
+                        <h4 class="service-title">Hỗ trợ 24/7</h4>
+                        <p class="service-desc">Hỗ trợ online / offline 24/7</p>
+                    </div>
+                </div>
+
+                <!-- Khối 3: Đổi trả -->
+                <div class="col-12 col-md-6 col-lg-3 service-item">
+                    <div class="service-box">
+                        <div class="service-icon">
+                            <i class="fa-solid fa-box-open"></i>
+                        </div>
+                        <h4 class="service-title">Miễn phí đổi trả</h4>
+                        <p class="service-desc">Trong vòng 15 ngày</p>
+                    </div>
+                </div>
+
+                <!-- Khối 4: Đặt hàng -->
+                <div class="col-12 col-md-6 col-lg-3 service-item">
+                    <div class="service-box">
+                        <div class="service-icon">
+                            <i class="fa-regular fa-credit-card"></i>
+                        </div>
+                        <h4 class="service-title">Đặt hàng trực tuyến</h4>
+                        <p class="service-desc">Hotline: 0987654321</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <!--FOOTER-->
+    <footer class="footer-section">
+        <div class="container py-5">
+
+            <div class="row g-4 justify-content-center">
+
+                <!-- ABOUT -->
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="footer-title">BATHORA DRESS</h5>
+                    <p class="footer-text">
+                        Tại Bathora, chúng tôi tin rằng thời trang không chỉ là những bộ trang phục khoác lên mình,
+                        mà là ngôn ngữ tôn vinh giá trị nội tại của người phụ nữ hiện đại.
                     </p>
-
-                    <div class="editorial-action">
-                        <a href="#" class="btn-discover">KHÁM PHÁ NGAY</a>
-                    </div>
                 </div>
+
+                <!-- SOCIAL -->
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="footer-title">THEO DÕI CHÚNG TÔI</h5>
+                    <ul class="footer-list">
+                        <li><a href="#"><i class="fab fa-facebook-f facebook"></i> Facebook</a></li>
+                        <li><a href="#"><i class="fab fa-instagram instagram"></i> Instagram</a></li>
+                        <li><a href="#"><i class="fab fa-youtube youtube"></i> Youtube</a></li>
+                        <li><a href="#"><i class="fa-regular fa-envelope email"></i> marketing@bbathora.com</a></li>
+                    </ul>
+                </div>
+
+                <!-- SUPPORT -->
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="footer-title">CHĂM SÓC KHÁCH HÀNG</h5>
+                    <ul class="footer-list">
+                        <li><a href="#">Hướng dẫn mua hàng</a></li>
+                        <li><a href="#">Chính sách vận chuyển</a></li>
+                        <li><a href="#">Chính sách tích điểm</a></li>
+                        <li><a href="#">Chính sách đổi trả hàng</a></li>
+                        <li><a href="#">Chế độ bảo hành trọn đời</a></li>
+                    </ul>
+                </div>
+
+                <!-- NEWSLETTER -->
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="footer-title">ĐĂNG KÝ NHẬN ƯU ĐÃI</h5>
+
+                    <div class="newsletter-box">
+                        <input type="email" placeholder="Nhập email của bạn">
+                        <button>GỬI</button>
+                    </div>
+
+                    <p class="footer-note">
+                        Bằng cách đăng ký, bạn đồng ý với chính sách bảo mật.
+                        <br>
+                        Đã có tài khoản? <a href="TaiKhoan/taikhoan.html">Đăng nhập</a>
+                    </p>
+                </div>
+
             </div>
         </div>
+        <!--copyright-->
+        <div class="copyright">
+            <div class="container text-center">
+                <small>© 2026 BATHORA. Powered by NHOM10</small>
+            </div>
+        </div>
+    </footer>
+
+    <!--nút liên hệ-->
+    <div class="sticky-contact">
+        <a href="https://m.me/yourprofile" class="contact-item messenger" target="_blank" title="Chat qua Messenger">
+            <i class="fa-brands fa-facebook-messenger"></i>
+        </a>
+        <a href="https://zalo.me/0123456789" class="contact-item zalo" target="_blank" title="Chat qua Zalo">
+            <span>Zalo</span>
+        </a>
     </div>
-</section>
 
+    <!-- Nút quay lại đầu trang -->
+    <button id="backToTop" title="Lên đầu trang">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+            stroke-linejoin="round">
+            <line x1="12" y1="19" x2="12" y2="5"></line>
+            <polyline points="5 12 12 5 19 12"></polyline>
+        </svg>
+    </button>
 
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
-<!-- Section Tin Tức -->
-<section class="blog-section py-5" data-aos="fade-up">
-    <div class="container">
-        <!-- Header: Tiêu đề và Bộ lọc -->
-        <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-end mb-4 gap-3">
-            <div>
-                <h2 class="blog-main-title text-uppercase mb-0">Tin tức</h2>
-                
-                <!-- Bộ lọc tab -->
-                <div class="blog-filters d-flex gap-2 mt-3">
-                    <button class="filter-btn active" data-filter="all">Tất cả</button>
-                    <button class="filter-btn" data-filter="event">Sự kiện</button>
-                    <button class="filter-btn" data-filter="trend">Xu hướng</button>
-                    <button class="filter-btn" data-filter="promo">Khuyến mãi</button>
-                    <button class="filter-btn" data-filter="tips">Tips</button>
-                </div>
-            </div>
-            <!-- Link Xem tất cả trên Desktop (Chỉ hiện từ màn hình md trở lên) -->
-            <a href="TinTuc/tintuc.html" class="view-all-link d-none d-md-block">Xem tất cả</a>
-        </div>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-        <!-- Danh sách Bài viết -->
-        <div class="row g-4" id="blog-grid">
-            
-            <!-- Bài viết 1 -->
-            <div class="col-12 col-md-6 col-lg-3 blog-item" data-category="trend">
-                <article class="blog-card">
-                    <div class="blog-img-wrapper">
-                        <a href="xu-huong-thanh-lich-2026.html">
-                            <img src="images/Tintuc1.jpg" alt="Xu hướng thanh lịch 2026">
-                        </a>
-                    </div>
-                    <div class="blog-content">
-                        <h3 class="blog-title">
-                            <a href="xu-huong-thanh-lich-2026.html">BATHORA “gây sốt” với xu hướng thanh lịch 2026 – Nàng đã bắt kịp chưa?</a>
-                        </h3>
-                        <p class="blog-excerpt">Khám phá những xu hướng thời trang nổi bật năm 2026 với phong cách tối giản, tinh tế.</p>
-                    </div>
-                </article>
-            </div>
+    <!-- JS riêng -->
 
-            <!-- Bài viết 2 -->
-            <div class="col-12 col-md-6 col-lg-3 blog-item" data-category="event">
-                <article class="blog-card">
-                    <div class="blog-img-wrapper">
-                        <a href="su-kien-bathora.html">
-                            <img src="images/Tintuc2.jpg" alt="Sự kiện Bathora">
-                        </a>
-                    </div>
-                    <div class="blog-content">
-                        <h3 class="blog-title">
-                            <a href="su-kien-bathora.html">Trải nghiệm thời trang đỉnh cao cùng BATHORA – Sự kiện bạn không thể bỏ lỡ!</a>
-                        </h3>
-                        <p class="blog-excerpt">Chuỗi sự kiện độc quyền mang đến cơ hội trải nghiệm trực tiếp các thiết kế mới nhất.</p>
-                    </div>
-                </article>
-            </div>
+    <script src="trangchu.js"></script>
 
-            <!-- Bài viết 3 -->
-            <div class="col-12 col-md-6 col-lg-3 blog-item" data-category="promo">
-                <article class="blog-card">
-                    <div class="blog-img-wrapper">
-                        <a href="khuyen-mai-dac-biet.html">
-                            <img src="images/Tintuc3.jpg" alt="Sale sốc">
-                        </a>
-                    </div>
-                    <div class="blog-content">
-                        <h3 class="blog-title">
-                            <a href="khuyen-mai-dac-biet.html">SALE SỐC tại BATHORA – Giảm đến 50%, cơ hội vàng trong thời gian ngắn!</a>
-                        </h3>
-                        <p class="blog-excerpt">Chương trình khuyến mãi đặc biệt dành cho khách hàng với hàng loạt sản phẩm hấp dẫn.</p>
-                    </div>
-                </article>
-            </div>
-
-            <!-- Bài viết 4 -->
-            <div class="col-12 col-md-6 col-lg-3 blog-item" data-category="trend">
-                <article class="blog-card">
-                    <div class="blog-img-wrapper">
-                        <a href="bst-soft-elegance.html">
-                            <img src="images/Tintuc4.png" alt="Soft Elegance">
-                        </a>
-                    </div>
-                    <div class="blog-content">
-                        <h3 class="blog-title">
-                            <a href="bst-soft-elegance.html">Ra mắt “Soft Elegance” – Khi sự tối giản trở thành đỉnh cao của sang trọng</a>
-                        </h3>
-                        <p class="blog-excerpt">Bộ sưu tập mới lấy cảm hứng từ vẻ đẹp nhẹ nhàng, nữ tính và chất liệu cao cấp.</p>
-                    </div>
-                </article>
-            </div>
-
-        </div>
-
-        <!-- Link Xem tất cả trên Mobile (Chỉ xuất hiện trên màn hình nhỏ d-md-none) -->
-        <div class="text-center mt-5 d-block d-md-none">
-            <a href="TinTuc/tintuc.html" class="view-all-link">Xem tất cả</a>
-        </div>
-    </div>
-</section>
-
-
-
-<!-- DỊCH VỤ / TIỆN ÍCH -->
-<section class="services-section py-5" data-aos="fade-up">
-    <div class="container">
-        <div class="row g-0 services-wrapper">
-            
-            <!-- Khối 1: Giao hàng -->
-            <div class="col-12 col-md-6 col-lg-3 service-item">
-                <div class="service-box">
-                    <div class="service-icon">
-                        <i class="fa-solid fa-rocket"></i>
-                    </div>
-                    <h4 class="service-title">Giao hàng miễn phí</h4>
-                    <p class="service-desc">với đơn hàng từ 500k trở lên</p>
-                </div>
-            </div>
-
-            <!-- Khối 2: Hỗ trợ -->
-            <div class="col-12 col-md-6 col-lg-3 service-item">
-                <div class="service-box">
-                    <div class="service-icon">
-                        <i class="fa-solid fa-headset"></i>
-                    </div>
-                    <h4 class="service-title">Hỗ trợ 24/7</h4>
-                    <p class="service-desc">Hỗ trợ online / offline 24/7</p>
-                </div>
-            </div>
-
-            <!-- Khối 3: Đổi trả -->
-            <div class="col-12 col-md-6 col-lg-3 service-item">
-                <div class="service-box">
-                    <div class="service-icon">
-                        <i class="fa-solid fa-box-open"></i>
-                    </div>
-                    <h4 class="service-title">Miễn phí đổi trả</h4>
-                    <p class="service-desc">Trong vòng 15 ngày</p>
-                </div>
-            </div>
-
-            <!-- Khối 4: Đặt hàng -->
-            <div class="col-12 col-md-6 col-lg-3 service-item">
-                <div class="service-box">
-                    <div class="service-icon">
-                        <i class="fa-regular fa-credit-card"></i>
-                    </div>
-                    <h4 class="service-title">Đặt hàng trực tuyến</h4>
-                    <p class="service-desc">Hotline: 0987654321</p>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-
-
-
-<!--FOOTER-->
-<footer class="footer-section">
-    <div class="container py-5">
-
-        <div class="row g-4 justify-content-center">
-
-            <!-- ABOUT -->
-            <div class="col-lg-3 col-md-6">
-                <h5 class="footer-title">BATHORA DRESS</h5>
-                <p class="footer-text">
-                    Tại Bathora, chúng tôi tin rằng thời trang không chỉ là những bộ trang phục khoác lên mình,
-                    mà là ngôn ngữ tôn vinh giá trị nội tại của người phụ nữ hiện đại.
-                </p>
-            </div>
-
-            <!-- SOCIAL -->
-            <div class="col-lg-3 col-md-6">
-                <h5 class="footer-title">THEO DÕI CHÚNG TÔI</h5>
-                <ul class="footer-list">
-                    <li><a href="#"><i class="fab fa-facebook-f facebook"></i> Facebook</a></li>
-                    <li><a href="#"><i class="fab fa-instagram instagram"></i> Instagram</a></li>
-                    <li><a href="#"><i class="fab fa-youtube youtube"></i> Youtube</a></li>
-                    <li><a href="#"><i class="fa-regular fa-envelope email"></i> marketing@bbathora.com</a></li>
-                </ul>
-            </div>
-
-            <!-- SUPPORT -->
-            <div class="col-lg-3 col-md-6">
-                <h5 class="footer-title">CHĂM SÓC KHÁCH HÀNG</h5>
-                <ul class="footer-list">
-                    <li><a href="#">Hướng dẫn mua hàng</a></li>
-                    <li><a href="#">Chính sách vận chuyển</a></li>
-                    <li><a href="#">Chính sách tích điểm</a></li>
-                    <li><a href="#">Chính sách đổi trả hàng</a></li>
-                    <li><a href="#">Chế độ bảo hành trọn đời</a></li>
-                </ul>
-            </div>
-
-            <!-- NEWSLETTER -->
-            <div class="col-lg-3 col-md-6">
-                <h5 class="footer-title">ĐĂNG KÝ NHẬN ƯU ĐÃI</h5>
-
-                <div class="newsletter-box">
-                    <input type="email" placeholder="Nhập email của bạn">
-                    <button>GỬI</button>
-                </div>
-
-                <p class="footer-note">
-                    Bằng cách đăng ký, bạn đồng ý với chính sách bảo mật.
-                    <br>
-                    Đã có tài khoản? <a href="TaiKhoan/taikhoan.html">Đăng nhập</a>
-                </p>
-            </div>
-
-        </div>
-    </div>
-    <!--copyright-->
-    <div class="copyright">
-        <div class="container text-center">
-            <small>© 2026 BATHORA. Powered by NHOM10</small>
-        </div>
-    </div>
-</footer>
-
-<!--nút liên hệ-->
-<div class="sticky-contact">
-    <a href="https://m.me/yourprofile" class="contact-item messenger" target="_blank" title="Chat qua Messenger">
-        <i class="fa-brands fa-facebook-messenger"></i>
-    </a>
-    <a href="https://zalo.me/0123456789" class="contact-item zalo" target="_blank" title="Chat qua Zalo">
-        <span>Zalo</span>
-    </a>
-</div>
-
-<!-- Nút quay lại đầu trang -->
-<button id="backToTop" title="Lên đầu trang">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-        <line x1="12" y1="19" x2="12" y2="5"></line>
-        <polyline points="5 12 12 5 19 12"></polyline>
-    </svg>
-</button>
-
-<!-- jQuery -->
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-
-<!-- Bootstrap JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
-<!-- JS riêng -->
-<script src="trangchu.js"></script>
-<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 </body>
+
 </html>

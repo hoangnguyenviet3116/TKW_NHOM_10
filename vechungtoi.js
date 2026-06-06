@@ -23,12 +23,35 @@ window.addEventListener('scroll', function () {
 
 /* Cập nhật số lượng yêu thích trên header từ localStorage */
 function updateMenuWishlistBadge() {
-    const favs = JSON.parse(localStorage.getItem('favorites')) || [];
+    const favs = getFavorites();
     const wishlistBadge = document.getElementById('wishlist-badge');
 
     if (!wishlistBadge) return;
     wishlistBadge.innerText = favs.length;
     wishlistBadge.style.display = favs.length === 0 ? 'none' : 'flex';
+}
+function getCurrentUser() {
+    return JSON.parse(sessionStorage.getItem("bathora_current_user"));
+}
+
+function getWishlistKey() {
+    const user = getCurrentUser();
+
+    if (!user) {
+        return null;
+    }
+
+    return "favorites_" + user.email;
+}
+
+function getFavorites() {
+    const wishlistKey = getWishlistKey();
+
+    if (!wishlistKey) {
+        return [];
+    }
+
+    return JSON.parse(localStorage.getItem(wishlistKey)) || [];
 }
 
 /* Hiệu ứng reveal khi cuộn: dùng DOM + IntersectionObserver */
@@ -97,6 +120,7 @@ $(document).ready(function () {
     initRevealAnimation();
     initCounterAnimation();
     initTimelineActive();
+    updateCartBadge();
 
     $('a[href^="#"]').on('click', function (e) {
         const target = $($(this).attr('href'));
@@ -159,4 +183,33 @@ window.addEventListener("load", () => {
         }, 1200);
     });
 });
+
+function getCurrentUser() {
+    return JSON.parse(sessionStorage.getItem("bathora_current_user"));
+}
+
+function getCartKey() {
+    const user = getCurrentUser();
+    if (!user) return null;
+    return "cart_" + user.email;
+}
+
+function updateCartBadge() {
+    const badge = document.getElementById("cart-badge");
+    if (!badge) return;
+
+    const cartKey = getCartKey();
+
+    if (!cartKey) {
+        badge.innerText = 0;
+        badge.style.display = "none";
+        return;
+    }
+
+    const cart = JSON.parse(localStorage.getItem(cartKey)) || [];
+    const total = cart.reduce((sum, item) => sum + item.quantity, 0);
+
+    badge.innerText = total;
+    badge.style.display = total === 0 ? "none" : "flex";
+}
 

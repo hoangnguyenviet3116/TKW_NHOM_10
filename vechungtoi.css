@@ -644,7 +644,7 @@ h2 {
    INTRO VIDEO FULLSCREEN
 ========================== */
 
-#introOverlay{
+#introOverlay {
     position: fixed;
     inset: 0;
 
@@ -659,12 +659,12 @@ h2 {
     transition: opacity 1.2s ease;
 }
 
-#introOverlay.hide{
+#introOverlay.hide {
     opacity: 0;
     pointer-events: none;
 }
 
-#introVideo{
+#introVideo {
     width: 100%;
     height: 100%;
 
@@ -674,12 +674,12 @@ h2 {
 /* Ẩn nội dung trang lúc đầu */
 
 body.intro-playing main,
-body.intro-playing footer{
+body.intro-playing footer {
     opacity: 0;
 }
 
 main,
-footer{
+footer {
     transition: opacity 1.2s ease;
 }
 
@@ -706,7 +706,7 @@ body {
 }
 
 .about-breadcrumb {
-    background: linear-gradient(120deg, #fbf7f1, #ffffff);
+    background: linear-gradient(120deg, #f7f7f7, #ffffff);
 }
 
 .section-kicker {
@@ -994,7 +994,7 @@ body {
     object-fit: cover;
     object-position: center top;
     border-radius: 18px;
-    box-shadow: 0 18px 45px rgba(0,0,0,0.08);
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.08);
     filter: saturate(.95);
     transition: all .45s ease;
 }
@@ -1002,7 +1002,7 @@ body {
 .about-lookbook-gallery img:hover {
     transform: translateY(-6px);
     filter: saturate(1.08);
-    box-shadow: 0 24px 60px rgba(0,0,0,0.12);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.12);
 }
 
 .contact-panel {
@@ -1120,5 +1120,3 @@ body {
         min-height: 260px;
     }
 }
-
-

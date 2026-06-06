@@ -54,14 +54,14 @@
                             SẢN PHẨM <i class="fa fa-chevron-down ms-1"></i>
                         </a>
                         <ul class="dropdown-menu border-0 shadow-sm">
-                            <li><a class="dropdown-item" href="#">ĐẦM</a></li>
-                            <li><a class="dropdown-item" href="#">ÁO</a></li>
-                            <li><a class="dropdown-item" href="#">QUẦN</a></li>
-                            <li><a class="dropdown-item" href="#">CHÂN VÁY</a></li>
-                            <li><a class="dropdown-item" href="#">ÁO KHOÁC</a></li>
-                            <li><a class="dropdown-item" href="#">TÚI XÁCH</a></li>
-                            <li><a class="dropdown-item" href="#">PHỤ KIỆN</a></li>
-                            <li><a class="dropdown-item" href="#">GIÀY</a></li>
+                           <li><a class="dropdown-item" href="../sanpham.html?loai=dam">ĐẦM</a></li>
+                        <li><a class="dropdown-item" href="../sanpham.html?loai=ao">ÁO</a></li>
+                        <li><a class="dropdown-item" href="../sanpham.html?loai=quan">QUẦN</a></li>
+                        <li><a class="dropdown-item" href="../sanpham.html?loai=chanvay">CHÂN VÁY</a></li>
+                        <li><a class="dropdown-item" href="../sanpham.html?loai=aokhoac">ÁO KHOÁC</a></li>
+                        <li><a class="dropdown-item" href="../sanpham.html?loai=tuixach">TÚI XÁCH</a></li>
+                        <li><a class="dropdown-item" href="../sanpham.html?loai=phukien">PHỤ KIỆN</a></li>
+                        <li><a class="dropdown-item" href="../sanpham.html?loai=giay">GIÀY</a></li>
                         </ul>
                     </li>
 
@@ -215,6 +215,16 @@
                                     <h3>Tổng quan đơn hàng</h3>
                                 </div>
                             </div>
+                            <div class="dashboard-card mt-4">
+    <div class="card-heading">
+        <div>
+            <span>ORDER HISTORY</span>
+            <h3>Lịch sử đơn hàng</h3>
+        </div>
+    </div>
+
+    <div id="orderHistoryList" class="order-history-list"></div>
+</div>
 
                             <div class="order-status-grid">
                                 <div class="order-status">
@@ -283,9 +293,9 @@
                             </div>
 
                             <div class="address-box">
-                                <p id="shippingAddress">Bạn chưa cập nhật địa chỉ giao hàng.</p>
-                                <button>CẬP NHẬT SAU</button>
-                            </div>
+    <p id="shippingAddress">Bạn chưa cập nhật địa chỉ giao hàng.</p>
+    <button id="editProfileBtn">CẬP NHẬT THÔNG TIN</button>
+</div>
                         </div>
 
                     </div>
