@@ -1,0 +1,73 @@
+/*MENU*/
+let lastScrollTop = 0;
+const header = document.querySelector('.header');
+
+window.addEventListener('scroll', function() {
+    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+    // Nếu đang ở sát mép trên cùng (ví dụ dưới 50px)
+    if (scrollTop <= 50) {
+        header.classList.remove('header-hidden'); // Luôn hiện menu
+    } 
+    // Nếu bắt đầu cuộn xuống dưới
+    else {
+        if (scrollTop > lastScrollTop) {
+            // Đang cuộn xuống -> Ẩn menu
+            header.classList.add('header-hidden');
+        } else {
+            // Đang cuộn lên -> Hiện menu
+            header.classList.remove('header-hidden');
+        }
+    }
+
+    lastScrollTop = scrollTop;
+});
+// =========================================================
+// HÀM CẬP NHẬT VÀ TỰ ĐỘNG ẨN SỐ LƯỢNG YÊU THÍCH TRÊN MENU
+// =========================================================
+function updateMenuWishlistBadge() {
+    const wishlistBadge = document.getElementById("wishlist-badge");
+    if (wishlistBadge) {
+        // Lấy danh sách từ localStorage dùng chung của hệ thống
+        let favs = JSON.parse(localStorage.getItem("favorites")) || [];
+        wishlistBadge.innerText = favs.length;
+        
+        // Sử dụng style.display trực tiếp để ẩn hoàn toàn số 0, tránh xung đột CSS
+        if (favs.length === 0) {
+            wishlistBadge.style.display = "none";
+        } else {
+            wishlistBadge.style.display = "flex";
+        }
+    }
+}
+
+// Tự động kiểm tra và cập nhật số lượng ngay khi người dùng vừa vào trang tin tức
+document.addEventListener("DOMContentLoaded", () => {
+    updateMenuWishlistBadge();
+});
+
+
+
+
+
+
+
+/*Back to top*/
+const backToTopBtn = document.querySelector('#backToTop');
+
+if (backToTopBtn) {
+    window.addEventListener('scroll', function() {
+        if (window.pageYOffset > 300) {
+            backToTopBtn.classList.add('show');
+        } else {
+            backToTopBtn.classList.remove('show');
+        }
+    });
+
+    backToTopBtn.addEventListener('click', function() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+}
