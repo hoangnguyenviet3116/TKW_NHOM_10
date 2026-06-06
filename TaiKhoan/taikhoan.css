@@ -638,3 +638,44 @@ body {
         bottom: 25px;
     }
 }
+.order-history-list {
+    display: grid;
+    gap: 16px;
+}
+
+.order-history-item {
+    border: 1px solid #eee;
+    padding: 18px;
+    background: #fff;
+}
+
+.order-history-top {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 10px;
+}
+
+.order-history-top h4 {
+    font-size: 15px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.order-history-top span {
+    font-size: 12px;
+    color: #b58a3c;
+    font-weight: 700;
+}
+
+.order-history-item p {
+    margin: 5px 0;
+    color: #666;
+    font-size: 13px;
+}
+
+.order-empty {
+    color: #777;
+    background: #fbf7f1;
+    padding: 18px;
+}

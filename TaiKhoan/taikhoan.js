@@ -35,11 +35,30 @@ function updateWishlistBadge() {
     badge.style.display = favs.length === 0 ? "none" : "flex";
 }
 
+function getCartKey() {
+    const user = getCurrentUser();
+
+    if (!user) {
+        return null;
+    }
+
+    return "cart_" + user.email;
+}
+
 function updateCartBadge() {
-    const cart = JSON.parse(localStorage.getItem("cart")) || [];
     const badge = document.getElementById("cart-badge");
 
     if (!badge) return;
+
+    const cartKey = getCartKey();
+
+    if (!cartKey) {
+        badge.innerText = 0;
+        badge.style.display = "none";
+        return;
+    }
+
+    const cart = JSON.parse(localStorage.getItem(cartKey)) || [];
 
     const total = cart.reduce((sum, item) => sum + item.quantity, 0);
 
@@ -48,17 +67,26 @@ function updateCartBadge() {
 }
 
 /* TẠO DỮ LIỆU DEMO CHO TÀI KHOẢN */
+function getUserOrders(user) {
+    const orders = JSON.parse(localStorage.getItem("bathora_orders")) || [];
+
+    return orders.filter(order => order.userEmail === user.email);
+}
+
 function buildDashboardData(user) {
     const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+    const orders = getUserOrders(user);
 
-    const totalOrders = user.totalOrders ?? 4;
-    const completedOrders = user.completedOrders ?? 3;
-    const pendingOrders = user.pendingOrders ?? 1;
-    const shippingOrders = user.shippingOrders ?? 0;
-    const returnOrders = user.returnOrders ?? 0;
+    const totalOrders = orders.length;
+    const pendingOrders = orders.filter(order => order.status === "Đang xử lý").length;
+    const shippingOrders = orders.filter(order => order.status === "Đang giao").length;
+    const completedOrders = orders.filter(order => order.status === "Hoàn thành").length;
+    const returnOrders = orders.filter(order => order.status === "Đổi trả").length;
 
-    const points = user.points ?? 1250;
-    const memberLevel = getMemberLevel(points);
+    const totalSpent = orders.reduce((sum, order) => sum + Number(order.total || 0), 0);
+
+    // Quy ước demo: 10.000đ = 1 điểm
+    const points = Math.floor(totalSpent / 10000);
 
     return {
         totalOrders,
@@ -67,9 +95,9 @@ function buildDashboardData(user) {
         shippingOrders,
         returnOrders,
         points,
-        memberLevel,
+        memberLevel: getMemberLevel(points),
         favoriteCount: favorites.length,
-        joinDate: user.joinDate || "06/06/2026",
+        joinDate: user.joinDate || "Chưa cập nhật",
         address: user.address || "Bạn chưa cập nhật địa chỉ giao hàng."
     };
 }
@@ -112,6 +140,37 @@ function renderAccountDashboard() {
     document.getElementById("shippingAddress").innerText = data.address;
 
     renderMemberProgress(data.points);
+    renderOrderHistory(user);
+}
+function renderOrderHistory(user) {
+    const orderHistoryList = document.getElementById("orderHistoryList");
+
+    if (!orderHistoryList) return;
+
+    const orders = getUserOrders(user);
+
+    if (orders.length === 0) {
+        orderHistoryList.innerHTML = `
+            <div class="order-empty">
+                Bạn chưa có đơn hàng nào. Hãy đặt hàng để xem lịch sử mua sắm tại đây.
+            </div>
+        `;
+        return;
+    }
+
+    orderHistoryList.innerHTML = orders.reverse().map(order => `
+        <div class="order-history-item">
+            <div class="order-history-top">
+                <h4>Mã đơn: ${order.id}</h4>
+                <span>${order.status}</span>
+            </div>
+
+            <p><b>Ngày đặt:</b> ${order.createdAt}</p>
+            <p><b>Số sản phẩm:</b> ${order.items.length}</p>
+            <p><b>Thanh toán:</b> ${order.paymentMethod} - ${order.paymentStatus}</p>
+            <p><b>Tổng tiền:</b> ${Number(order.total).toLocaleString("vi-VN")}đ</p>
+        </div>
+    `).join("");
 }
 
 /* TIẾN TRÌNH HẠNG THÀNH VIÊN */
@@ -134,6 +193,91 @@ function renderMemberProgress(points) {
             "Bạn còn " + remain + " điểm để đạt hạng Vàng.";
     }
 }
+function getUsers() {
+    return JSON.parse(localStorage.getItem("bathora_users")) || [];
+}
+
+function saveUsers(users) {
+    localStorage.setItem("bathora_users", JSON.stringify(users));
+}
+
+function updateCurrentUser(updatedUser) {
+    sessionStorage.setItem("bathora_current_user", JSON.stringify(updatedUser));
+
+    let users = getUsers();
+
+    users = users.map(user => {
+        if (user.email === updatedUser.email) {
+            return updatedUser;
+        }
+
+        return user;
+    });
+
+    saveUsers(users);
+}
+
+function openEditProfilePopup() {
+    const user = getCurrentUser();
+
+    if (!user) return;
+
+    Swal.fire({
+        title: "Cập nhật thông tin nhận hàng",
+        html: `
+            <input id="editName" class="swal2-input" placeholder="Họ tên người nhận" value="${user.name || ""}">
+            <input id="editPhone" class="swal2-input" placeholder="Số điện thoại 10 chữ số" value="${user.phone || ""}">
+            <textarea id="editAddress" class="swal2-textarea" placeholder="Địa chỉ giao hàng">${user.address || ""}</textarea>
+        `,
+        confirmButtonText: "Lưu thông tin",
+        showCancelButton: true,
+        cancelButtonText: "Hủy",
+        confirmButtonColor: "#c9a45c",
+        cancelButtonColor: "#1b1b1b",
+        preConfirm: () => {
+            const name = document.getElementById("editName").value.trim();
+            const phone = document.getElementById("editPhone").value.trim();
+            const address = document.getElementById("editAddress").value.trim();
+
+            if (name.length < 2) {
+                Swal.showValidationMessage("Họ tên phải có ít nhất 2 ký tự.");
+                return false;
+            }
+
+            if (!/^[0-9]{10}$/.test(phone)) {
+                Swal.showValidationMessage("Số điện thoại phải gồm đúng 10 chữ số.");
+                return false;
+            }
+
+            if (address.length < 10) {
+                Swal.showValidationMessage("Địa chỉ giao hàng cần nhập cụ thể hơn.");
+                return false;
+            }
+
+            return { name, phone, address };
+        }
+    }).then(result => {
+        if (!result.isConfirmed) return;
+
+        const updatedUser = {
+            ...user,
+            name: result.value.name,
+            phone: result.value.phone,
+            address: result.value.address
+        };
+
+        updateCurrentUser(updatedUser);
+
+        Swal.fire({
+            icon: "success",
+            title: "Cập nhật thành công",
+            text: "Thông tin nhận hàng đã được lưu.",
+            confirmButtonColor: "#c9a45c"
+        });
+
+        renderAccountDashboard();
+    });
+}
 
 /* ĐĂNG XUẤT */
 document.getElementById("logoutBtn").addEventListener("click", function () {
@@ -146,10 +290,18 @@ document.getElementById("logoutBtn").addEventListener("click", function () {
         confirmButtonColor: "#1b1b1b",
         cancelButtonColor: "#c9a45c"
     }).then((result) => {
-        if (result.isConfirmed) {
-            sessionStorage.removeItem("bathora_current_user");
-window.location.href = "login.html";
-        }
+       if (result.isConfirmed) {
+    sessionStorage.removeItem("bathora_current_user");
+
+    const cartBadge = document.getElementById("cart-badge");
+
+    if (cartBadge) {
+        cartBadge.innerText = 0;
+        cartBadge.style.display = "none";
+    }
+
+    window.location.href = "login.html";
+}
     });
 });
 
@@ -178,4 +330,10 @@ document.addEventListener("DOMContentLoaded", function () {
     updateWishlistBadge();
     updateCartBadge();
     renderAccountDashboard();
+
+    const editProfileBtn = document.getElementById("editProfileBtn");
+
+    if (editProfileBtn) {
+        editProfileBtn.addEventListener("click", openEditProfilePopup);
+    }
 });
