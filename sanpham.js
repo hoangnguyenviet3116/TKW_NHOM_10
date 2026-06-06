@@ -421,7 +421,10 @@ const tongHopSanPham = [
     rating: 4.9, sold: 130, sizes: ["36", "37", "38", "39"], colors: ["Đỏ"], stock: 20,
     description: "Giày cao gót chất liệu bóng, nổi bật với màu đỏ sang trọng, thiết kế mũi nhọn tinh tế." 
 }
+
     ];
+/* LƯU DATABASE SẢN PHẨM ĐỂ TRANG GIỎ HÀNG DÙNG GỢI Ý PHỐI ĐỒ */
+localStorage.setItem("bathora_products", JSON.stringify(tongHopSanPham));
 
     const grid = document.getElementById('productGrid');
     const paginationContainer = document.getElementById('paginationContainer'); // Bổ sung container phân trang

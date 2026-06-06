@@ -316,7 +316,7 @@ if (backToTopBtn) {
 }
 
 /*VIDEO*/
-/*
+
 window.addEventListener("DOMContentLoaded", () => {
 
     const introOverlay = document.getElementById("introOverlay");
@@ -369,4 +369,4 @@ window.addEventListener("DOMContentLoaded", () => {
     }
 
 });
-*/
+

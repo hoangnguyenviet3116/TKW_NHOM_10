@@ -74,18 +74,36 @@ function updateWishlistBadge() {
     badge.style.display = favs.length === 0 ? "none" : "flex";
 }
 
+function getCartKey() {
+    const user = getCurrentUser();
+
+    if (!user) {
+        return null;
+    }
+
+    return "cart_" + user.email;
+}
+
 function updateCartBadge() {
-    const cart = JSON.parse(localStorage.getItem("cart")) || [];
     const badge = document.getElementById("cart-badge");
 
     if (!badge) return;
+
+    const cartKey = getCartKey();
+
+    if (!cartKey) {
+        badge.innerText = 0;
+        badge.style.display = "none";
+        return;
+    }
+
+    const cart = JSON.parse(localStorage.getItem(cartKey)) || [];
 
     const total = cart.reduce((sum, item) => sum + item.quantity, 0);
 
     badge.innerText = total;
     badge.style.display = total === 0 ? "none" : "flex";
 }
-
 /* TAB */
 const tabButtons = document.querySelectorAll(".tab-btn");
 const forms = document.querySelectorAll(".account-form");
@@ -328,6 +346,7 @@ if (confirmSecurityCode !== securityCode) {
         name: name,
         email: email,
         phone: phone,
+        address: "",
         password: password,
         securityCode: securityCode,
         points: 0,
