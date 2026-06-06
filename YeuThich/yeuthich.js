@@ -97,18 +97,74 @@ document.addEventListener("DOMContentLoaded", function () {
             </div>
         `).join("");
     }
+    updateCartBadge();
 });
 
+
+/*Thêm vào giỏ hàng*/
+function getCart() {
+    return JSON.parse(localStorage.getItem("cart")) || [];
+}
+
+function saveCart(cart) {
+    localStorage.setItem("cart", JSON.stringify(cart));
+}
+
+function updateCartBadge() {
+
+    const cart = getCart();
+
+    const cartBadge = document.getElementById("cart-badge");
+
+    if (!cartBadge) return;
+
+    const totalQuantity = cart.reduce((sum, item) => {
+        return sum + item.quantity;
+    }, 0);
+
+    cartBadge.innerText = totalQuantity;
+
+    if (totalQuantity === 0) {
+        cartBadge.style.display = "none";
+    } else {
+        cartBadge.style.display = "flex";
+    }
+}
+
+function addToCart(product) {
+    let cart = getCart();
+    const existingProduct = cart.find(item => item.id === product.id);
+    if (existingProduct) {
+        existingProduct.quantity += 1;
+    } else {
+        cart.push({
+            id: product.id,
+            name: product.name,
+            price: Number(product.price),
+            img: product.img,
+            quantity: 1,
+            size: "M"
+        });
+    }
+    saveCart(cart);
+    updateCartBadge();
+}
+
 function addToCartQuick(id) {
-    // 1. Tạo ra một khối div thông báo mới
+    let favs = JSON.parse(localStorage.getItem("favorites")) || [];
+    const product = favs.find(item => item.id == id);
+    if (!product) return;
+    addToCart({
+        id: product.id,
+        name: product.name,
+        price: product.price.replace(/[^\d]/g, ""),
+        img: product.img
+    });
+    // Toast thông báo
     const toast = document.createElement("div");
     toast.className = "toast-custom";
     toast.innerText = "Đã thêm sản phẩm vào giỏ hàng thành công!";
-    
-    // 2. Đưa thông báo vào trong trang web
     document.body.appendChild(toast);
-    
-    // 3. Tự động xóa thông báo sau 3 giây (3000ms) kèm hiệu ứng mờ dần
     setTimeout(() => {
         toast.style.transition = "opacity 0.5s ease";
         toast.style.opacity = "0";
