@@ -28,15 +28,20 @@
     </div>
     <header class="header">
         <div class="container-fluid d-flex align-items-center justify-content-between">
+
+            <!-- LOGO -->
             <div class="logo">
                 <a href="trangchu.html">
                     <img src="images/logo.png" alt="Bathora Logo">
                 </a>
             </div>
 
+            <!-- MENU -->
             <nav class="menu">
                 <ul class="d-flex align-items-center mb-0">
-                    <li><a href="trangchu.html">TRANG CHỦ</a></li>
+
+                    <li><a href="trangchu.html" class="active">TRANG CHỦ</a></li>
+
                     <li class="nav-item dropdown">
                         <a class="nav-link sale-link" href="#" id="saleDropdown" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
@@ -49,16 +54,18 @@
                             <li><a class="dropdown-item" href="#">Giảm 20%</a></li>
                             <li>
                                 <hr class="dropdown-divider">
-                            </li>
+                            </li> <!-- Thanh gạch ngang phân cách -->
                             <li><a class="dropdown-item" href="#">Giảm 30%</a></li>
                             <li><a class="dropdown-item" href="#">Giảm 40%</a></li>
-                            <li><a class="dropdown-item fw-bold text-danger" title="Đặc biệt" href="#">SIÊU SALE 50%</a>
-                            </li>
+                            <li><a class="dropdown-item" title="Đặc biệt" class="dropdown-item fw-bold text-danger"
+                                    href="#">SIÊU SALE 50%</a></li>
                         </ul>
                     </li>
+
                     <li class="nav-item dropdown">
-                       <a class="nav-link" href="sanpham.html" role="button">
-                         SẢN PHẨM <i class="fa fa-chevron-down ms-1"></i>
+                        <a class="nav-link" href="sanpham.html" id="productDropdown" role="button"
+                            aria-expanded="false">
+                            SẢN PHẨM <i class="fa fa-chevron-down ms-1"></i>
                         </a>
                         <ul class="dropdown-menu border-0 shadow-sm" aria-labelledby="productDropdown">
                             <li><a class="dropdown-item" href="sanpham.html?loai=dam">ĐẦM</a></li>
@@ -71,28 +78,39 @@
                             <li><a class="dropdown-item" href="sanpham.html?loai=giay">GIÀY</a></li>
                         </ul>
                     </li>
-                 
+
                     <li><a href="TinTuc/tintuc.html">TIN TỨC</a></li>
-                    <li><a href="vechungtoi.html" class="active-menu">VỀ CHÚNG TÔI</a></li>
+
+                    <li><a href="vechungtoi.html">VỀ CHÚNG TÔI</a></li>
                     <li><a href="Bosuutap/Bosuutap.html">BỘ SƯU TẬP</a></li>
                 </ul>
             </nav>
 
+            <!-- Icon -->
             <div class="icons d-flex align-items-center">
+
+                <!-- Wishlist -->
                 <div class="icon">
                     <a href="YeuThich/yeuthich.html" title="Yêu thích">
                         <i class="fa-regular fa-heart"></i>
                         <span id="wishlist-badge" class="badge-count">0</span>
                     </a>
                 </div>
+
+                <!-- Cart -->
                 <div class="icon">
                     <a href="GioHang/giohang.html" title="Giỏ hàng">
                         <i class="fa-solid fa-bag-shopping"></i>
                         <span id="cart-badge" class="badge-count">0</span>
                     </a>
                 </div>
-                <div class="icon"><a href="TaiKhoan/taikhoan.html" title="Tài khoản"><i
-                            class="fa-regular fa-user"></i></a></div>
+
+                <!-- User (Login) -->
+                <div class="icon">
+                    <a href="TaiKhoan/taikhoan.html" title="Tài khoản">
+                        <i class="fa-regular fa-user"></i>
+                    </a>
+                </div>
             </div>
         </div>
     </header>
@@ -181,13 +199,13 @@
             <div class="container">
                 <div class="row text-center mb-5 reveal-item">
                     <div class="col-lg-8 mx-auto mission-heading-wrapper">
-    <span class="section-kicker">Định hướng thương hiệu</span>
+                        <span class="section-kicker">Định hướng thương hiệu</span>
 
-    <h2 class="about-heading mission-heading">
-        Sứ mệnh, tầm nhìn<br>
-        và giá trị cốt lõi
-    </h2>
-</div>
+                        <h2 class="about-heading mission-heading">
+                            Sứ mệnh, tầm nhìn<br>
+                            và giá trị cốt lõi
+                        </h2>
+                    </div>
                 </div>
                 <div class="row g-4">
                     <div class="col-md-4 reveal-item">

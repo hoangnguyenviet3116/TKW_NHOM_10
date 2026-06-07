@@ -19,7 +19,7 @@ body {
     width: 100%;
     z-index: 2000;
     background-color: #ffffff;
-    height: 80px;
+    height: 70px;
     /* Thiết lập chiều cao cố định cho menu */
     margin: 0;
 }
@@ -27,7 +27,7 @@ body {
 /* Phần main sẽ tự động co giãn để lấp đầy khoảng trống dư thừa */
 main {
     flex: 1 0 auto;
-    margin-top: 80px;
+    margin-top: 70px;
 }
 
 /* Giữ Footer luôn ở dưới cùng và không bị co lại */
@@ -54,36 +54,29 @@ main {
 }
 
 
-
 /* HEADER */
 .header {
-    position: fixed;
+position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     z-index: 2000;
     background-color: #ffffff;
     transition: transform 0.3s ease-in-out;
-    transform: translateY(0);
-    /* Mặc định là hiển thị */
-    box-shadow: 0 4px 20px rgba(116, 116, 116, 0.1);
+    transform: translateY(0); /* Mặc định là hiển thị */
+     box-shadow: 0 4px 20px rgba(116, 116, 116, 0.1);
 }
 
 .header-hidden {
     transform: translateY(-100%);
 }
-
 .header .container-fluid {
-    padding-left: 60px;
-    /* Khoảng cách bên trái cho Logo */
-    padding-right: 60px;
-    /* Khoảng cách bên phải cho Icons */
+    padding-left: 60px;  /* Khoảng cách bên trái cho Logo */
+    padding-right: 60px; /* Khoảng cách bên phải cho Icons */
 }
-
 /* LOGO */
 .logo img {
-    height: 70px;
-    /* chỉnh kích thước */
+    height: 70px;   /* chỉnh kích thước */
     object-fit: contain;
 }
 
@@ -103,11 +96,13 @@ main {
 }
 
 .menu a:hover {
-    transform: scale(1.1);
-    /* phóng to 10% */
+    transform: scale(1.1); /* phóng to 10% */
     color: #c9a45c;
 }
 
+.menu ul li a.active {
+    color: #c9a45c !important;
+}
 
 /* ICON */
 .icons {
@@ -119,7 +114,6 @@ main {
     cursor: pointer;
     font-size: 18px;
 }
-
 .icons .icon a {
     color: #000;
     transition: 0.3s;
@@ -132,10 +126,8 @@ main {
 /* Số lượng mặt hàng trên icon yêu thích */
 .badge-count {
     position: absolute;
-    top: -8px;
-    /* Đẩy lên phía trên icon */
-    right: -10px;
-    /* Đẩy sang bên phải icon */
+    top: -8px;       /* Đẩy lên phía trên icon */
+    right: -10px;    /* Đẩy sang bên phải icon */
     background-color: #c9a45c;
     color: #ffffff;
     font-size: 10px;
@@ -174,20 +166,16 @@ main {
 
 .dropdown-item:hover {
     background-color: #f8f9fa;
-    padding-left: 25px;
-    /* Hiệu ứng dịch chuyển nhẹ */
+    padding-left: 25px; /* Hiệu ứng dịch chuyển nhẹ */
 }
 
-/*SẢN PHẨM*/
+/*Sản phẩm*/
 /* Tùy chỉnh chung cho các Dropdown Menu */
 .dropdown-menu {
-    border-radius: 12px;
-    /* Bo góc menu thả xuống */
+    border-radius: 12px; /* Bo góc menu thả xuống */
     padding: 10px 0;
-    margin-top: 15px !important;
-    /* Khoảng cách từ menu xuống dropdown */
-    animation: fadeIn 0.3s ease;
-    /* Hiệu ứng hiện ra nhẹ nhàng */
+    margin-top: 15px !important; /* Khoảng cách từ menu xuống dropdown */
+    animation: fadeIn 0.3s ease; /* Hiệu ứng hiện ra nhẹ nhàng */
 }
 
 .dropdown-item {
@@ -199,25 +187,15 @@ main {
 }
 
 .dropdown-item:hover {
-    background-color: #f8f9fa;
-    /* Màu nền khi di chuột vào */
-    color: #c9a45c;
-    /* Màu vàng kim loại sang trọng */
-    padding-left: 30px;
-    /* Hiệu ứng dịch chữ nhẹ khi hover */
+    background-color: #f8f9fa; /* Màu nền khi di chuột vào */
+    color: #c9a45c; /* Màu vàng kim loại sang trọng */
+    padding-left: 30px; /* Hiệu ứng dịch chữ nhẹ khi hover */
 }
 
 /* Hiệu ứng hiện menu mượt mà */
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 /* Hiệu ứng hiển thị Dropdown khi di chuột qua (Hover) */
@@ -229,7 +207,7 @@ main {
         transform: translateY(0);
         transition: all 0.3s ease;
     }
-
+    
     .dropdown-menu {
         display: block;
         opacity: 0;
@@ -246,8 +224,7 @@ main {
 }
 
 .dropdown:hover .fa-chevron-down {
-    transform: rotate(180deg);
-    /* Xoay mũi tên khi mở menu */
+    transform: rotate(180deg); /* Xoay mũi tên khi mở menu */
 }
 
 
