@@ -11,41 +11,55 @@
 </head>
 <body>
 
-    <header class="header border-bottom sticky-top bg-white">
-    <nav class="navbar navbar-expand-lg py-2">
-        <div class="container-fluid align-items-center">
-            
-            <!-- 1. LOGO -->
-            <a class="navbar-brand logo m-0" href="trangchu.html">
-                <img src="images/logo.png" alt="Bathora" height="40">
-            </a>
+<header class="header border-bottom sticky-top bg-white">
+<nav class="navbar navbar-expand-lg py-2">
+    <div class="container-fluid align-items-center">
 
-            <!-- 2. ICONS & NÚT HAMBURGER (Mobile) -->
-            <div class="d-flex align-items-center order-lg-3">
-                <div class="icons d-flex align-items-center me-3 me-lg-0 gap-3">
-                    <a href="YeuThich/yeuthich.html" class="text-dark text-decoration-none position-relative">
-                        <i class="fa-regular fa-heart fs-5"></i>
-                        <span id="wishlist-badge" class="badge-count">0</span>
-                    </a>
-                    <a href="GioHang/giohang.html" class="text-dark text-decoration-none position-relative">
-                        <i class="fa-solid fa-bag-shopping fs-5"></i>
-                        <span id="cart-badge" class="badge-count d-none">0</span>
-                    </a>
-                    <a href="login.html" class="text-dark text-decoration-none d-none d-lg-block">
-                        <i class="fa-regular fa-user fs-5"></i>
-                    </a>
-                </div>
-                <!-- Nút 3 gạch xuất hiện trên điện thoại -->
-                <button class="navbar-toggler border-0 shadow-none p-0 ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
-                    <i class="fas fa-bars fs-2"></i>
-                </button>
+        <a class="navbar-brand logo m-0" href="trangchu.html">
+            <img src="images/logo.png" alt="Bathora" height="40">
+        </a>
+
+        <div class="d-flex align-items-center order-lg-3">
+            <div class="icons d-flex align-items-center me-3 me-lg-0 gap-3">
+
+                <a href="YeuThich/yeuthich.html"
+                   class="text-dark text-decoration-none position-relative">
+                    <i class="fa-regular fa-heart fs-5"></i>
+                    <span id="wishlist-badge"
+                          class="badge-count d-none">0</span>
+                </a>
+
+                <a href="GioHang/giohang.html"
+                   class="text-dark text-decoration-none position-relative">
+                    <i class="fa-solid fa-bag-shopping fs-5"></i>
+                    <span id="cart-badge"
+                          class="badge-count d-none">0</span>
+                </a>
+
+                <a href="TaiKhoan/taikhoan.html"
+                   class="text-dark text-decoration-none d-none d-lg-block">
+                    <i class="fa-regular fa-user fs-5"></i>
+                </a>
             </div>
 
-            <!-- 3. MENU CHÍNH (Gập gọn khi ở trên Mobile) -->
-            <div class="collapse navbar-collapse order-lg-2 justify-content-center" id="mainNav">
-                <ul class="navbar-nav menu text-center gap-lg-4 mt-3 mt-lg-0 fw-medium">
-                    <li class="nav-item"><a class="nav-link" href="trangchu.html">TRANG CHỦ</a></li>
-                    
+            <button class="navbar-toggler border-0 shadow-none p-0 ms-2"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#mainNav">
+                <i class="fas fa-bars fs-2"></i>
+            </button>
+        </div>
+
+        <div class="collapse navbar-collapse order-lg-2 justify-content-center"
+             id="mainNav">
+
+            <ul class="navbar-nav menu text-center gap-lg-4 mt-3 mt-lg-0 fw-medium">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="trangchu.html">
+                        TRANG CHỦ
+                    </a>
+                </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link sale-link" href="#" data-bs-toggle="dropdown">SALE <i class="fa fa-chevron-down ms-1" style="font-size:10px"></i></a>
                         <ul class="dropdown-menu border-0 shadow-sm text-center">
@@ -56,7 +70,7 @@
                     </li>
                     
                     <li class="nav-item dropdown">
-                        <a class="nav-link" href="#" data-bs-toggle="dropdown">SẢN PHẨM <i class="fa fa-chevron-down ms-1" style="font-size:10px"></i></a>
+                        <a class="nav-link active" href="sanpham.html" id="productDropdown" role="button" data-bs-toggle="dropdown">SẢN PHẨM <i class="fa fa-chevron-down ms-1"></i></a>
                         <ul class="dropdown-menu border-0 shadow-sm">
                             <!-- Đã xóa "Tất cả sản phẩm" -->
                             <li><a class="dropdown-item py-2" href="sanpham.html?loai=dam">ĐẦM</a></li>
@@ -70,15 +84,21 @@
                         </ul>
                     </li>
 <li class="nav-item">
-    <a class="nav-link" href="Bosuutap.html">BỘ SƯU TẬP</a>
+    <a class="nav-link" href="TinTuc/tintuc.html">
+        TIN TỨC
+    </a>
 </li>
 
 <li class="nav-item">
-    <a class="nav-link" href="TinTuc/tintuc.html">TIN TỨC</a>
+    <a class="nav-link" href="vechungtoi.html">
+        VỀ CHÚNG TÔI
+    </a>
 </li>
 
 <li class="nav-item">
-    <a class="nav-link" href="vechungtoi.html">VỀ CHÚNG TÔI</a>
+    <a class="nav-link" href="Bosuutap/Bosuutap.html">
+        BỘ SƯU TẬP
+    </a>
 </li>
 
 <li class="nav-item d-lg-none mt-2 mb-3">
@@ -87,6 +107,12 @@
         Đăng nhập / Đăng ký
     </a>
 </li>
+
+</ul>
+</div>
+</div>
+</nav>
+</header>
             </div>
 
         </div>

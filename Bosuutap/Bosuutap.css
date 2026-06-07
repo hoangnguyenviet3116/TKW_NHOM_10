@@ -43,13 +43,29 @@ body {
 }
 .logo img { height: 60px; object-fit: contain; }
 .menu ul { list-style: none; display: flex; gap: 28px; margin: 0; }
-.menu a {
-  text-decoration: none; color: #222;
-  font-weight: 600; font-size: 13px;
-  letter-spacing: 0.05em;
-  transition: color 0.3s;
+.menu a, 
+.menu .nav-link {
+    text-decoration: none;
+    color: #222 !important; /* Màu đen/xám ban đầu */
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.05em;
+    display: inline-block !important; /* Bắt buộc để có thể scale phóng to */
+    transition: transform 0.3s ease, color 0.3s ease !important; /* Hiệu ứng mượt mà */
 }
-.menu a:hover, .menu a.active { color: var(--gold); }
+
+/* Hiệu ứng khi di chuột vào (Hover): Vừa đổi màu vàng vừa phóng to 10% */
+.menu a:hover,
+.menu .nav-link:hover {
+    transform: scale(1.1) !important; 
+    color: #c9a45c !important; 
+}
+
+/*Giữ nguyên màu vàng cho mục đang kích hoạt (active) nhưng KHÔNG phóng to */
+.menu a.active,
+.menu .nav-link.active {
+    color: #c9a45c !important;
+}
 .dropdown:hover .dropdown-menu { display: block !important; opacity: 1 !important; visibility: visible !important; transform: translateY(0) !important; }
 .dropdown-menu {
   display: block; opacity: 0; visibility: hidden;
@@ -422,7 +438,7 @@ body {
 }
 .contact-item i { font-size: 24px; }
 .contact-item span { font-weight: bold; font-size: 15px; margin-left: 8px; }
-.contact-item:hover { width: 70px; background: #0084ff; }
+.contact-item:hover { width: 70px; background: #c9a45c; }
 
 /* ===== BACK TO TOP ===== */
 #backToTop {
