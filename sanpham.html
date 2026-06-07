@@ -1,61 +1,205 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
     <title>Sản phẩm | BATHORA DRESS</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Manrope:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="sanpham.css">
 </head>
+
 <body>
 
-    <header class="header">
-        <div class="container-fluid d-flex align-items-center justify-content-between">
-            <div class="logo"><a href="trangchu.html"><img src="images/logo.png" alt="Bathora"></a></div>
-            <nav class="menu">
-                <ul class="d-flex align-items-center mb-0">
-                    <li><a href="trangchu.html">TRANG CHỦ</a></li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link sale-link" href="#" id="saleDropdown" role="button" data-bs-toggle="dropdown">SALE <i class="fa fa-chevron-down ms-1"></i></a>
-                        <ul class="dropdown-menu border-0 shadow-sm">
-                            <li><a class="dropdown-item" href="#">Giảm 5%</a></li>
-                            <li><a class="dropdown-item" href="#">Giảm 10%</a></li>
-                            <li><a class="dropdown-item" href="#">Giảm 15%</a></li>
-                            <li><a class="dropdown-item" href="#">Giảm 20%</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#">Giảm 30%</a></li>
-                            <li><a class="dropdown-item" href="#">Giảm 40%</a></li>
-                            <li><a class="dropdown-item" href="#">SIÊU SALE 50%</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link" href="sanpham.html" id="productDropdown" role="button" data-bs-toggle="dropdown">SẢN PHẨM <i class="fa fa-chevron-down ms-1"></i></a>
-                        <ul class="dropdown-menu border-0 shadow-sm">
-                            <li><a class="dropdown-item" href="sanpham.html?loai=tatca">TẤT CẢ SẢN PHẨM</a></li>
-                            <li><a class="dropdown-item" href="sanpham.html?loai=dam">ĐẦM</a></li>
-                            <li><a class="dropdown-item" href="sanpham.html?loai=ao">ÁO</a></li>
-                            <li><a class="dropdown-item" href="sanpham.html?loai=quan">QUẦN</a></li>
-                            <li><a class="dropdown-item" href="sanpham.html?loai=chanvay">CHÂN VÁY</a></li>
-                            <li><a class="dropdown-item" href="sanpham.html?loai=aokhoac">ÁO KHOÁC</a></li>
-                            <li><a class="dropdown-item" href="sanpham.html?loai=tuixach">TÚI XÁCH</a></li>
-                            <li><a class="dropdown-item" href="sanpham.html?loai=phukien">PHỤ KIỆN</a></li>
-                            <li><a class="dropdown-item" href="sanpham.html?loai=giay">GIÀY</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="TinTuc/tintuc.html">TIN TỨC</a></li>
-                    <li><a href="vechungtoi.html">VỀ CHÚNG TÔI</a></li>
-                </ul>
-            </nav>
-            <div class="icons d-flex align-items-center">
-                <div class="icon"><a href="YeuThich/yeuthich.html"><i class="fa-regular fa-heart"></i><span id="wishlist-badge" class="badge-count">0</span></a></div>
-                <div class="icon"><a href="GioHang/giohang.html"><i class="fa-solid fa-bag-shopping"></i><span id="cart-badge" class="badge-count d-none">0</span></a></div>
-                <div class="icon"><a href="login.html"><i class="fa-regular fa-user"></i></a></div>
+ <header class="header border-bottom sticky-top bg-white">
+        <nav class="navbar navbar-expand-lg py-2">
+            <div class="container-fluid align-items-center">
+
+                <a class="navbar-brand logo m-0" href="trangchu.html">
+                    <img src="images/logo.png" alt="Bathora" height="40">
+                </a>
+
+                <div class="icons d-flex align-items-center order-lg-3">
+                    <div class="icon">
+                        <a href="YeuThich/yeuthich.html" title="Yêu thích">
+                            <i class="fa-regular fa-heart"></i>
+                            <span id="wishlist-badge" class="badge-count">0</span>
+                        </a>
+                    </div>
+
+                    <div class="icon">
+                        <a href="GioHang/giohang.html" title="Giỏ hàng">
+                            <i class="fa-solid fa-bag-shopping"></i>
+                            <span id="cart-badge" class="badge-count">0</span>
+                        </a>
+                    </div>
+
+                    <div class="icon">
+                        <a href="TaiKhoan/taikhoan.html" title="Tài khoản">
+                            <i class="fa-regular fa-user"></i>
+                        </a>
+                    </div>
+
+                    <button class="btn-hamburgerMenu" id="openMobileMenuBtn" title="Mở menu">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                </div>
+
+                <div class="collapse navbar-collapse justify-content-center order-lg-2 menu" id="navbarNav">
+                    <ul class="navbar-nav mb-0">
+                        <li class="nav-item"><a class="nav-link" href="trangchu.html">TRANG CHỦ</a></li>
+                        
+                        <li class="nav-item dropdown">
+                            <a class="nav-link sale-link dropdown-toggle" href="#" id="saleDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                SALE
+                            </a>
+                            <ul class="dropdown-menu border-0 shadow-sm" aria-labelledby="saleDropdown">
+                                <li><a class="dropdown-item" href="#">Giảm 5%</a></li>
+                                <li><a class="dropdown-item" href="#">Giảm 10%</a></li>
+                                <li><a class="dropdown-item" href="#">Giảm 15%</a></li>
+                                <li><a class="dropdown-item" href="#">Giảm 20%</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="#">Giảm 30%</a></li>
+                                <li><a class="dropdown-item" href="#">Giảm 40%</a></li>
+                                <li><a class="dropdown-item fw-bold text-danger" href="#">SIÊU SALE 50%</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle active" href="sanpham.html" id="productDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                SẢN PHẨM
+                            </a>
+                            <ul class="dropdown-menu border-0 shadow-sm" aria-labelledby="productDropdown">
+                                <li><a class="dropdown-item" href="sanpham.html">TẤT CẢ SẢN PHẨM</a></li>
+                                <li><a class="dropdown-item" href="sanpham.html?loai=dam">ĐẦM</a></li>
+                                <li><a class="dropdown-item" href="sanpham.html?loai=ao">ÁO</a></li>
+                                <li><a class="dropdown-item" href="sanpham.html?loai=quan">QUẦN</a></li>
+                                <li><a class="dropdown-item" href="sanpham.html?loai=chanvay">CHÂN VÁY</a></li>
+                                <li><a class="dropdown-item" href="sanpham.html?loai=aokhoac">ÁO KHOÁC</a></li>
+                                <li><a class="dropdown-item" href="sanpham.html?loai=tuixach">TÚI XÁCH</a></li>
+                                <li><a class="dropdown-item" href="sanpham.html?loai=phukien">PHỤ KIỆN</a></li>
+                                <li><a class="dropdown-item" href="sanpham.html?loai=giay">GIÀY</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item"><a class="nav-link" href="TinTuc/tintuc.html">TIN TỨC</a></li>
+                        <li class="nav-item"><a class="nav-link" href="vechungtoi.html">VỀ CHÚNG TÔI</a></li>
+                        <li class="nav-item"><a class="nav-link" href="Bosuutap/Bosuutap.html">BỘ SƯU TẬP</a></li>
+                    </ul>
+                </div>
+
             </div>
-        </div>
+        </nav>
     </header>
 
+    <div class="mobile-sidebar-popup" id="mobileMenuPopup">
+        <div class="sidebar-popup-header d-flex justify-content-between align-items-center">
+            <div class="sidebar-popup-logo">
+                <img src="images/logo.png" alt="Bathora Logo" height="35">
+            </div>
+            <button class="btn-close-sidebar-popup" id="closeMobileMenuBtn">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+        
+        <div class="sidebar-popup-body">
+            <ul class="mobile-popup-menu-list">
+                <li><a href="trangchu.html">TRANG CHỦ</a></li>
+                
+                <li class="mobile-dropdown">
+                    <a href="javascript:void(0);" class="mobile-dropdown-toggle">
+                        SALE <i class="fa fa-chevron-down ms-1" style="font-size: 11px;"></i>
+                    </a>
+                    <ul class="mobile-submenu">
+                        <li><a href="#">Giảm 5%</a></li>
+                        <li><a href="#">Giảm 10%</a></li>
+                        <li><a href="#">Giảm 15%</a></li>
+                        <li><a href="#">Giảm 20%</a></li>
+                        <li><a href="#">Giảm 30%</a></li>
+                        <li><a href="#">Giảm 40%</a></li>
+                        <li><a href="#" class="text-danger fw-bold">SIÊU SALE 50%</a></li>
+                    </ul>
+                </li>
+
+                <li class="mobile-dropdown">
+                    <a href="javascript:void(0);" class="mobile-dropdown-toggle active">
+                        SẢN PHẨM <i class="fa fa-chevron-down ms-1" style="font-size: 11px;"></i>
+                    </a>
+                    <ul class="mobile-submenu" style="display: block;">
+                        <li><a href="sanpham.html">TẤT CẢ SẢN PHẨM</a></li>
+                        <li><a href="sanpham.html?loai=dam">ĐẦM</a></li>
+                        <li><a href="sanpham.html?loai=ao">ÁO</a></li>
+                        <li><a href="sanpham.html?loai=quan">QUẦN</a></li>
+                        <li><a href="sanpham.html?loai=chanvay">CHÂN VÁY</a></li>
+                        <li><a href="sanpham.html?loai=aokhoac">ÁO KHOÁC</a></li>
+                        <li><a href="sanpham.html?loai=tuixach">TÚI XÁCH</a></li>
+                        <li><a href="sanpham.html?loai=phukien">PHỤ KIỆN</a></li>
+                        <li><a href="sanpham.html?loai=giay">GIÀY</a></li>
+                    </ul>
+                </li>
+
+                <li><a href="TinTuc/tintuc.html">TIN TỨC</a></li>
+                <li><a href="vechungtoi.html">VỀ CHÚNG TÔI</a></li>
+                <li><a href="Bosuutap/Bosuutap.html">BỘ SƯU TẬP</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="sidebar-popup-overlay" id="sidebarPopupOverlay"></div>
+    <div class="mobile-sidebar-popup" id="mobileMenuPopup">
+        <div class="sidebar-popup-header d-flex justify-content-between align-items-center">
+            <div class="sidebar-popup-logo">
+                <img src="images/logo.png" alt="Bathora Logo" height="35">
+            </div>
+            <button class="btn-close-sidebar-popup" id="closeMobileMenuBtn">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+        
+        <div class="sidebar-popup-body">
+            <ul class="mobile-popup-menu-list">
+                <li><a href="trangchu.html">TRANG CHỦ</a></li>
+                
+                <li class="mobile-dropdown">
+                    <a href="javascript:void(0);" class="mobile-dropdown-toggle active">
+                        SẢN PHẨM <i class="fa fa-chevron-down ms-1" style="font-size: 11px;"></i>
+                    </a>
+                    <ul class="mobile-submenu" style="display: block;"> <li><a href="sanpham.html">TẤT CẢ SẢN PHẨM</a></li>
+                        <li><a href="sanpham.html?loai=dam">ĐẦM</a></li>
+                        <li><a href="sanpham.html?loai=ao">ÁO</a></li>
+                        <li><a href="sanpham.html?loai=quan">QUẦN</a></li>
+                        <li><a href="sanpham.html?loai=chanvay">CHÂN VÁY</a></li>
+                        <li><a href="sanpham.html?loai=aokhoac">ÁO KHOÁC</a></li>
+                        <li><a href="sanpham.html?loai=tuixach">TÚI XÁCH</a></li>
+                        <li><a href="sanpham.html?loai=phukien">PHỤ KIỆN</a></li>
+                        <li><a href="sanpham.html?loai=giay">GIÀY</a></li>
+                    </ul>
+                </li>
+
+                <li class="mobile-dropdown">
+                    <a href="javascript:void(0);" class="mobile-dropdown-toggle">
+                        SALE <i class="fa fa-chevron-down ms-1" style="font-size: 11px;"></i>
+                    </a>
+                    <ul class="mobile-submenu">
+                        <li><a href="#">Giảm 5%</a></li>
+                        <li><a href="#">Giảm 10%</a></li>
+                        <li><a href="#">Giảm 20%</a></li>
+                        <li><a href="#" class="text-danger fw-bold">SIÊU SALE 50%</a></li>
+                    </ul>
+                </li>
+
+                <li><a href="TinTuc/tintuc.html">TIN TỨC</a></li>
+                <li><a href="vechungtoi.html">VỀ CHÚNG TÔI</a></li>
+                <li><a href="Bosuutap/Bosuutap.html">BỘ SƯU TẬP</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="sidebar-popup-overlay" id="sidebarPopupOverlay"></div>
     <main class="product-page">
         <section class="breadcrumb-bg cart-breadcrumb">
             <div class="container">
@@ -71,7 +215,8 @@
 
         <div class="container py-4">
             <div class="d-md-none mb-3 text-center">
-                <button class="btn btn-dark w-100 py-2" id="openMobileFilter"><i class="fas fa-filter"></i> Lọc & Sắp xếp</button>
+                <button class="btn btn-dark w-100 py-2" id="openMobileFilter"><i class="fas fa-filter"></i> Lọc & Sắp
+                    xếp</button>
             </div>
 
             <div class="d-flex gap-4">
@@ -80,7 +225,7 @@
                         <h4 class="mb-0">BỘ LỌC</h4>
                         <button class="btn-close" id="closeMobileFilter"></button>
                     </div>
-                    
+
                     <div class="filter-group">
                         <h3 class="filter-title">Danh mục sản phẩm</h3>
                         <div class="filter-list">
@@ -104,36 +249,41 @@
                             <label><input type="radio" name="price" value="over1000"> Trên 1,000,000đ</label>
                         </div>
                     </div>
-<div class="filter-group">
-    <h3 class="filter-title">Kích cỡ (Size)</h3>
-    <div class="filter-list size-grid d-flex flex-wrap gap-3">
-        <label><input type="checkbox" class="size-filter" value="S"> S</label>
-        <label><input type="checkbox" class="size-filter" value="M"> M</label>
-        <label><input type="checkbox" class="size-filter" value="L"> L</label>
-        <label><input type="checkbox" class="size-filter" value="XL"> XL</label>
-    </div>
-</div>
+                    <div class="filter-group">
+                        <h3 class="filter-title">Kích cỡ (Size)</h3>
+                        <div class="filter-list size-grid d-flex flex-wrap gap-3">
+                            <label><input type="checkbox" class="size-filter" value="S"> S</label>
+                            <label><input type="checkbox" class="size-filter" value="M"> M</label>
+                            <label><input type="checkbox" class="size-filter" value="L"> L</label>
+                            <label><input type="checkbox" class="size-filter" value="XL"> XL</label>
+                        </div>
+                    </div>
 
-<div class="filter-group">
-    <h3 class="filter-title">MÀU SẮC</h3> 
-    <div class="filter-list d-flex flex-wrap gap-3">
-        <label><input type="checkbox" value="Trắng" class="color-filter"> Trắng</label>
-        <label><input type="checkbox" value="Đen" class="color-filter"> Đen</label>
-        <label><input type="checkbox" value="Be" class="color-filter"> Be / Kem</label>
-        <label><input type="checkbox" value="Xám" class="color-filter"> Xám / Ghi</label>
-        <label><input type="checkbox" value="Xanh" class="color-filter"> Xanh</label>
-        <label><input type="checkbox" value="Hồng" class="color-filter"> Hồng</label>
-        <label><input type="checkbox" value="Đỏ" class="color-filter"> Đỏ</label>
-        <label><input type="checkbox" value="Nâu" class="color-filter"> Nâu</label>
-    </div>
-</div>
+                    <div class="filter-group">
+                        <h3 class="filter-title">MÀU SẮC</h3>
+                        <div class="filter-list d-flex flex-wrap gap-3">
+                            <label><input type="checkbox" value="Trắng" class="color-filter"> Trắng</label>
+                            <label><input type="checkbox" value="Đen" class="color-filter"> Đen</label>
+                            <label><input type="checkbox" value="Be" class="color-filter"> Be / Kem</label>
+                            <label><input type="checkbox" value="Xám" class="color-filter"> Xám / Ghi</label>
+                            <label><input type="checkbox" value="Xanh" class="color-filter"> Xanh</label>
+                            <label><input type="checkbox" value="Hồng" class="color-filter"> Hồng</label>
+                            <label><input type="checkbox" value="Đỏ" class="color-filter"> Đỏ</label>
+                            <label><input type="checkbox" value="Nâu" class="color-filter"> Nâu</label>
+                            <label><input type="checkbox" value="Vàng" class="color-filter"> Vàng</label>
+                        </div>
+                    </div>
                     <button class="btn btn-outline-dark w-100 mt-3" id="applyFilterBtn">ÁP DỤNG MỘT LÚC</button>
                 </aside>
 
                 <div class="product-main flex-grow-1">
                     <div class="search-container mb-4">
-    <input type="text" id="searchInput" class="form-control" placeholder="🔍 Tìm kiếm sản phẩm theo tên...">
-</div>
+                        <div class="input-group">
+                            <input type="text" id="searchInput" class="form-control custom-search-input"
+                                placeholder="Bạn muốn tìm sản phẩm gì ?">
+                            <button class="btn custom-search-btn" id="searchNowBtn" type="button">TÌM KIẾM NGAY</button>
+                        </div>
+                    </div>
                     <div class="sort-bar d-none d-md-flex gap-3 mb-4 align-items-center">
                         <span class="fw-bold text-uppercase" style="font-size:13px; color:#777;">Sắp xếp theo:</span>
                         <a href="#" class="sort-link active" data-sort="new">Mới nhất</a>
@@ -144,7 +294,7 @@
                     <div class="product-grid" id="productGrid"></div>
 
                     <div class="pagination" id="paginationContainer">
-    </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -155,7 +305,8 @@
             <div class="row g-4 justify-content-center">
                 <div class="col-lg-3 col-md-6">
                     <h5 class="footer-title">BATHORA DRESS</h5>
-                    <p class="footer-text">Tại Bathora, chúng tôi tin rằng thời trang không chỉ là những bộ trang phục khoác lên mình, mà là ngôn ngữ tôn vinh giá trị nội tại của người phụ nữ hiện đại.</p>
+                    <p class="footer-text">Tại Bathora, chúng tôi tin rằng thời trang không chỉ là những bộ trang phục
+                        khoác lên mình, mà là ngôn ngữ tôn vinh giá trị nội tại của người phụ nữ hiện đại.</p>
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <h5 class="footer-title">THEO DÕI CHÚNG TÔI</h5>
@@ -184,11 +335,14 @@
                 </div>
             </div>
         </div>
-        <div class="copyright"><div class="container text-center"><small>© 2026 BATHORA. Powered by NHOM10</small></div></div>
+        <div class="copyright">
+            <div class="container text-center"><small>© 2026 BATHORA. Powered by NHOM10</small></div>
+        </div>
     </footer>
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="sanpham.js"></script>
 </body>
+
 </html>

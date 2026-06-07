@@ -1,5 +1,5 @@
 body {
-    font-family:'Manrope', sans-serif;
+    font-family: 'Manrope', sans-serif;
     padding-top: 70px;
 }
 
@@ -12,7 +12,7 @@ body {
     z-index: 2000;
     background-color: #ffffff;
     transition: transform 0.3s ease-in-out;
-    transform: translateY(0); 
+    transform: translateY(0);
     box-shadow: 0 4px 20px rgba(116, 116, 116, 0.1);
     flex-shrink: 0;
 }
@@ -22,13 +22,13 @@ body {
 }
 
 .header .container-fluid {
-    padding-left: 60px;  
-    padding-right: 60px; 
+    padding-left: 60px;
+    padding-right: 60px;
 }
 
 /* LOGO */
 .logo img {
-    height: 70px;   
+    height: 70px;
     object-fit: contain;
 }
 
@@ -50,8 +50,13 @@ body {
 }
 
 .menu a:hover {
-    transform: scale(1.1); 
+    transform: scale(1.1);
     color: #c9a45c;
+}
+
+.menu .nav-link.active,
+.menu a.active { 
+    color: #c9a45c !important; 
 }
 
 /* ICONS (GIỎ HÀNG / YÊU THÍCH) */
@@ -76,8 +81,8 @@ body {
 
 .badge-count {
     position: absolute;
-    top: -8px;       
-    right: -10px;    
+    top: -8px;
+    right: -10px;
     background-color: #c9a45c;
     color: #ffffff;
     font-size: 10px;
@@ -98,12 +103,12 @@ body {
 
 /* DROPDOWN MENU CAO CẤP */
 .dropdown-menu {
-    border-radius: 12px !important; 
+    border-radius: 12px !important;
     padding: 10px 0;
-    margin-top: 15px !important; 
-    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    margin-top: 15px !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
     border: none;
-    animation: fadeIn 0.3s ease; 
+    animation: fadeIn 0.3s ease;
 }
 
 .dropdown-item {
@@ -115,14 +120,21 @@ body {
 }
 
 .dropdown-item:hover {
-    background-color: #f8f9fa; 
-    color: #c9a45c; 
-    padding-left: 30px; 
+    background-color: #f8f9fa;
+    color: #c9a45c;
+    padding-left: 30px;
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* Hiển thị mượt mà khi Hover chuột */
@@ -134,7 +146,7 @@ body {
         transform: translateY(0);
         transition: all 0.3s ease;
     }
-    
+
     .dropdown-menu {
         display: block;
         opacity: 0;
@@ -150,7 +162,7 @@ body {
 }
 
 .dropdown:hover .fa-chevron-down {
-    transform: rotate(180deg); 
+    transform: rotate(180deg);
 }
 
 /* RESPONSIVE CHO MOBILE */
@@ -159,6 +171,7 @@ body {
         padding-left: 20px;
         padding-right: 20px;
     }
+
     main {
         margin-top: 70px;
     }
@@ -182,7 +195,7 @@ body {
     left: -10%;
     width: 300px;
     height: 300px;
-    background: radial-gradient(circle, rgba(0,0,0,0.05), transparent);
+    background: radial-gradient(circle, rgba(0, 0, 0, 0.05), transparent);
     filter: blur(80px);
 }
 
@@ -223,7 +236,7 @@ body {
 }
 
 /* dấu phân cách */
-.breadcrumb-item + .breadcrumb-item::before {
+.breadcrumb-item+.breadcrumb-item::before {
     content: "/";
     color: #ccc;
 }
@@ -263,6 +276,7 @@ body {
         opacity: 0;
         transform: translateY(15px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -275,298 +289,881 @@ body {
     .breadcrumb-bg {
         padding: 20px 0;
     }
+
     .page-title {
         font-size: 22px;
     }
 }
+
 /* Nút phân loại */
 .btn-outline-dark {
     border-color: #dee2e6;
     color: #6c757d;
 }
 
-.btn-outline-dark.active, .btn-outline-dark:hover {
+.btn-outline-dark.active,
+.btn-outline-dark:hover {
     background-color: #212529;
     border-color: #212529;
     color: #fff;
 }
 
 
+/* ========================================================
+   BATHORA EXACT TAGS FILTER - LUXURY STYLE
+   ======================================================== */
 
-
-/*TIN MỚI NHẤT*/
-.blog-filter-luxury {
-    border-bottom: 1px solid #eee;
+.blog-filter-wrapper {
+    width: 100%;
+    border-bottom: 1px solid #eaeaea;
+    /* Đường gạch nền siêu mảnh tinh tế */
+    padding-bottom: 2px;
+    margin-top: 10px;
 }
+
+.blog-filter-luxury {
+    display: flex;
+    justify-content: center;
+    /* Căn giữa đều toàn bộ các tag trên Desktop */
+    align-items: center;
+    gap: 35px;
+    /* Khoảng cách rộng rãi giữa các chữ */
+    overflow-x: auto;
+    /* CHỐNG RỚT DÒNG: Tự động kích hoạt thanh trượt ngang trên Mobile */
+    white-space: nowrap;
+    /* Ép tất cả các tag phải nằm trên 1 hàng duy nhất */
+    scrollbar-width: none;
+    /* Ẩn thanh cuộn trên Firefox */
+    padding-bottom: 5px;
+}
+
+/* Ẩn thanh cuộn trên Chrome, Safari để đảm bảo thẩm mỹ */
+.blog-filter-luxury::-webkit-scrollbar {
+    display: none;
+}
+
+/* Định hình các tag chữ phẳng tinh tế */
 .filter-link {
     background: none;
     border: none;
-    padding: 8px 0;
-    font-size: 14px;
-    font-weight: 400;
-    letter-spacing: 1px;
-    color: #888;
+    padding: 10px 0;
+    font-family: 'Manrope', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: #888888;
+    /* Màu chữ mặc định (vừa phải, không bị chói) */
+    letter-spacing: 2.5px;
+    /* Độ giãn chữ tạo cảm giác High-end */
     text-transform: uppercase;
     position: relative;
+    cursor: pointer;
     transition: color 0.3s ease;
-    white-space: nowrap;
-}
-.filter-link:hover, .filter-link.active {
-    color: #111;
-}
-.filter-link::after {
-    content: "";
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    width: 0;
-    height: 1px;
-    background-color: #111;
-    transition: width 0.3s ease;
-}
-.filter-link.active::after, .filter-link:hover::after {
-    width: 100%;
-}
-.section-luxury-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 32px;
-    font-weight: 400;
-    color: #111;
-    letter-spacing: 0.5px;
-}
-.view-all-luxury {
-    font-size: 13px;
-    color: #666;
-    text-decoration: none;
-    letter-spacing: 0.5px;
-    position: relative;
-    transition: color 0.3s ease;
-}
-.view-all-luxury::after {
-    content: "";
-    position: absolute;
-    bottom: -1px;
-    left: 0;
-    width: 100%;
-    height: 1px;
-    background-color: #ccc;
-    transition: background-color 0.3s ease;
-}
-.view-all-luxury:hover {
-    color: #111;
-}
-.view-all-luxury:hover::after {
-    background-color: #111;
 }
 
-.card-luxury {
-    background: transparent;
-    border: none;
+/* Hiệu ứng khi di chuột vào Tag */
+.filter-link:hover {
+    color: #111111;
 }
-.img-effect-wrapper {
+
+/* Đường chỉ kẻ chân siêu mảnh khi Active hoặc Hover */
+.filter-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
     width: 100%;
-    aspect-ratio: 3 / 4; 
-    overflow: hidden;
-    margin-bottom: 15px;
+    height: 1.5px;
+    /* Độ dày đường kẻ chỉ mảnh */
+    background-color: #c9a45c;
+    /* Màu Vàng Gold đặc trưng thương hiệu Bathora */
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+    transform-origin: center;
 }
-.img-effect-wrapper img {
+
+/* Trạng thái tag đang được chọn */
+.filter-link.active {
+    color: #111111;
+    font-weight: 600;
+}
+
+.filter-link.active::after,
+.filter-link:hover::after {
+    transform: scaleX(1);
+    /* Hiệu ứng đường kẻ mở rộng mượt mà từ tâm ra ngoài */
+}
+
+/* Tối ưu hóa hiển thị mượt mà trên Mobile và Tablet */
+@media (max-width: 991.98px) {
+    .blog-filter-luxury {
+        justify-content: flex-start;
+        /* Trên Mobile cho phép tràn viền để vuốt trượt */
+        padding-left: 20px;
+        padding-right: 20px;
+        gap: 25px;
+        /* Thu nhỏ khoảng cách giữa các chữ một chút trên màn hình nhỏ */
+    }
+}
+
+/* ========================================================
+   BATHORA HERO GRID - MODERN ROW LAYOUT (QUIET LUXURY)
+   ======================================================== */
+
+.hero-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    /* Tỷ lệ vàng chia khối hoàn hảo */
+    gap: 40px;
+    /* Tăng khoảng cách thở giữa các khối */
+    padding: 30px 6%;
+    align-items: stretch;
+    /* Đáy khối trái và khối phải luôn bằng nhau tăm tắp */
+}
+
+/* --- KHỐI LỚN BÊN TRÁI --- */
+.hero-left {
+    position: relative;
+    overflow: hidden;
+    height: 600px;
+    /* Hạ chiều cao xuống mức chuẩn mắt nhìn */
+    border-radius: 0px;
+    /* Góc cạnh sắc sảo kiểu high-fashion */
+}
+
+.hero-left img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
-}
-.card-luxury:hover .img-effect-wrapper img {
-    transform: scale(1.04);
-}
-.card-luxury-body {
-    padding: 0;
-}
-/* Tag danh mục đưa xuống dưới ảnh, chữ nhỏ và thưa */
-.card-luxury-tag {
-    display: block;
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    color: #999;
-    margin-bottom: 6px;
-}
-/* Tiêu đề bài viết thanh mảnh, tinh giản */
-.card-luxury-title {
-    font-size: 15px;
-    font-weight: 400;
-    line-height: 1.45;
-    margin-bottom: 8px;
-}
-.card-luxury-title a {
-    color: #111;
-    text-decoration: none;
-    display: -webkit-box;
-    -webkit-line-clamp: 2; 
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    transition: color 0.3s ease;
-}
-.card-luxury-title a:hover {
-    color: #c9a45c; 
+    transition: transform 1.4s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-.card-luxury-date {
-    font-size: 12px;
-    color: #999;
+.hero-left:hover img {
+    transform: scale(1.04);
+    /* Phóng to nhẹ khi di chuột tạo hiệu ứng chiều sâu */
+}
+
+.hero-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 50px 40px;
+    /* Lớp phủ mờ chuyển sắc từ đen sâu lên trong suốt mượt mà */
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.3) 60%, transparent 100%);
+}
+
+.hero-overlay .category {
+    font-family: 'Manrope', sans-serif;
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 500;
+}
+
+.hero-overlay h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 38px;
+    /* Thu gọn vừa vặn, không liếm vào phom áo của mẫu */
+    line-height: 1.35;
+    color: #ffffff;
+    margin: 15px 0 30px 0;
+    font-weight: 400;
+    max-width: 90%;
+    letter-spacing: 0.5px;
+}
+
+/* --- CỘT DỌC BÊN PHẢI (CHUYỂN NẰM NGANG) --- */
+.hero-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* Đẩy khít 2 mép bài viết bằng với chiều cao ảnh trái */
+    height: 100%;
+}
+
+/* Thẻ bọc ngoài bài viết nhỏ */
+.small-card-horizontal {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    /* Khoảng cách giữa ảnh nhỏ và chữ bên phải */
+    text-decoration: none !important;
+    height: calc(50% - 20px);
+    /* Chia đôi không gian hoàn hảo */
+    border-bottom: 1px solid #f0f0f0;
+    /* Gạch mảnh phân tách tinh tế */
+    padding-bottom: 20px;
+    transition: all 0.3s ease;
+}
+
+.small-card-horizontal:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+/* Khung ảnh nhỏ */
+.small-card-horizontal .card-thumb {
+    width: 160px;
+    /* Cố định chiều rộng ảnh tỉ lệ tạp chí */
+    height: 100%;
+    /* Chiều cao tự co dãn khít theo khung */
+    min-height: 180px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.small-card-horizontal .card-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 1s ease;
+}
+
+/* Phần nội dung chữ bên phải ảnh nhỏ */
+.small-card-horizontal .small-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.small-card-horizontal .category-tag {
+    font-family: 'Manrope', sans-serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: #c9a45c;
+    /* Màu vàng Gold đặc trưng của thương hiệu Bathora */
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.small-card-horizontal .small-content h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 21px;
+    /* Font chữ thơ mộng quý phái */
+    line-height: 1.4;
+    color: #111111;
     margin: 0;
+    font-weight: 400;
+    transition: color 0.3s ease;
+}
+
+/* Hiệu ứng tương tác toàn khối bài viết nhỏ */
+.small-card-horizontal:hover .card-thumb img {
+    transform: scale(1.05);
+}
+
+.small-card-horizontal:hover .small-content h3 {
+    color: #c9a45c;
+    /* Chữ chuyển vàng Gold nhẹ khi hover */
+}
+
+/* --- ĐÁP ỨNG TRÊN MOBILE & TABLET --- */
+@media (max-width: 991.98px) {
+    .hero-grid {
+        grid-template-columns: 1fr;
+        /* Sập về 1 cột trên điện thoại */
+        gap: 35px;
+        padding: 20px 4%;
+    }
+
+    .hero-left {
+        height: 480px;
+    }
+
+    .hero-left h1 {
+        font-size: 30px;
+    }
+
+    .small-card-horizontal {
+        height: auto;
+    }
+
+    .small-card-horizontal .card-thumb {
+        width: 120px;
+        min-height: 140px;
+    }
+
+    .small-card-horizontal .small-content h3 {
+        font-size: 18px;
+    }
+}
+
+
+.read-btn {
+    display: inline-block;
+    font-family: 'Manrope', sans-serif;
+    font-size: 11px;
+    /* Thu nhỏ lại một chút cho tinh tế kiểu High-End */
+    font-weight: 600;
+    color: #ffffff !important;
+    /* Khử sạch màu xanh dương mặc định của thẻ a */
+    text-decoration: none !important;
+    /* Bỏ gạch chân mặc định */
+    letter-spacing: 3px;
+    /* Giãn chữ rộng thoáng đãng */
+    text-transform: uppercase;
+    /* Tự động viết hoa */
+
+    /* Nới rộng không gian nút bấm, không để chữ dính sát viền */
+    padding: 14px 35px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    /* Viền mảnh trong suốt sang trọng */
+
+    position: relative;
+    z-index: 1;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.4s ease;
+}
+
+/* Hiệu ứng Hover: Đổ nền vàng Gold từ dưới lên mềm mại */
+.read-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #c9a45c;
+    /* Màu vàng Gold thương hiệu Bathora */
+    z-index: -1;
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Trạng thái khi di chuột vào (Hover) */
+.read-btn:hover {
+    color: #111111 !important;
+    /* Chữ chuyển đen sắc nét trên nền Gold */
+    border-color: #c9a45c;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    /* Đổ bóng mờ nhẹ quý phái */
+}
+
+.read-btn:hover::before {
+    transform: scaleY(1);
+    /* Kích hoạt nền vàng Gold trượt lên đầy nút */
+}
+
+.hero-right {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.small-card {
+    background: #fff;
+    overflow: hidden;
+    transition: 0.4s;
+}
+
+.small-card:hover {
+    transform: translateY(-5px);
+}
+
+.small-card img {
+    height: 300px;
+    object-fit: cover;
+}
+
+.small-content {
+    padding: 25px;
+}
+
+.small-content span {
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: #888;
+}
+
+.small-content h3 {
+    margin-top: 15px;
+    font-size: 28px;
+    line-height: 1.2;
+    font-family: 'Cormorant Garamond', serif;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-title span {
+    font-size: 12px;
+    letter-spacing: 4px;
+    color: #888;
+}
+
+.section-title h2 {
+    margin-top: 15px;
+    font-size: 48px;
+    font-family: 'Cormorant Garamond', serif;
+}
+
+/* ========================================================
+   BATHORA FEATURED - CHESSBOARD LAYOUT (SO LE)
+   ======================================================== */
+.featured-split-banner {
+    display: flex;
+    width: 100%;
+    height: 580px;
+    /* Chiều cao cố định chuẩn phong cách Lookbook */
+    margin-bottom: 70px;
+    background-color: #fbf9f6;
+    /* Nền kem nhạt quý phái theo mẫu */
+}
+
+/* --- PHẦN ẢNH SẠCH BÊN TRÁI --- */
+.banner-left-side {
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.banner-left-side img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* --- PHẦN CHỮ BÊN PHẢI --- */
+.banner-right-side {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 8%;
+    /* Tạo khoảng thở hai bên cho chữ không chạm mép */
+    box-sizing: border-box;
+}
+
+.editorial-content {
+    text-align: center;
+    /* Căn giữa toàn bộ text và nút bấm */
+}
+
+.editorial-content .sub-title {
+    font-family: 'Manrope', sans-serif;
+    font-size: 11px;
+    letter-spacing: 4px;
+    color: #888888;
+    display: block;
+    margin-bottom: 15px;
+}
+
+.editorial-content .main-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+    /* Kích thước tối ưu để tiêu đề gốc của bạn xuống hàng đẹp mắt */
+    line-height: 1.4;
+    color: #111111;
+    font-weight: 400;
+    margin: 0 0 25px 0;
+}
+
+.editorial-content .desc-p {
+    font-family: 'Manrope', sans-serif;
+    font-size: 13.5px;
+    line-height: 1.7;
+    color: #555555;
+    margin: 0 auto 30px auto;
+    max-width: 450px;
     font-weight: 300;
 }
 
-
-/* ==========================================================================
-   TIPS HAY MỖI NGÀY - THẲNG HÀNG VỚI BÀI VIẾT TRÊN & KHÔNG TRÀN VIỀN
-   ========================================================================== */
-.news-item[data-category="tips"] {
-    /* Đảm bảo toàn bộ section lùi vào bằng khoảng đệm chuẩn của trang */
-    padding-left: 15px;
-    padding-right: 15px;
-    max-width: 1320px; /* Độ rộng tối đa chuẩn của Container Bootstrap */
-    margin-left: auto;
-    margin-right: auto;
+/* Nút bấm viền đen mảnh chuẩn ảnh mẫu */
+.editorial-content .explore-btn {
+    display: inline-block;
+    padding: 14px 45px;
+    border: 1px solid #111111;
+    font-family: 'Manrope', sans-serif;
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: #111111;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
 }
 
-.match-height-luxury {
-    width: 100% !important;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
+.editorial-content .explore-btn:hover {
+    background-color: #111111;
+    color: #ffffff;
 }
 
-.card-luxury-featured {
+/* --- TỐI ƯU RESPONSIVE TRÊN MOBILE --- */
+@media (max-width: 991.98px) {
+    .featured-split-banner {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .banner-left-side,
+    .banner-right-side {
+        width: 100%;
+    }
+
+    .banner-left-side {
+        height: 380px;
+    }
+
+    .banner-right-side {
+        padding: 50px 24px;
+    }
+
+    .editorial-content .main-title {
+        font-size: 26px;
+    }
+}
+
+/*3 bài viết nhỏ*/
+/*3 bài viết nhỏ*/
+.featured-chessboard-list {
+    margin-top: 10px;
     width: 100%;
-    height: 100%;
 }
-.featured-img-wrapper {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 16 / 10;
+
+.featured-chessboard-list .container {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+/* Chặn Bootstrap đổi thuộc tính mặc định của link */
+.chess-post {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    text-decoration: none !important;
+    /* Xóa gạch chân mặc định */
+    padding-bottom: 40px;
+    border-bottom: 1px solid #f5f5f5;
+    height: auto;
+}
+
+.chess-post:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.chess-thumb {
+    width: 45%;
+    height: 300px;
     overflow: hidden;
+    flex-shrink: 0;
 }
-.featured-img-wrapper img {
+
+.chess-thumb img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     transition: transform 1s cubic-bezier(0.25, 1, 0.5, 1);
 }
-.featured-img-wrapper::after {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.8) 100%);
-    pointer-events: none;
-}
-.featured-overlay-content {
-    position: absolute;
-    bottom: 0; left: 0; width: 100%;
-    padding: 20px;
-    z-index: 2;
-}
-.featured-luxury-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 20px;
-    font-weight: 400;
-    margin-top: 6px;
-    line-height: 1.3;
-}
-.featured-luxury-title a {
-    color: #ffffff;
-    text-decoration: none;
-}
 
-/* Khu vực bài viết nhỏ bên phải */
-.side-tips-container {
-    height: 100%;
-}
-.side-tips-list {
-    height: 100%;
-}
-.side-tip-item {
-    padding: 2px 0;
-}
-.side-tip-img {
-    width: 85px;
-    height: 110px;
-    overflow: hidden;
-    flex-shrink: 0;
-}
-.side-tip-img img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-.side-tip-body {
+.chess-text {
+    width: 55%;
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
-.side-tip-title {
-    font-size: 13px;
-    font-weight: 400;
-    line-height: 1.45;
+
+/* Trả lại màu vàng Gold quý phái và font chuẩn Manrope */
+.chess-text span {
+    font-family: 'Manrope', sans-serif !important;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: #c9a45c !important;
+    /* Dùng mã màu Gold cố định */
+    font-weight: 600;
+    margin-bottom: 10px;
 }
-.side-tip-title a {
-    color: #111111;
-    text-decoration: none;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
+
+/* Trả lại font Serif thơ mộng và màu đen huyền bí sắc nét */
+.chess-text h4 {
+    font-family: 'Cormorant Garamond', serif !important;
+    /* Trả lại font Serif chuẩn tạp chí */
+    font-size: 26px;
+    line-height: 1.4;
+    color: #111111 !important;
+    /* Khử hoàn toàn màu xanh link của Bootstrap */
+    margin: 0 0 12px 0;
+    font-weight: 400;
     transition: color 0.3s ease;
 }
-.side-tip-divider {
-    height: 1px;
-    background-color: #f1f1f1;
+
+/* Định dạng đoạn mô tả ngắn */
+.chess-text p {
+    font-family: 'Manrope', sans-serif !important;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #555555 !important;
+    /* Màu xám trầm dịu mắt */
+    margin: 0;
+}
+
+/* Đảo vị trí hình ảnh xen kẽ kiểu bàn cờ */
+.chess-post:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+.chess-post:hover .chess-thumb img {
+    transform: scale(1.03);
+}
+
+/* Khi di chuột vào bài viết, tiêu đề h4 đổi nhẹ sang màu Gold */
+.chess-post:hover .chess-text h4 {
+    color: #c9a45c !important;
+}
+
+/* --- TỐI ƯU TRÊN DI ĐỘNG --- */
+@media (max-width: 991.98px) {
+    .featured-split-banner .banner-img-wrapper {
+        height: 320px;
+    }
+
+    .chess-post,
+    .chess-post:nth-child(even) {
+        flex-direction: column;
+        /* Xếp dọc thẳng hàng trên điện thoại */
+        gap: 20px;
+    }
+
+    .chess-thumb,
+    .chess-text {
+        width: 100%;
+    }
+
+    .chess-thumb {
+        height: 220px;
+    }
+
+    .chess-text h4 {
+        font-size: 22px;
+    }
+}
+
+/*Khám phá*/
+.masonry-section {
+    padding: 50px 7% 100px;
+}
+
+.masonry-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 280px;
+    gap: 25px;
+}
+
+.masonry-item {
+    position: relative;
+    overflow: hidden;
+}
+
+.masonry-item img {
     width: 100%;
-    margin: 4px 0;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.8s;
 }
 
-/* ĐIỀU CHỈNH CHÍNH XÁC TRÊN DESKTOP */
-@media (min-width: 992px) {
-    .match-height-luxury {
-        display: flex;
-        align-items: stretch;
-    }
-
-    .match-height-luxury > [class*="col-"] {
-        display: flex;
-        flex-direction: column;
-    }
-    
-    .card-luxury-featured {
-        display: flex;
-        flex-direction: column;
-        height: 100%;
-    }
-
-    .card-luxury-featured .featured-img-wrapper {
-        aspect-ratio: auto;
-        flex-grow: 1;
-        height: 100%;
-    }
-    
-    .side-tips-container {
-        display: flex;
-        flex-direction: column;
-        height: 100%;
-    }
-    .side-tips-list {
-        height: 100%;
-        justify-content: space-between !important;
-    }
-    
-    .featured-luxury-title { font-size: 24px; }
-    .side-tip-title { font-size: 14px; }
-    .side-tip-img { width: 90px; height: 110px; }
-    
-    .card-luxury-featured:hover .featured-img-wrapper img { transform: scale(1.02); }
-    .side-tip-item:hover .side-tip-title a { color: #c9a45c; }
+.masonry-item:hover img {
+    transform: scale(1.08);
 }
 
+.masonry-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 30px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+    color: #fff;
+}
 
+.masonry-content span {
+    font-size: 11px;
+    letter-spacing: 3px;
+}
+
+.masonry-content h3 {
+    margin-top: 10px;
+    font-size: 34px;
+    line-height: 1.1;
+    font-family: 'Cormorant Garamond', serif;
+}
+
+.tall {
+    grid-row: span 2;
+}
+
+.wide {
+    grid-column: span 2;
+}
+
+.quote-section {
+    padding: 120px 7%;
+}
+
+.quote-box {
+    max-width: 900px;
+    margin: auto;
+    text-align: center;
+}
+
+.quote-box p {
+    font-size: 54px;
+    line-height: 1.3;
+    font-family: 'Cormorant Garamond', serif;
+}
+
+.quote-box span {
+    display: block;
+    margin-top: 25px;
+    letter-spacing: 4px;
+    font-size: 12px;
+}
+
+/* ========================================================
+   BATHORA SUGGESTIONS NAVIGATION GRID
+   ======================================================== */
+
+.bathora-suggestions-section {
+    background-color: #0b0b0b;
+    /* Giữ tông đen sâu quý phái */
+    padding: 70px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.suggestion-sup-title {
+    font-family: 'Manrope', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    color: #c9a45c;
+    /* Màu Gold đặc trưng */
+    letter-spacing: 4px;
+    display: block;
+    margin-bottom: 12px;
+}
+
+.suggestion-main-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+    font-weight: 400;
+    color: #ffffff;
+    letter-spacing: 1px;
+}
+
+/* Định dạng từng khối thẻ gợi ý */
+.suggestion-card {
+    background-color: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 40px 30px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Hiệu ứng phát sáng nhẹ và đẩy khối lên khi Hover */
+.suggestion-card:hover {
+    background-color: rgba(255, 255, 255, 0.04);
+    border-color: rgba(201, 164, 92, 0.3);
+    /* Đổi nhẹ viền sang ánh Gold */
+    transform: translateY(-5px);
+}
+
+/* Số thứ tự đệm phong cách tạp chí */
+.suggestion-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-style: italic;
+    color: rgba(201, 164, 92, 0.6);
+    margin-bottom: 20px;
+}
+
+.suggestion-card-title {
+    font-family: 'Manrope', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #ffffff;
+    letter-spacing: 3px;
+    margin-bottom: 15px;
+}
+
+.suggestion-card-desc {
+    font-family: 'Manrope', sans-serif;
+    font-size: 13.5px;
+    line-height: 1.6;
+    color: #aaaaaa;
+    /* Màu chữ mô tả hạ tông mềm mại */
+    margin-bottom: 30px;
+    flex-grow: 1;
+    /* Đẩy link hành động luôn nằm đều sát đáy thẻ */
+}
+
+/* Link điều hướng dạng chữ gạch chân tinh tế */
+.suggestion-card-link {
+    font-family: 'Manrope', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: #c9a45c;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+    padding-bottom: 4px;
+    transition: color 0.3s ease;
+}
+
+.suggestion-card-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: #c9a45c;
+    transform: scaleX(0.3);
+    /* Mặc định gạch chân ngắn gọn gàng */
+    transform-origin: left;
+    transition: transform 0.3s ease;
+}
+
+.suggestion-card-link:hover {
+    color: #ffffff;
+}
+
+.suggestion-card-link:hover::after {
+    transform: scaleX(1);
+    /* Hover vào đường gạch chạy dài hết chữ */
+    background-color: #ffffff;
+}
+
+/* Tối ưu responsive trên màn hình máy tính bảng và điện thoại */
+@media (max-width: 767.98px) {
+    .suggestion-main-heading {
+        font-size: 24px;
+    }
+
+    .suggestion-card {
+        padding: 30px 20px;
+    }
+}
+
+/*Hiệu ứng cuộn trang*/
+.fade-up {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: 1s;
+}
+
+.fade-up.show {
+    opacity: 1;
+    transform: translateY(0);
+}
 
 /*FOOTER*/
 .footer-section {
@@ -623,9 +1220,11 @@ body {
     padding: 10px;
     outline: none;
 }
+
 .newsletter-col {
     padding-left: 20px;
 }
+
 .newsletter-box button {
     background: #000000;
     color: #ffffff;
@@ -656,7 +1255,7 @@ body {
 }
 
 .copyright {
-    border-top: 1px solid rgba(255,255,255,0.1);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
     padding: 12px 0;
     font-size: 13px;
     color: #aaa;
@@ -672,9 +1271,9 @@ body {
     z-index: 999;
     width: 50px;
     height: 50px;
-    background-color: #ffffff; 
-    color: #000000;            
-    border: 1px solid #eeeeee; 
+    background-color: #ffffff;
+    color: #000000;
+    border: 1px solid #eeeeee;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -683,7 +1282,7 @@ body {
     transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
     opacity: 0;
     visibility: hidden;
-    transform: translateY(20px); 
+    transform: translateY(20px);
 }
 
 #backToTop svg {
@@ -699,12 +1298,137 @@ body {
 }
 
 #backToTop:hover {
-    background-color: #000000; 
-    color: #ffffff;            
+    background-color: #000000;
+    color: #ffffff;
     border-color: #000000;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
 #backToTop:hover svg {
-    transform: translateY(-3px); 
+    transform: translateY(-3px);
+}
+
+
+/* ========================================================
+   CSS ĐÁP ỨNG POPUP MENU CHO ĐIỆN THOẠI (MOBILE SIDEBAR)
+   ======================================================== */
+.btn-hamburgerMenu {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 22px;
+    color: #222;
+    cursor: pointer;
+    padding: 0 0 0 15px;
+    align-items: center;
+}
+
+.mobile-sidebar-popup {
+    position: fixed;
+    top: 0;
+    left: -310px; 
+    width: 290px;
+    height: 100vh;
+    background-color: #ffffff;
+    z-index: 9999;
+    box-shadow: 4px 0 25px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    transition: left 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.mobile-sidebar-popup.open {
+    left: 0;
+}
+
+.sidebar-popup-header {
+    padding: 20px;
+    border-bottom: 1px solid #f5f5f5;
+}
+
+.btn-close-sidebar-popup {
+    background: none;
+    border: none;
+    font-size: 22px;
+    color: #222;
+    cursor: pointer;
+}
+
+.sidebar-popup-body {
+    padding: 25px 20px;
+    overflow-y: auto;
+    flex: 1;
+}
+
+.mobile-popup-menu-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.mobile-popup-menu-list li {
+    margin-bottom: 20px;
+}
+
+.mobile-popup-menu-list a {
+    text-decoration: none;
+    color: #222222;
+    font-weight: 600;
+    font-size: 15px;
+    letter-spacing: 1px;
+    display: block;
+    padding: 5px 0;
+    transition: color 0.3s;
+}
+
+.mobile-popup-menu-list a:hover,
+.mobile-popup-menu-list a.active {
+    color: #c9a45c;
+}
+
+/* XỬ LÝ DROPDOWN CON (SUBMENU) TRÊN MOBILE */
+.mobile-submenu {
+    list-style: none;
+    padding-left: 20px;
+    margin: 5px 0 10px 0;
+    display: none; 
+    border-left: 1px solid #eee;
+}
+
+.mobile-submenu li {
+    margin-bottom: 12px !important;
+}
+
+.mobile-submenu a {
+    font-size: 14px !important;
+    color: #666666 !important;
+    font-weight: 500 !important;
+}
+
+.sidebar-popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 9998;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.sidebar-popup-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* KHI MÀN HÌNH NHỎ HƠN 991PX */
+@media (max-width: 991px) {
+    .menu {
+        display: none !important; /* Ẩn menu ngang chữ */
+    }
+    .btn-hamburgerMenu {
+        display: flex; /* Hiện nút 3 gạch */
+    }
 }

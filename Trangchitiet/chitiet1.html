@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BATHORA DRESS - CHI TIẾT SẢN PHẨM</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <link rel="stylesheet" href="chitiet.css">
+</head>
+<body>
+
+<header class="header">
+    <div class="container-fluid d-flex align-items-center justify-content-between">
+        
+        <div class="logo">
+            <a href="../trangchu.html">
+                <img src="../images/logo.png" alt="Bathora Logo" onerror="this.src='https://via.placeholder.com/150x55?text=BATHORA'">
+            </a>
+        </div>
+
+        <button class="mobile-menu-btn d-lg-none">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <nav class="menu">
+            <ul class="d-flex align-items-center mb-0">
+                <li><a href="../trangchu.html">TRANG CHỦ</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link sale-link" href="#" id="saleDrop" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        SALE <i class="fa fa-chevron-down ms-1"></i>
+                    </a>
+                    <ul class="dropdown-menu border-0 shadow-sm" aria-labelledby="saleDrop">
+                        <li><a class="dropdown-item" href="#">Giảm 5%</a></li>
+                        <li><a class="dropdown-item" href="#">Giảm 10%</a></li>
+                        <li><a class="dropdown-item" href="#">Giảm 15%</a></li>
+                        <li><a class="dropdown-item" href="#">Giảm 20%</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#">Giảm 30%</a></li>
+                        <li><a class="dropdown-item" href="#">Giảm 40%</a></li>
+                        <li><a class="dropdown-item fw-bold text-danger" href="#">SIÊU SALE 50%</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link active" href="#" id="prodDrop" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        SẢN PHẨM <i class="fa fa-chevron-down ms-1"></i>
+                    </a>
+                    <ul class="dropdown-menu border-0 shadow-sm" aria-labelledby="prodDrop">
+                       <li><a class="dropdown-item" href="../sanpham.html?loai=dam">ĐẦM</a></li>
+                        <li><a class="dropdown-item" href="../sanpham.html?loai=ao">ÁO</a></li>
+                        <li><a class="dropdown-item" href="../sanpham.html?loai=quan">QUẦN</a></li>
+                        <li><a class="dropdown-item" href="../sanpham.html?loai=chanvay">CHÂN VÁY</a></li>
+                        <li><a class="dropdown-item" href="../sanpham.html?loai=aokhoac">ÁO KHOÁC</a></li>
+                        <li><a class="dropdown-item" href="../sanpham.html?loai=tuixach">TÚI XÁCH</a></li>
+                        <li><a class="dropdown-item" href="../sanpham.html?loai=phukien">PHỤ KIỆN</a></li>
+                        <li><a class="dropdown-item" href="../sanpham.html?loai=giay">GIÀY</a></li>
+                    </ul>
+                </li>
+                <li><a href="../TinTuc/tintuc.html">TIN TỨC</a></li>
+                <li><a href="../vechungtoi.html">VỀ CHÚNG TÔI</a></li>
+                <li><a href="../Bosuutap/Bosuutap.html" class="active">BỘ SƯU TẬP</a></li>
+            </ul>
+        </nav>
+
+        <div class="icons d-flex align-items-center">
+            <div class="icon">
+                <a href="../YeuThich/yeuthich.html" title="Yêu thích">
+                    <i class="fa-regular fa-heart"></i>
+                    <span id="wishlist-badge" class="badge-count d-none">0</span>
+                </a>
+            </div>
+            <div class="icon">
+                <a href="../GioHang/giohang.html" title="Giỏ hàng">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span id="cart-badge" class="badge-count d-none">0</span>
+                </a>
+            </div>
+            <div class="icon">
+                <a href="../TaiKhoan/taikhoan.html" title="Tài khoản"><i class="fa-regular fa-user"></i></a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="ann-marquee">
+    <div class="marquee-track">
+        <span><i class="fa-solid fa-gift"></i> TẶNG QUÀ SINH NHẬT THÀNH VIÊN</span>
+        <span><i class="fa-solid fa-truck"></i> MIỄN PHÍ VẬN CHUYỂN ĐƠN TỪ 500K</span>
+        <span><i class="fa-solid fa-arrow-rotate-left"></i> ĐỔI TRẢ TRONG 15 NGÀY MIỄN PHÍ</span>
+        <span><i class="fa-solid fa-shield-halved"></i> HÀNG CHÍNH HÃNG 100% BRAND NEW</span>
+        <span><i class="fa-solid fa-gift"></i> TẶNG QUÀ SINH NHẬT THÀNH VIÊN</span>
+        <span><i class="fa-solid fa-truck"></i> MIỄN PHÍ VẬN CHUYỂN ĐƠN TỪ 500K</span>
+        <span><i class="fa-solid fa-arrow-rotate-left"></i> ĐỔI TRẢ TRONG 15 NGÀY MIỄN PHÍ</span>
+        <span><i class="fa-solid fa-shield-halved"></i> HÀNG CHÍNH HÃNG 100% BRAND NEW</span>
+    </div>
+</div>
+
+<section class="mini-hero-section">
+    <div class="stripe-bg"></div>
+    <div class="search-overlay-container">
+        <div class="elegant-search-box d-flex">
+            <input type="text" placeholder="Bạn muốn tìm sản phẩm gì ?" class="search-input">
+            <button class="search-btn">Tìm kiếm ngay</button>
+        </div>
+    </div>
+</section>
+
+<div class="breadcrumb-container">
+    <a href="../trangchu.html">Trang chủ</a><span class="divider">›</span>
+    <a href="#">Áo</a><span class="divider">›</span>
+    <a href="#">Áo kiểu nữ</a><span class="divider">›</span>
+    <span class="active-node" id="bcTitle">Áo xuân hè cổ tròn phối bèo dọc</span>
+</div>
+
+<main class="product-detail-layout">
+    
+    <div class="product-gallery-block">
+        <div class="thumbnails-list" id="thumbsContainer">
+            </div>
+        <div class="main-display-frame" id="mainImgFrame">
+            <span class="badge-tag sale-tag">SALE</span>
+            <span class="badge-tag new-tag">MỚI</span>
+            <button class="nav-arrow-btn prev-btn" id="prevBtn"><i class="fa-solid fa-chevron-left"></i></button>
+            <button class="nav-arrow-btn next-btn" id="nextBtn"><i class="fa-solid fa-chevron-right"></i></button>
+            <div class="image-wrapper" id="zoomTrigger">
+                <img src="" alt="Sản phẩm chính" id="mainActiveImg">
+            </div>
+            <div class="image-counter-index" id="imageCounter">1 / 4</div>
+        </div>
+    </div>
+
+    <div class="product-info-block">
+        <div class="meta-status">
+            <span id="productSku">Mã SP: 2T04.2601</span>
+            <span class="instock-label"><i class="fa-solid fa-circle-check"></i> Còn hàng</span>
+        </div>
+        <h1 class="product-main-title" id="pTitle">Áo xuân hè cổ tròn phối bèo dọc</h1>
+        
+        <div class="ratings-row">
+            <div class="star-rating-stars" id="starsWrapper"></div>
+            <span class="review-count-click" id="scrollToReviewBtn">(128 nhận xét)</span>
+            <span class="divider-pipe">|</span>
+            <span class="sold-count-text">312 đã bán</span>
+        </div>
+        
+        <p class="short-description" id="pShortDesc">
+            Áo xuân hè thiết kế cổ tròn nữ tính với điểm nhấn bèo dọc chạy từ cổ xuống thân — thanh lịch, thoáng mát, phù hợp đi làm lẫn dạo phố. Chất voan tơ cao cấp, dáng suông nhẹ tôn mọi vóc dáng.
+        </p>
+
+        <div class="prices-wrapper">
+            <span class="current-price" id="pPrice">755.000₫</span>
+            <span class="old-price" id="pOldPrice">1.080.000₫</span>
+            <span class="discount-percent-tag" id="pDiscount">-30%</span>
+        </div>
+        <div class="vat-shipping-note">Giá đã bao gồm VAT · Miễn phí ship đơn từ 500K</div>
+
+        <div class="fundiin-promotion-box">
+            <div class="fundiin-logo-icon">%</div>
+            <div class="fundiin-content-text">Trả sau đến 12 tháng với <strong style="color:#6c3afc">Fundiin</strong> · Giảm đến 50K khi thanh toán. <span class="fdlink">Xem thêm</span></div>
+        </div>
+        <hr class="section-divider">
+
+        <div class="attribute-selection-title">Màu sắc: <span class="selected-value-preview" id="colorTextValue">Xanh nhạt</span></div>
+        <div class="color-swatches-flex" id="colorContainer"></div>
+
+        <div class="attribute-selection-title" style="margin-top: 15px;">Size: <span class="selected-value-preview" id="sizeTextValue">M</span></div>
+        <div class="size-buttons-flex">
+            <button class="size-btn out" disabled>XS</button>
+            <button class="size-btn" data-size="S">S</button>
+            <button class="size-btn active" data-size="M">M</button>
+            <button class="size-btn" data-size="L">L</button>
+            <button class="size-btn" data-size="XL">XL</button>
+            <button class="size-btn" data-size="2XL">2XL</button>
+        </div>
+        
+        <span class="size-guide-toggle-btn" id="sizeGuideToggle"><i class="fa-solid fa-ruler-2"></i> Hướng dẫn chọn size</span>
+
+        <div class="quantity-picker-row">
+            <span class="label-text">Số lượng:</span>
+            <div class="quantity-adjustment-group">
+                <button class="adjust-btn" id="minusQtyBtn">−</button>
+                <span class="quantity-number-display" id="qtyDisplayValue">1</span>
+                <button class="adjust-btn" id="plusQtyBtn">+</button>
+            </div>
+        </div>
+
+        <div class="action-buttons-row">
+            <button class="wishlist-action-btn" id="wishlistActionBtn"><i class="fa-regular fa-heart"></i></button>
+            <button class="add-to-cart-btn" id="addToCartActionBtn">Thêm vào giỏ</button>
+            <button class="buy-now-btn" id="buyNowActionBtn">Mua ngay</button>
+        </div>
+
+        <div class="brand-commitments-grid">
+            <div class="commitment-item"><i class="fa-solid fa-truck-fast"></i> Miễn phí ship từ 500K</div>
+            <div class="commitment-item"><i class="fa-solid fa-arrow-rotate-left"></i> Đổi trả trong 15 ngày</div>
+            <div class="commitment-item"><i class="fa-solid fa-square-check"></i> Hàng chính hãng 100%</div>
+            <div class="commitment-item"><i class="fa-solid fa-headset"></i> Hỗ trợ 8:00–22:00</div>
+        </div>
+    </div>
+</main>
+
+<section class="product-description-tabs-section">
+    <div class="tabs-headers-nav d-flex">
+        <button class="tab-toggle-button active" data-tab="tab-desc">Mô tả sản phẩm</button>
+        <button class="tab-toggle-button" data-tab="tab-material">Chất liệu</button>
+        <button class="tab-toggle-button" data-tab="tab-preserve">Hướng dẫn bảo quản</button>
+        <button class="tab-toggle-button" data-tab="tab-policy">Chính sách mua hàng</button>
+    </div>
+    <div class="tab-panes-contents-wrapper">
+        <div class="tab-content-pane active" id="tab-desc"> </div>
+        <div class="tab-content-pane" id="tab-material"> </div>
+        <div class="tab-content-pane" id="tab-preserve"> </div>
+        <div class="tab-content-pane" id="tab-policy">
+            <p>Đổi mẫu đổi size linh hoạt trong vòng 15 ngày kể từ ngày nhận hàng.</p>
+        </div>
+    </div>
+</section>
+
+<section class="product-reviews-section" id="reviewsAnchorSection">
+    <div class="section-header-title d-flex justify-content-between align-items-center">
+        <h3>Đánh giá sản phẩm</h3>
+        <button class="write-review-trigger-btn">Viết đánh giá</button>
+    </div>
+    <div class="review-summary-dashboard d-flex">
+        <div class="score-summary-left text-center">
+            <div class="numeric-score">4.9</div>
+            <div class="stars-row-mini mb-1">
+                <i class="fa-solid fa-star text-warning"></i><i class="fa-solid fa-star text-warning"></i><i class="fa-solid fa-star text-warning"></i><i class="fa-solid fa-star text-warning"></i><i class="fa-regular fa-star-half-stroke text-warning"></i>
+            </div>
+            <div class="total-count-text">128 đánh giá</div>
+        </div>
+        <div class="bars-distribution-right flex-grow-1">
+            <div class="bar-row"><span class="label">5 sao</span><div class="progress-track"><div class="fill-progress" style="width: 62%;"></div></div><span class="count-val">(80)</span></div>
+            <div class="bar-row"><span class="label">4 sao</span><div class="progress-track"><div class="fill-progress" style="width: 22%;"></div></div><span class="count-val">(28)</span></div>
+        </div>
+    </div>
+    <div class="comments-stream-list">
+        <div class="single-comment-card d-flex">
+            <div class="user-avatar-circle" style="background-color: #fadadd; color: #9b3a5a;">NL</div>
+            <div class="comment-body-content">
+                <strong class="username">Ngọc Linh</strong>
+                <p class="comment-text">Áo đẹp hơn hình nhiều, voan mỏng nhẹ, bèo dọc tinh tế.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="related-products-carousel-section">
+    <div class="carousel-title-centered text-center">
+        <h2>Có thể bạn sẽ thích</h2>
+        <div class="decorative-underline-bar"></div>
+    </div>
+    
+    <div class="slider-outer-wrapper">
+        <button class="slide-nav-btn prev-slide" id="slidePrevBtn"><i class="fa-solid fa-chevron-left"></i></button>
+        <div class="slider-window-mask">
+            <div class="related-products-grid" id="relatedProductsGrid">
+                </div>
+        </div>
+        <button class="slide-nav-btn next-slide" id="slideNextBtn"><i class="fa-solid fa-chevron-right"></i></button>
+    </div>
+</section>
+
+<!--FOOTER-->
+<footer class="footer-section">
+    <div class="container py-5">
+
+        <div class="row g-4 justify-content-center">
+
+            <!-- ABOUT -->
+            <div class="col-lg-3 col-md-6">
+                <h5 class="footer-title">BATHORA DRESS</h5>
+                <p class="footer-text">
+                    Tại Bathora, chúng tôi tin rằng thời trang không chỉ là những bộ trang phục khoác lên mình,
+                    mà là ngôn ngữ tôn vinh giá trị nội tại của người phụ nữ hiện đại.
+                </p>
+            </div>
+
+            <!-- SOCIAL -->
+            <div class="col-lg-3 col-md-6">
+                <h5 class="footer-title">THEO DÕI CHÚNG TÔI</h5>
+                <ul class="footer-list">
+                    <li><a href="#"><i class="fab fa-facebook-f facebook"></i> Facebook</a></li>
+                    <li><a href="#"><i class="fab fa-instagram instagram"></i> Instagram</a></li>
+                    <li><a href="#"><i class="fab fa-youtube youtube"></i> Youtube</a></li>
+                    <li><a href="#"><i class="fa-regular fa-envelope email"></i> marketing@bbathora.com</a></li>
+                </ul>
+            </div>
+
+            <!-- SUPPORT -->
+            <div class="col-lg-3 col-md-6">
+                <h5 class="footer-title">CHĂM SÓC KHÁCH HÀNG</h5>
+                <ul class="footer-list">
+                    <li><a href="#">Hướng dẫn mua hàng</a></li>
+                    <li><a href="#">Chính sách vận chuyển</a></li>
+                    <li><a href="#">Chính sách tích điểm</a></li>
+                    <li><a href="#">Chính sách đổi trả hàng</a></li>
+                    <li><a href="#">Chế độ bảo hành trọn đời</a></li>
+                </ul>
+            </div>
+
+            <!-- NEWSLETTER -->
+            <div class="col-lg-3 col-md-6">
+                <h5 class="footer-title">ĐĂNG KÝ NHẬN ƯU ĐÃI</h5>
+
+                <div class="newsletter-box">
+                    <input type="email" placeholder="Nhập email của bạn">
+                    <button>GỬI</button>
+                </div>
+
+                <p class="footer-note">
+                    Bằng cách đăng ký, bạn đồng ý với chính sách bảo mật.
+                    <br>
+                    Đã có tài khoản? <a href="#">Đăng nhập</a>
+                </p>
+            </div>
+
+        </div>
+    </div>
+    <!--copyright-->
+    <div class="copyright">
+        <div class="container text-center">
+            <small>© 2026 BATHORA. Powered by NHOM10</small>
+        </div>
+    </div>
+</footer>
+
+
+<div class="sticky-mobile-action-bar" id="stickyMobileBar">
+    <div class="price-info-left">
+        <span class="label">ĐƠN GIÁ:</span>
+        <strong id="stickyPriceText">755.000₫</strong>
+    </div>
+    <div class="buttons-group-right d-flex flex-grow-1">
+        <button class="sticky-btn add-cart-action" id="stickyAddCartBtn">Thêm giỏ</button>
+        <button class="sticky-btn buy-now-action" id="stickyBuyNowBtn">Mua ngay</button>
+    </div>
+</div>
+
+<div class="fullscreen-zoom-overlay" id="zoomOverlayModal">
+    <button class="close-overlay-btn" id="closeZoomOverlayBtn">×</button>
+    <img src="" alt="Zoom Frame" id="zoomTargetImg">
+</div>
+
+<div class="global-toast-notification" id="toastAlertPopup"></div>
+
+<div class="sticky-contact">
+    <a href="https://m.me/yourprofile" target="_blank" class="contact-item messenger" title="Chat Messenger">
+        <i class="fa-brands fa-facebook-messenger"></i>
+    </a>
+    <a href="https://zalo.me/0123456789" target="_blank" class="contact-item zalo" title="Chat Zalo">
+        <span>Zalo</span>
+    </a>
+</div>
+
+<button id="backToTop" title="Lên đầu trang">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="12" y1="19" x2="12" y2="5"></line>
+        <polyline points="5 12 12 5 19 12"></polyline>
+    </svg>
+</button>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="chitiet.js"></script>
+
+<!-- SIZE GUIDE MODAL -->
+<div class="size-guide-modal" id="sizeGuideModal">
+    <div class="size-guide-box">
+
+        <button class="close-size-modal" id="closeSizeGuide">
+            ×
+        </button>
+
+        <h3>BẢNG HƯỚNG DẪN CHỌN SIZE</h3>
+
+        <table class="size-chart-table">
+            <thead>
+                <tr>
+                    <th>Size</th>
+                    <th>Ngực</th>
+                    <th>Eo</th>
+                    <th>Hông</th>
+                    <th>Cao</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>S</td>
+                    <td>80–84</td>
+                    <td>62–66</td>
+                    <td>88–92</td>
+                    <td>155–160</td>
+                </tr>
+
+                <tr>
+                    <td>M</td>
+                    <td>84–88</td>
+                    <td>66–70</td>
+                    <td>92–96</td>
+                    <td>158–163</td>
+                </tr>
+
+                <tr>
+                    <td>L</td>
+                    <td>88–92</td>
+                    <td>70–74</td>
+                    <td>96–100</td>
+                    <td>160–165</td>
+                </tr>
+
+                <tr>
+                    <td>XL</td>
+                    <td>92–96</td>
+                    <td>74–78</td>
+                    <td>100–104</td>
+                    <td>162–168</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+</body>
+</html>

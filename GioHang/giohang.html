@@ -24,18 +24,20 @@
         <div class="container-fluid d-flex align-items-center justify-content-between">
 
             <div class="logo">
-                <a href="trangchu.html">
+                <a href="../trangchu.html">
                     <img src="../images/logo.png" alt="Bathora Logo">
                 </a>
             </div>
-
+<button class="menu-toggle" id="menuToggle">
+    <i class="fa-solid fa-bars"></i>
+</button>
             <nav class="menu">
                 <ul class="d-flex align-items-center mb-0">
 
                     <li><a href="../trangchu.html">TRANG CHỦ</a></li>
 
-                    <li class="nav-item dropdown">
-                        <a class="nav-link sale-link" href="#" id="saleDropdown" role="button"
+                    <li class="nav-item dropdown mobile-dropdown">
+                        <a class="nav-link sale-link mobile-dropdown-toggle" href="#" id="saleDropdown" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
                             SALE <i class="fa fa-chevron-down ms-1"></i>
                         </a>
@@ -52,26 +54,26 @@
                         </ul>
                     </li>
 
-                    <li class="nav-item dropdown">
-                        <a class="nav-link" href="#" id="productDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            SẢN PHẨM <i class="fa fa-chevron-down ms-1"></i>
-                        </a>
+                    <li class="nav-item dropdown mobile-dropdown">
+                        <a class="nav-link mobile-dropdown-toggle" href="../sanpham.html" id="productDropdown" role="button" aria-expanded="false">
+                        SẢN PHẨM <i class="fa fa-chevron-down ms-1"></i>
+                    </a>
 
                         <ul class="dropdown-menu border-0 shadow-sm" aria-labelledby="productDropdown">
-                            <li><a class="dropdown-item" href="#">ĐẦM</a></li>
-                            <li><a class="dropdown-item" href="#">ÁO</a></li>
-                            <li><a class="dropdown-item" href="#">QUẦN</a></li>
-                            <li><a class="dropdown-item" href="#">CHÂN VÁY</a></li>
-                            <li><a class="dropdown-item" href="#">ÁO KHOÁC</a></li>
-                            <li><a class="dropdown-item" href="#">TÚI XÁCH</a></li>
-                            <li><a class="dropdown-item" href="#">PHỤ KIỆN</a></li>
-                            <li><a class="dropdown-item" href="#">GIÀY</a></li>
+                            <li><a class="dropdown-item" href="../sanpham.html?loai=dam">ĐẦM</a></li>
+                        <li><a class="dropdown-item" href="../sanpham.html?loai=ao">ÁO</a></li>
+                        <li><a class="dropdown-item" href="../sanpham.html?loai=quan">QUẦN</a></li>
+                        <li><a class="dropdown-item" href="../sanpham.html?loai=chanvay">CHÂN VÁY</a></li>
+                        <li><a class="dropdown-item" href="../sanpham.html?loai=aokhoac">ÁO KHOÁC</a></li>
+                        <li><a class="dropdown-item" href="../sanpham.html?loai=tuixach">TÚI XÁCH</a></li>
+                        <li><a class="dropdown-item" href="../sanpham.html?loai=phukien">PHỤ KIỆN</a></li>
+                        <li><a class="dropdown-item" href="../sanpham.html?loai=giay">GIÀY</a></li>
                         </ul>
                     </li>
 
                     <li><a href="../TinTuc/tintuc.html">TIN TỨC</a></li>
                     <li><a href="../vechungtoi.html">VỀ CHÚNG TÔI</a></li>
+                     <li><a href="../Bosuutap/Bosuutap.html">BỘ SƯU TẬP</a></li>
                 </ul>
             </nav>
 
@@ -92,7 +94,7 @@
                 </div>
 
                 <div class="icon">
-                    <a href="login.html" title="Tài khoản">
+                    <a href="../TaiKhoan/taikhoan.html" title="Tài khoản">
                         <i class="fa-regular fa-user"></i>
                     </a>
                 </div>
@@ -198,8 +200,10 @@
                                 <strong id="total">0đ</strong>
                             </div>
 
-                            <button class="btn-checkout">TIẾN HÀNH ĐẶT HÀNG</button>
-                            <a href="trangchu.html" class="btn-continue-shopping">MUA THÊM SẢN PHẨM</a>
+                            <button class="btn-checkout" id="checkoutBtn">
+                                    TIẾN HÀNH ĐẶT HÀNG
+                                </button>
+                            <a href="../trangchu.html" class="btn-continue-shopping">MUA THÊM SẢN PHẨM</a>
 
                             <div class="cart-policy">
                                 <p><i class="fa-solid fa-truck-fast"></i> Miễn phí vận chuyển cho đơn phù hợp</p>
@@ -276,7 +280,7 @@
                     <p class="footer-note">
                         Bằng cách đăng ký, bạn đồng ý với chính sách bảo mật.
                         <br>
-                        Đã có tài khoản? <a href="#">Đăng nhập</a>
+                        Đã có tài khoản? <a href="../TaiKhoan/taikhoan.html">Đăng nhập</a>
                     </p>
                 </div>
 
@@ -301,7 +305,7 @@
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="giohang.js"></script>
 </body>
 
