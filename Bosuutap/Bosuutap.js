@@ -85,7 +85,6 @@ function getFavorites() {
 
 function updateWishlistBadge() {
     const badge = document.getElementById("wishlist-badge");
-
     if (!badge) return;
 
     const favs = getFavorites();
@@ -113,7 +112,6 @@ function getCart() {
 
 function updateCartBadge() {
     const badge = document.getElementById("cart-badge");
-
     if (!badge) return;
 
     const cart = getCart();
