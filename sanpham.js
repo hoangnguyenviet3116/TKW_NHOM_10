@@ -565,46 +565,98 @@ const tongHopSanPham = [
     renderProducts(currentDataToRender);
 
 /* ==========================================
-       4. LOGIC ẤN NÚT "ÁP DỤNG"
+       4. LOGIC LỌC SẢN PHẨM & TÌM KIẾM TỔNG HỢP
        ========================================== */
     const applyBtn = document.getElementById('applyFilterBtn');
-    if (applyBtn) {
-        applyBtn.addEventListener('click', () => {
-            const checkedTypes = Array.from(document.querySelectorAll('.main-cat-filter:checked')).map(cb => cb.value);
-            const priceVal = document.querySelector('input[name="price"]:checked') ? document.querySelector('input[name="price"]:checked').value : 'all';
-            const checkedSizes = Array.from(document.querySelectorAll('.size-filter:checked')).map(cb => cb.value);
-            const checkedColors = Array.from(document.querySelectorAll('.color-filter:checked')).map(cb => cb.value);
+    const searchNowBtn = document.getElementById('searchNowBtn');
+    const searchInput = document.getElementById('searchInput');
 
-            currentDataToRender = tongHopSanPham.filter(item => {
-                const matchType = checkedTypes.length === 0 || checkedTypes.includes(item.type);
-                
-                let matchPrice = false;
-                if (priceVal === 'all') matchPrice = true;
-                else if (priceVal === 'under500') matchPrice = item.price < 500000;
-                else if (priceVal === '500to1000') matchPrice = item.price >= 500000 && item.price <= 1000000;
-                else if (priceVal === 'over1000') matchPrice = item.price > 1000000;
+    // TẠO 1 HÀM DUY NHẤT ĐỂ XỬ LÝ LỌC & TÌM KIẾM
+    function executeFilter() {
+        // Lấy giá trị từ ô tìm kiếm
+        const searchTerm = searchInput ? searchInput.value.toLowerCase().trim() : '';
+        
+        // Lấy giá trị từ các bộ lọc
+        const checkedTypes = Array.from(document.querySelectorAll('.main-cat-filter:checked')).map(cb => cb.value);
+        const priceVal = document.querySelector('input[name="price"]:checked') ? document.querySelector('input[name="price"]:checked').value : 'all';
+        const checkedSizes = Array.from(document.querySelectorAll('.size-filter:checked')).map(cb => cb.value);
+        const checkedColors = Array.from(document.querySelectorAll('.color-filter:checked')).map(cb => cb.value);
 
-                const itemSizes = item.sizes || [];
-                const matchSize = checkedSizes.length === 0 || checkedSizes.some(s => itemSizes.includes(s));
+        currentDataToRender = tongHopSanPham.filter(item => {
+            // 1. Kiểm tra Tên sản phẩm
+            const matchSearch = item.name.toLowerCase().includes(searchTerm);
+            
+            // 2. Kiểm tra Danh mục
+            const matchType = checkedTypes.length === 0 || checkedTypes.includes(item.type);
+            
+            // 3. Kiểm tra Giá
+            let matchPrice = false;
+            if (priceVal === 'all') matchPrice = true;
+            else if (priceVal === 'under500') matchPrice = item.price < 500000;
+            else if (priceVal === '500to1000') matchPrice = item.price >= 500000 && item.price <= 1000000;
+            else if (priceVal === 'over1000') matchPrice = item.price > 1000000;
 
-                // === BẢN CẬP NHẬT: LOGIC LỌC MÀU SẮC LINH HOẠT ===
-                const itemColors = item.colors || [];
-                const matchColor = checkedColors.length === 0 || itemColors.some(productColor => {
-                    return checkedColors.some(selected => 
-                        // Chuyển về chữ thường và dùng includes để tìm từ khóa
-                        productColor.toLowerCase().includes(selected.toLowerCase())
-                    );
-                });
-                // ===================================================
+            // 4. Kiểm tra Size
+            const itemSizes = item.sizes || [];
+            const matchSize = checkedSizes.length === 0 || checkedSizes.some(s => itemSizes.includes(s));
 
-                return matchType && matchPrice && matchSize && matchColor;
+            // 5. Kiểm tra Màu sắc
+            const itemColors = item.colors || [];
+            const matchColor = checkedColors.length === 0 || itemColors.some(productColor => {
+                return checkedColors.some(selected => 
+                    productColor.toLowerCase().includes(selected.toLowerCase())
+                );
             });
 
-            currentPage = 1; // RESET LẠI TRANG 1 KHI LỌC TÌM KIẾM MỚI
-            renderProducts(currentDataToRender);
-            
-            const sidebar = document.getElementById('filterSidebar');
-            if(sidebar) sidebar.classList.remove('open');
+            // Sản phẩm phải thỏa mãn TẤT CẢ các điều kiện trên mới được hiện ra
+            return matchSearch && matchType && matchPrice && matchSize && matchColor;
+        });
+
+        // --- ĐOẠN MỚI CHÈN: CẬP NHẬT TIÊU ĐỀ TỰ ĐỘNG ---
+        const checkedTypeElements = Array.from(document.querySelectorAll('.main-cat-filter:checked'));
+        const pageTitleText = document.getElementById('pageTitleText');
+        const breadcrumbText = document.getElementById('breadcrumbText');
+
+        if (checkedTypeElements.length === 1) {
+            // Nếu chỉ chọn 1 danh mục
+            const categoryName = checkedTypeElements[0].parentElement.textContent.trim().toUpperCase();
+            if (pageTitleText) pageTitleText.innerText = categoryName;
+            if (breadcrumbText) breadcrumbText.innerText = categoryName;
+        } else {
+            // Nếu chọn nhiều danh mục hoặc không chọn gì
+            if (pageTitleText) pageTitleText.innerText = "BỘ SƯU TẬP BATHORA";
+            if (breadcrumbText) breadcrumbText.innerText = "Tất cả sản phẩm";
+        }
+        // --- KẾT THÚC ĐOẠN MỚI CHÈN ---
+
+        // Vẽ lại giao diện
+        currentPage = 1; 
+        renderProducts(currentDataToRender);
+        
+        // Đóng menu filter trên điện thoại (nếu đang mở)
+        const sidebar = document.getElementById('filterSidebar');
+        if(sidebar) sidebar.classList.remove('open');
+    }
+
+    // === GẮN SỰ KIỆN CHO CÁC NÚT ĐỂ GỌI HÀM TRÊN ===
+
+    // 1. Khi bấm nút "Áp dụng một lúc" ở bộ lọc
+    if (applyBtn) {
+        applyBtn.addEventListener('click', executeFilter);
+    }
+
+    // 2. Khi bấm nút "TÌM KIẾM NGAY"
+    if (searchNowBtn) {
+        searchNowBtn.addEventListener('click', executeFilter);
+    }
+
+    // 3. Khi gõ xong và bấm phím "Enter"
+    if (searchInput) {
+        searchInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault(); // Ngăn web bị load lại
+                executeFilter();
+            }
         });
     }
 
@@ -690,7 +742,8 @@ const tongHopSanPham = [
         btnOpen.addEventListener('click', () => sidebar.classList.add('open'));
         btnClose.addEventListener('click', () => sidebar.classList.remove('open'));
     }
+    
 });
-// Tìm kiếm sản phẩm theo tên
+
 
 
