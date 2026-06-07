@@ -137,3 +137,19 @@ function updateCartBadge() {
     badge.innerText = total;
     badge.style.display = total === 0 ? "none" : "flex";
 }
+
+/*HIỆU ỨNG CUỘN TRANG*/
+const fadeElements = document.querySelectorAll('.fade-up');
+
+function checkFade() {
+    fadeElements.forEach(el => {
+        const elementTop = el.getBoundingClientRect().top;
+
+        if(elementTop < window.innerHeight - 100){
+            el.classList.add('show');
+        }
+    });
+}
+
+window.addEventListener('scroll', checkFade);
+window.addEventListener('load', checkFade);
