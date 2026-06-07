@@ -735,4 +735,19 @@ body {
         padding-left: 20px;
         padding-right: 20px;
     }
+        .mobile-dropdown .dropdown-menu{
+        display:none;
+        position:static !important;
+        opacity:1 !important;
+        visibility:visible !important;
+        transform:none !important;
+        box-shadow:none;
+        border:none;
+        margin-top:0 !important;
+        padding-left:15px;
+    }
+
+    .mobile-dropdown.open .dropdown-menu{
+        display:block;
+    }
 }
