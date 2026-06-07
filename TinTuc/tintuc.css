@@ -54,6 +54,11 @@ body {
     color: #c9a45c;
 }
 
+.menu .nav-link.active,
+.menu a.active { 
+    color: #c9a45c !important; 
+}
+
 /* ICONS (GIỎ HÀNG / YÊU THÍCH) */
 .icons {
     gap: 20px;
