@@ -289,10 +289,14 @@ main {
 
 /*Nội dung*/
 /* Tiêu đề trang */
-h2 {
-    letter-spacing: 2px;
-    color: #333;
-    font-family: 'Manrope', sans-serif;
+.section-luxury-title {
+    font-family: 'Cormorant Garamond', serif !important;
+    font-size: 30px !important;
+    font-weight: 300 !important;          /* Nét chữ mảnh cao cấp */
+    color: #111111 !important;
+    letter-spacing: 2px !important;       /* Khoảng cách chữ thoáng đạt */
+    text-transform: none !important;      /* Tắt ép viết hoa toàn bộ */
+    display: block;
 }
 
 #wishlist-count {
@@ -356,11 +360,10 @@ h2 {
 .wishlist-item-price {
     font-size: 14px;
     font-weight: 600;
-    color: #c9a45c; /* Đổi sang màu vàng gold đồng bộ branding thương hiệu */
+    color: #c9a45c; 
     margin-bottom: 15px;
 }
 
-/* Nút xóa chéo góc (Xmark) tinh tế đặt trên góc ảnh */
 .btn-remove-fav {
     position: absolute;
     top: 15px;
@@ -447,8 +450,6 @@ h2 {
         transform: translateY(0);
     }
 }
-
-/* --- GIỮ NGUYÊN VÀ ĐỒNG BỘ CÁC KHỐI THÔNG BÁO / NÚT TIẾP TỤC MUA SẮM CỦA BẠN --- */
 
 /* Thông báo xóa bảng (Toast) */
 .toast-custom {

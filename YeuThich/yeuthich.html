@@ -54,24 +54,24 @@
                 </li>
                 
                 <li class="nav-item dropdown">
-                    <a class="nav-link" href="#" id="productDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link" href="../sanpham.html" id="productDropdown" role="button" aria-expanded="false">
                         SẢN PHẨM <i class="fa fa-chevron-down ms-1"></i>
                     </a>
                     <ul class="dropdown-menu border-0 shadow-sm" aria-labelledby="productDropdown">
-                        <li><a class="dropdown-item" href="#">ĐẦM</a></li>
-                        <li><a class="dropdown-item" href="#">ÁO</a></li>
-                        <li><a class="dropdown-item" href="#">QUẦN</a></li>
-                        <li><a class="dropdown-item" href="#">CHÂN VÁY</a></li>
-                        <li><a class="dropdown-item" href="#">ÁO KHOÁC</a></li>
-                        <li><a class="dropdown-item" href="#">TÚI XÁCH</a></li>
-                        <li><a class="dropdown-item" href="#">PHỤ KIỆN</a></li>
-                        <li><a class="dropdown-item" href="#">GIÀY</a></li>
+                       <li><a class="dropdown-item" href="../sanpham.html?loai=dam">ĐẦM</a></li>
+                        <li><a class="dropdown-item" href="../sanpham.html?loai=ao">ÁO</a></li>
+                        <li><a class="dropdown-item" href="../sanpham.html?loai=quan">QUẦN</a></li>
+                        <li><a class="dropdown-item" href="../sanpham.html?loai=chanvay">CHÂN VÁY</a></li>
+                        <li><a class="dropdown-item" href="../sanpham.html?loai=aokhoac">ÁO KHOÁC</a></li>
+                        <li><a class="dropdown-item" href="../sanpham.html?loai=tuixach">TÚI XÁCH</a></li>
+                        <li><a class="dropdown-item" href="../sanpham.html?loai=phukien">PHỤ KIỆN</a></li>
+                        <li><a class="dropdown-item" href="../sanpham.html?loai=giay">GIÀY</a></li>
                     </ul>
                 </li>
-             
+                <li><a href="#">BỘ SƯU TẬP</a></li>
                 <li><a href="../TinTuc/tintuc.html">TIN TỨC</a></li>
+                <li><a href="../vechungtoi.html">VỀ CHÚNG TÔI</a></li>
 
-                <li><a href="#">VỀ CHÚNG TÔI</a></li>
             </ul>
         </nav>
 
@@ -88,14 +88,15 @@
 
         <!-- Cart -->
         <div class="icon">
-            <a href="cart.html">
+            <a href="../GioHang/giohang.html">
                 <i class="fa-solid fa-bag-shopping"></i>
+                <span id="cart-badge" class="badge-count">0</span>
             </a>
         </div>
 
         <!-- User (Login) -->
         <div class="icon">
-            <a href="login.html">
+            <a href="../TaiKhoan/taikhoan.html">
                 <i class="fa-regular fa-user"></i>
             </a>
         </div>
@@ -116,6 +117,7 @@
                 <li class="breadcrumb-item active">Yêu thích</li>
             </ol>
             <h2 class="page-title">YÊU THÍCH</h2>
+            <p>Có <span id="wishlist-count" class="fw-bold">0</span> sản phẩm trong mục ưa thích của bạn</p>
         </nav>
     </div>
     </section>
@@ -123,11 +125,9 @@
 <div class="container py-4">
     <div class="container mt-5">
         <div class="text-center mb-5">
-            <h2 class="text-uppercase fw-bold">Sản phẩm yêu thích</h2>
-            <p>Có <span id="wishlist-count" class="fw-bold">0</span> sản phẩm trong mục ưa thích của bạn</p>
+            <h2 class="section-luxury-title text-center mb-5">SẢN PHẨM YÊU THÍCH</h2>
         </div>
 
-        <!-- ĐÃ THAY BẢNG THÀNH LƯỚI ẢNH GRID CAO CẤP -->
         <div id="wishlist-grid" class="row g-4 justify-content-start">
             <!-- JavaScript sẽ tự động đổ dữ liệu Card thời trang vào đây -->
         </div>
@@ -140,7 +140,7 @@
 
     <!-- Nút tiếp tục mua sắm -->
     <div class="continue-shopping-wrapper">
-        <a href="sanpham.html" class="btn-continue-shopping">
+        <a href="../sanpham.html" class="btn-continue-shopping">
             <i class="fa-solid fa-chevron-left me-2"></i> TIẾP TỤC MUA SẮM
         </a>
     </div>
@@ -198,7 +198,7 @@
                 <p class="footer-note">
                     Bằng cách đăng ký, bạn đồng ý với chính sách bảo mật.
                     <br>
-                    Đã có tài khoản? <a href="#">Đăng nhập</a>
+                    Đã có tài khoản? <a href="../TaiKhoan/taikhoan.html">Đăng nhập</a>
                 </p>
             </div>
 

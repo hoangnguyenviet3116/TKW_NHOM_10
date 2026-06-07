@@ -53,23 +53,24 @@
                 </li>
                 <!--SẢN PHẨM  -->
                 <li class="nav-item dropdown">
-                    <a class="nav-link" href="#" id="productDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link" href="../sanpham.html" id="productDropdown" role="button" aria-expanded="false">
                         SẢN PHẨM <i class="fa fa-chevron-down ms-1"></i>
                     </a>
                     <ul class="dropdown-menu border-0 shadow-sm" aria-labelledby="productDropdown">
-                        <li><a class="dropdown-item" href="#">ĐẦM</a></li>
-                        <li><a class="dropdown-item" href="#">ÁO</a></li>
-                        <li><a class="dropdown-item" href="#">QUẦN</a></li>
-                        <li><a class="dropdown-item" href="#">CHÂN VÁY</a></li>
-                        <li><a class="dropdown-item" href="#">ÁO KHOÁC</a></li>
-                        <li><a class="dropdown-item" href="#">TÚI XÁCH</a></li>
-                        <li><a class="dropdown-item" href="#">PHỤ KIỆN</a></li>
-                        <li><a class="dropdown-item" href="#">GIÀY</a></li>
+                        <li><a class="dropdown-item" href="../sanpham.html?loai=dam">ĐẦM</a></li>
+                        <li><a class="dropdown-item" href="../sanpham.html?loai=ao">ÁO</a></li>
+                        <li><a class="dropdown-item" href="../sanpham.html?loai=quan">QUẦN</a></li>
+                        <li><a class="dropdown-item" href="../sanpham.html?loai=chanvay">CHÂN VÁY</a></li>
+                        <li><a class="dropdown-item" href="../sanpham.html?loai=aokhoac">ÁO KHOÁC</a></li>
+                        <li><a class="dropdown-item" href="../sanpham.html?loai=tuixach">TÚI XÁCH</a></li>
+                        <li><a class="dropdown-item" href="../sanpham.html?loai=phukien">PHỤ KIỆN</a></li>
+                        <li><a class="dropdown-item" href="../sanpham.html?loai=giay">GIÀY</a></li>
                     </ul>
                 </li>
                 <!-- Các mục còn lại -->
+                <li><a href="../Bosuutap/Bosuutap.html">BỘ SƯU TẬP</a></li>
                 <li><a href="tintuc.html">TIN TỨC</a></li>
-                <li><a href="../vechungtoi.html">VỀ CHÚNG TÔI</a></li>
+                <li><a href="../vechungtoi.html">VỀ CHÚNG TÔI</a></li>              
             </ul>
         </nav>
 
@@ -86,14 +87,15 @@
 
         <!-- Cart -->
         <div class="icon">
-            <a href="cart.html">
+            <a href="../GioHang/giohang.html">
                 <i class="fa-solid fa-bag-shopping"></i>
+                <span id="cart-badge" class="badge-count">0</span>
             </a>
         </div>
 
         <!-- User (Login) -->
         <div class="icon">
-            <a href="login.html">
+            <a href="../TaiKhoan/taikhoan.html">
                 <i class="fa-regular fa-user"></i>
             </a>
         </div>
@@ -119,145 +121,195 @@
     </div>
     </section>
 
-<div class="container py-4">
-    <!-- Filter Tags -->
-    <div class="d-flex gap-2 mb-4 overflow-auto pb-2">
-        <button class="btn btn-outline-dark rounded-pill px-4 active">Tất cả</button>
-        <button class="btn btn-outline-dark rounded-pill px-4">Sự kiện</button>
-        <button class="btn btn-outline-dark rounded-pill px-4">Xu hướng</button>
-        <button class="btn btn-outline-dark rounded-pill px-4">Khuyến mãi</button>
-           <button class="btn btn-outline-dark rounded-pill px-4">Tips</button>
-    </div>
 
 
 
-
-    <!--TIN MỚI NHẤT-->
-    <section class="mb-5">
-        <div class="d-flex justify-content-between align-items-center mb-3">
-            <h5 class="fw-bold m-0">Tin mới nhất</h5>
-            <a href="#" class="text-muted text-decoration-none small">Xem tất cả <i class="fa-solid fa-chevron-right ms-1"></i></a>
-        </div>
-        <div class="row g-3">
-            <!-- Card 1 -->
-            <div class="col-6 col-md-3">
-                <div class="card border-0 h-100 news-card">
-                    <div class="position-relative">
-                        <img src="images/tinmoi1.jpg" class="card-img-top rounded-3" alt="“Yêu và Được Yêu” – Khi thời trang trở thành ngôn ngữ của cảm xúc">
-                        <span class="badge bg-white text-dark position-absolute top-0 start-0 m-2 rounded-pill shadow-sm">Sự kiện</span>
-                    </div>
-                    <div class="card-body px-0">
-                        <h6 class="card-title fw-bold text-truncate-2">“Yêu và Được Yêu” – Khi thời trang trở thành ngôn ngữ của cảm xúc</h6>
-                        <p class="card-text small text-muted"><i class="fa-regular fa-clock me-1"></i> 20/05/2026</p>
-                    </div>
-                </div>
-            </div>
-             <!-- Card 2 -->
-            <div class="col-6 col-md-3">
-                <div class="card border-0 h-100 news-card">
-                    <div class="position-relative">
-                        <img src="images/tinmoi2.jpg" class="card-img-top rounded-3" alt="Paris Fashion Week tiếp tục định hình xu hướng thời trang toàn cầu">
-                        <span class="badge bg-white text-dark position-absolute top-0 start-0 m-2 rounded-pill shadow-sm">Sự kiện</span>
-                    </div>
-                    <div class="card-body px-0">
-                        <h6 class="card-title fw-bold text-truncate-2">Paris Fashion Week tiếp tục định hình xu hướng thời trang toàn cầu</h6>
-                        <p class="card-text small text-muted"><i class="fa-regular fa-clock me-1"></i> 17/05/2026</p>
-                    </div>
-                </div>
-            </div>
-             <!-- Card 3 -->
-            <div class="col-6 col-md-3">
-                <div class="card border-0 h-100 news-card">
-                    <div class="position-relative">
-                        <img src="images/tinmoi3.jpg" class="card-img-top rounded-3" alt="Flash Sale cuối tuần – Ưu đãi lên đến 40% chỉ trong 48 giờ">
-                        <span class="badge bg-white text-dark position-absolute top-0 start-0 m-2 rounded-pill shadow-sm">Khuyến mãi</span>
-                    </div>
-                    <div class="card-body px-0">
-                        <h6 class="card-title fw-bold text-truncate-2">Flash Sale cuối tuần – Ưu đãi lên đến 50% chỉ trong 48 giờ</h6>
-                        <p class="card-text small text-muted"><i class="fa-regular fa-clock me-1"></i> 16/05/2026</p>
-                    </div>
-                </div>
-            </div>
-             <!-- Card 4 -->
-            <div class="col-6 col-md-3">
-                <div class="card border-0 h-100 news-card">
-                    <div class="position-relative">
-                        <img src="images/tinmoi4.jpg" class="card-img-top rounded-3" alt="Zendaya trở thành biểu tượng thời trang thế hệ mới">
-                        <span class="badge bg-white text-dark position-absolute top-0 start-0 m-2 rounded-pill shadow-sm">Xu hướng</span>
-                    </div>
-                    <div class="card-body px-0">
-                        <h6 class="card-title fw-bold text-truncate-2">Zendaya trở thành biểu tượng thời trang thế hệ mới</h6>
-                        <p class="card-text small text-muted"><i class="fa-regular fa-clock me-1"></i> 13/05/2026</p>
-                    </div>
-                </div>
-            </div>
+<!-- Khu vực Bộ lọc & Tin mới nhất -->
+<div class="container py-4 py-md-5">
     
+    <!-- Bộ lọc Minimalist Luxury Duy Nhất (Hỗ trợ trượt ngang trên Mobile) -->
+    <div class="blog-filter-wrapper mb-4 mb-md-5">
+        <div class="d-flex gap-4 pb-2 blog-filter-luxury">
+            <button class="filter-link active" data-filter="all">Tất cả</button>
+            <button class="filter-link" data-filter="event">Sự kiện</button>
+            <button class="filter-link" data-filter="trend">Xu hướng</button>
+            <button class="filter-link" data-filter="promo">Khuyến mãi</button>
+            <button class="filter-link" data-filter="tips">Tips</button>
         </div>
-    </section>
+    </div>
 
-
-
-
-    <!--TIPS-->
-    <section class="mb-5 bg-light p-4 rounded-4 shadow-sm">
-        <div class="row g-4">
-            <div class="d-flex justify-content-between align-items-center mb-3">
-            <h5 class="fw-bold m-0">Tips hay mỗi ngày</h5>
-            <a href="#" class="text-muted text-decoration-none small">Xem tất cả <i class="fa-solid fa-chevron-right ms-1"></i></a>
+    <!-- TIN MỚI NHẤT -->
+    <section class="mb-5">
+        <div class="d-flex justify-content-between align-items-baseline mb-4">
+            <h2 class="section-luxury-title m-0">Tin mới nhất</h2>
+            <a href="#" class="view-all-luxury">Xem tất cả</a>
         </div>
-            <!-- Bài lớn bên trái -->
-            <div class="col-lg-7">
-                <div class="card border-0 text-white overflow-hidden rounded-4 main-feature">
-                    <img src="images/tip0.jpg" class="card-img h-100 object-fit-cover" alt="Bí quyết phối đồ phong cách tối giản cho mùa Hè 2026">
-                    <div class="card-img-overlay d-flex flex-column justify-content-end p-4 gradient-overlay">
-                        <span class="badge bg-primary mb-2 align-self-start">Xu hướng</span>
-                        <h3 class="fw-bold">Bí quyết phối đồ phong cách tối giản cho mùa Hè 2026</h3>
-                        <p class="small m-0"><i class="fa-regular fa-clock"></i> 30/04/2026</p>
+        
+        <!-- row-cols-2: 2 cột trên Mobile | row-cols-lg-4: 4 cột trên Desktop -->
+        <div class="row row-cols-2 row-cols-sm-3 row-cols-lg-4 g-3 g-md-4" id="news-grid">
+            
+            <!-- Card 1 -->
+            <div class="col news-item" data-category="event">
+                <div class="card-luxury">
+                    <div class="img-effect-wrapper">
+                        <a href="#">
+                            <img src="images/tinmoi1.jpg" alt="“Yêu và Được Yêu”">
+                        </a>
+                    </div>
+                    <div class="card-luxury-body">
+                        <span class="card-luxury-tag">Sự kiện</span>
+                        <h3 class="card-luxury-title">
+                            <a href="#">“Yêu và Được Yêu” – Khi thời trang trở thành ngôn ngữ của cảm xúc</a>
+                        </h3>
+                        <p class="card-luxury-date">20.05.2026</p>
                     </div>
                 </div>
             </div>
-            <!-- Danh sách bài nhỏ bên phải -->
-            <div class="col-lg-5">
-    <div class="d-flex flex-column gap-3">
-        <!-- Bài viết 1 -->
-        <div class="d-flex gap-3 align-items-center side-item">
-            <img src="images/tip1.jpg" class="rounded-3 side-img" alt="Phối màu trang phục">
-            <div>
-                <span class="text-primary x-small fw-bold text-uppercase">Xu hướng</span>
-                <h6 class="fw-bold mb-1">Phối màu trang phục – Bí quyết tạo nên phong cách tinh tế</h6>
-                <p class="x-small text-muted m-0">28/04/2026</p>
-            </div>
-        </div>
-        
-        <hr class="my-1 text-muted opacity-25">
-        
-        <!-- Bài viết 2 -->
-        <div class="d-flex gap-3 align-items-center side-item">
-            <img src="images/tip2.jpg" class="rounded-3 side-img" alt="Mở khóa tủ đồ xa hoa của Phu nhân đại quân IU trong Perfect Crown">
-            <div>
-                <span class="text-primary x-small fw-bold text-uppercase">Xu hướng</span>
-                <h6 class="fw-bold mb-1">Mở khóa tủ đồ xa hoa của "Phu nhân đại quân" IU trong "Perfect Crown"</h6>
-                <p class="x-small text-muted m-0">27/04/2026</p>
-            </div>
-        </div>
 
-        <hr class="my-1 text-muted opacity-25">
-        
-        <!-- Bài viết 3 -->
-        <div class="d-flex gap-3 align-items-center side-item">
-            <img src="images/tip3.jpg" class="rounded-3 side-img" alt="Phụ kiện tối giản – Điểm nhấn tinh tế cho outfit">
-            <div>
-                <span class="text-primary x-small fw-bold text-uppercase">Xu hướng</span>
-                <h6 class="fw-bold mb-1">Phụ kiện tối giản – Điểm nhấn tinh tế cho outfit</h6>
-                <p class="x-small text-muted m-0">25/04/2026</p>
+            <!-- Card 2 -->
+            <div class="col news-item" data-category="event">
+                <div class="card-luxury">
+                    <div class="img-effect-wrapper">
+                        <a href="#">
+                            <img src="images/tinmoi2.jpg" alt="Paris Fashion Week">
+                        </a>
+                    </div>
+                    <div class="card-luxury-body">
+                        <span class="card-luxury-tag">Sự kiện</span>
+                        <h3 class="card-luxury-title">
+                            <a href="#">Paris Fashion Week tiếp tục định hình xu hướng thời trang toàn cầu</a>
+                        </h3>
+                        <p class="card-luxury-date">17.05.2026</p>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
-</div>
+
+            <!-- Card 3 -->
+            <div class="col news-item" data-category="promo">
+                <div class="card-luxury">
+                    <div class="img-effect-wrapper">
+                        <a href="#">
+                            <img src="images/tinmoi3.jpg" alt="Flash Sale">
+                        </a>
+                    </div>
+                    <div class="card-luxury-body">
+                        <span class="card-luxury-tag">Khuyến mãi</span>
+                        <h3 class="card-luxury-title">
+                            <a href="#">Flash Sale cuối tuần – Ưu đãi lên đến 50% chỉ trong 48 giờ</a>
+                        </h3>
+                        <p class="card-luxury-date">16.05.2026</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="col news-item" data-category="trend">
+                <div class="card-luxury">
+                    <div class="img-effect-wrapper">
+                        <a href="#">
+                            <img src="images/tinmoi4.jpg" alt="Zendaya">
+                        </a>
+                    </div>
+                    <div class="card-luxury-body">
+                        <span class="card-luxury-tag">Xu hướng</span>
+                        <h3 class="card-luxury-title">
+                            <a href="#">Zendaya trở thành biểu tượng thời trang thế hệ mới</a>
+                        </h3>
+                        <p class="card-luxury-date">13.05.2026</p>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </section>
 </div>
 
+
+
+<!-- KHU VỰC TIPS HAY MỖI NGÀY  -->
+    <section class="mb-5 news-item" data-category="tips">
+        <div class="d-flex justify-content-between align-items-baseline mb-4 px-1">
+            <h2 class="section-luxury-title m-0">Tips hay mỗi ngày</h2>
+            <a href="#" class="view-all-luxury">Xem tất cả</a>
+        </div>
+        
+        <!-- Thêm align-items-stretch để ép 2 cột luôn bằng chiều cao của nhau -->
+        <div class="row g-4 align-items-stretch match-height-luxury">
+            <!-- Bài viết lớn nổi bật bên trái -->
+            <div class="col-lg-7">
+                <div class="card-luxury-featured">
+                    <div class="featured-img-wrapper">
+                        <a href="#">
+                            <img src="images/tip0.jpg" class="img-fluid" alt="Phối đồ công sở phong cách tối giản cho mùa Hè 2026">
+                        </a>
+                        <div class="featured-overlay-content">
+                            <span class="card-luxury-tag text-white-50">Xu hướng</span>
+                            <h3 class="featured-luxury-title mb-0">
+                                <a href="#">Phối đồ công sở phong cách tối giản cho mùa Hè 2026</a>
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Danh sách 3 bài nhỏ xếp dọc bên phải -->
+            <div class="col-lg-5">
+                <!-- Thêm wrapper side-tips-container để quản lý flexbox chính xác -->
+                <div class="side-tips-container">
+                    <div class="d-flex flex-column justify-content-between side-tips-list">
+                        <!-- Bài nhỏ 1 -->
+                        <div class="side-tip-item d-flex align-items-center gap-3">
+                            <div class="side-tip-img flex-shrink-0">
+                                <a href="#">
+                                    <img src="images/tip1.jpg" class="img-fluid" alt="Phối màu trang phục">
+                                </a>
+                            </div>
+                            <div class="side-tip-body">
+                                <span class="card-luxury-tag">Xu hướng</span>
+                                <h4 class="side-tip-title mb-0">
+                                    <a href="#">Phối màu trang phục – Bí quyết tạo nên phong cách tinh tế</a>
+                                </h4>
+                            </div>
+                        </div>
+                        
+                        <div class="side-tip-divider"></div>
+                        
+                        <!-- Bài nhỏ 2 -->
+                        <div class="side-tip-item d-flex align-items-center gap-3">
+                            <div class="side-tip-img flex-shrink-0">
+                                <a href="#">
+                                    <img src="images/tip2.jpg" class="img-fluid" alt="Mở khóa tủ đồ xa hoa">
+                                </a>
+                            </div>
+                            <div class="side-tip-body">
+                                <span class="card-luxury-tag">Xu hướng</span>
+                                <h4 class="side-tip-title mb-0">
+                                    <a href="#">Mở khóa tủ đồ xa hoa của "Phu nhân đại quân" IU trong "Perfect Crown"</a>
+                                </h4>
+                            </div>
+                        </div>
+
+                        <div class="side-tip-divider"></div>
+                        
+                        <!-- Bài nhỏ 3 -->
+                        <div class="side-tip-item d-flex align-items-center gap-3">
+                            <div class="side-tip-img flex-shrink-0">
+                                <a href="#">
+                                    <img src="images/tip3.jpg" class="img-fluid" alt="Phụ kiện tối giản">
+                                </a>
+                            </div>
+                            <div class="side-tip-body">
+                                <span class="card-luxury-tag">Xu hướng</span>
+                                <h4 class="side-tip-title mb-0">
+                                    <a href="#">Phụ kiện tối giản – Điểm nhấn tinh tế cho outfit</a>
+                                </h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
 
 <!--FOOTER-->
@@ -310,7 +362,7 @@
                 <p class="footer-note">
                     Bằng cách đăng ký, bạn đồng ý với chính sách bảo mật.
                     <br>
-                    Đã có tài khoản? <a href="#">Đăng nhập</a>
+                    Đã có tài khoản? <a href="../TaiKhoan/taikhoan.html">Đăng nhập</a>
                 </p>
             </div>
 
