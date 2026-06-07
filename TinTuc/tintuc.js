@@ -63,29 +63,6 @@ document.addEventListener("DOMContentLoaded", () => {
 // =========================================================
 // HÀM CẬP NHẬT VÀ TỰ ĐỘNG ẨN/HIỆN SỐ LƯỢNG GIỎ HÀNG TRÊN MENU
 // =========================================================
-function updateMenuCartBadge() {
-    const cartBadge = document.getElementById("cart-badge");
-    if (cartBadge) {
-        // Lấy danh sách giỏ hàng từ localStorage (Nếu lưu dạng mảng object)
-        const cart = JSON.parse(localStorage.getItem("cart")) || [];
-
-        //Đếm tổng số lượng (bao gồm cả số lượng mua thêm của từng sản phẩm)
-        const totalItems = cart.reduce((total, item) => total + (parseInt(item.quantity) || 1), 0);
-
-        cartBadge.innerText = totalItems;
-
-        // Tự động ẩn badge nếu giỏ hàng trống (bằng 0)
-        if (totalItems === 0) {
-            cartBadge.style.display = "none";
-        } else {
-            cartBadge.style.display = "flex"; // Hoặc "inline-block" tùy layout của bạn
-        }
-    }
-}
-// Gọi hàm chạy ngay lập tức khi trang vừa tải xong
-document.addEventListener("DOMContentLoaded", () => {
-    updateMenuCartBadge();
-});
 
 
 

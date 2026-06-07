@@ -177,6 +177,9 @@ position: fixed;
     color: #c9a45c;
 }
 
+.menu ul li a.active {
+    color: #c9a45c !important;
+}
 
 /* ICON */
 .icons {
