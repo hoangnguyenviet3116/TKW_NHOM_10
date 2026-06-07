@@ -2,13 +2,13 @@
 let lastScrollTop = 0;
 const header = document.querySelector('.header');
 
-window.addEventListener('scroll', function() {
+window.addEventListener('scroll', function () {
     let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
     // Nếu đang ở sát mép trên cùng (ví dụ dưới 50px)
     if (scrollTop <= 50) {
         header.classList.remove('header-hidden'); // Luôn hiện menu
-    } 
+    }
     // Nếu bắt đầu cuộn xuống dưới
     else {
         if (scrollTop > lastScrollTop) {
@@ -67,12 +67,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-
 /*Back to top*/
 const backToTopBtn = document.querySelector('#backToTop');
 
 if (backToTopBtn) {
-    window.addEventListener('scroll', function() {
+    window.addEventListener('scroll', function () {
         if (window.pageYOffset > 300) {
             backToTopBtn.classList.add('show');
         } else {
@@ -80,7 +79,7 @@ if (backToTopBtn) {
         }
     });
 
-    backToTopBtn.addEventListener('click', function() {
+    backToTopBtn.addEventListener('click', function () {
         window.scrollTo({
             top: 0,
             behavior: 'smooth'
@@ -115,3 +114,19 @@ function updateCartBadge() {
     badge.innerText = total;
     badge.style.display = total === 0 ? "none" : "flex";
 }
+
+/*HIỆU ỨNG CUỘN TRANG*/
+const fadeElements = document.querySelectorAll('.fade-up');
+
+function checkFade() {
+    fadeElements.forEach(el => {
+        const elementTop = el.getBoundingClientRect().top;
+
+        if (elementTop < window.innerHeight - 100) {
+            el.classList.add('show');
+        }
+    });
+}
+
+window.addEventListener('scroll', checkFade);
+window.addEventListener('load', checkFade);
