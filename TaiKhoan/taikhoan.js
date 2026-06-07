@@ -356,3 +356,36 @@ document.addEventListener("DOMContentLoaded", function () {
         editProfileBtn.addEventListener("click", openEditProfilePopup);
     }
 });
+/* MOBILE MENU */
+const menuToggle = document.getElementById("menuToggle");
+const menu = document.querySelector(".menu");
+
+if (menuToggle && menu) {
+    menuToggle.addEventListener("click", function () {
+        menu.classList.toggle("active");
+    });
+}
+
+/* DROPDOWN MOBILE: SALE + SẢN PHẨM */
+document.querySelectorAll(".mobile-dropdown-toggle").forEach(item => {
+    item.addEventListener("click", function (e) {
+        if (window.innerWidth <= 991) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            const parent = this.closest(".mobile-dropdown");
+            if (parent) {
+                parent.classList.toggle("open");
+            }
+        }
+    });
+});
+
+/* Bấm menu thường thì đóng menu */
+document.querySelectorAll(".menu > ul > li:not(.mobile-dropdown) > a").forEach(link => {
+    link.addEventListener("click", function () {
+        if (window.innerWidth <= 991 && menu) {
+            menu.classList.remove("active");
+        }
+    });
+});

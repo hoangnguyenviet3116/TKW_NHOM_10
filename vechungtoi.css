@@ -642,10 +642,25 @@ h2 {
 }
 
 #introVideo {
-    width: 100%;
-    height: 100%;
+    width: 85%;
+    max-width: 1200px;
+    max-height: 85vh;
+    object-fit: contain;
+    border-radius: 8px;
+}
 
-    object-fit: cover;
+@media (max-width: 768px) {
+    #introVideo {
+        width: 92%;
+        max-height: 70vh;
+        object-fit: contain;
+        border-radius: 6px;
+    }
+
+    #introOverlay {
+        background: #000;
+        padding: 0;
+    }
 }
 
 /* Ẩn nội dung trang lúc đầu */
@@ -1115,4 +1130,76 @@ body {
 
 .mission-heading::after {
     margin: 16px auto 0;
+}
+
+/* MOBILE MENU */
+.menu-toggle {
+    display: none;
+    border: none;
+    background: transparent;
+    font-size: 24px;
+    cursor: pointer;
+    color: #222;
+}
+
+@media (max-width: 991px) {
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .menu {
+        position: fixed;
+        top: 70px;
+        left: -100%;
+        width: 280px;
+        height: calc(100vh - 70px);
+        background: #fff;
+        transition: 0.3s;
+        box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        overflow-y: auto;
+        z-index: 3000;
+    }
+
+    .menu.active {
+        left: 0;
+    }
+
+    .menu ul {
+        flex-direction: column;
+        align-items: flex-start !important;
+        gap: 0;
+        padding: 20px;
+    }
+
+    .menu li {
+        width: 100%;
+    }
+
+    .menu a,
+    .nav-link {
+        display: block;
+        width: 100%;
+        padding: 14px 0;
+    }
+
+    .header .container-fluid {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+        .mobile-dropdown .dropdown-menu{
+        display:none;
+        position:static !important;
+        opacity:1 !important;
+        visibility:visible !important;
+        transform:none !important;
+        box-shadow:none;
+        border:none;
+        margin-top:0 !important;
+        padding-left:15px;
+    }
+
+    .mobile-dropdown.open .dropdown-menu{
+        display:block;
+    }
 }

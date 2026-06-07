@@ -28,14 +28,16 @@
                     <img src="../images/logo.png" alt="Bathora Logo">
                 </a>
             </div>
-
+<button class="menu-toggle" id="menuToggle">
+    <i class="fa-solid fa-bars"></i>
+</button>
             <nav class="menu">
                 <ul class="d-flex align-items-center mb-0">
 
                     <li><a href="../trangchu.html">TRANG CHỦ</a></li>
 
-                    <li class="nav-item dropdown">
-                        <a class="nav-link sale-link" href="#" id="saleDropdown" role="button"
+                    <li class="nav-item dropdown mobile-dropdown">
+                        <a class="nav-link sale-link mobile-dropdown-toggle" href="#" id="saleDropdown" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
                             SALE <i class="fa fa-chevron-down ms-1"></i>
                         </a>
@@ -52,11 +54,10 @@
                         </ul>
                     </li>
 
-                    <li class="nav-item dropdown">
-                        <a class="nav-link" href="#" id="productDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            SẢN PHẨM <i class="fa fa-chevron-down ms-1"></i>
-                        </a>
+                    <li class="nav-item dropdown mobile-dropdown">
+                        <a class="nav-link mobile-dropdown-toggle" href="../sanpham.html" id="productDropdown" role="button" aria-expanded="false">
+                        SẢN PHẨM <i class="fa fa-chevron-down ms-1"></i>
+                    </a>
 
                         <ul class="dropdown-menu border-0 shadow-sm" aria-labelledby="productDropdown">
                             <li><a class="dropdown-item" href="../sanpham.html?loai=dam">ĐẦM</a></li>
@@ -202,7 +203,7 @@
                             <button class="btn-checkout" id="checkoutBtn">
                                     TIẾN HÀNH ĐẶT HÀNG
                                 </button>
-                            <a href="trangchu.html" class="btn-continue-shopping">MUA THÊM SẢN PHẨM</a>
+                            <a href="../trangchu.html" class="btn-continue-shopping">MUA THÊM SẢN PHẨM</a>
 
                             <div class="cart-policy">
                                 <p><i class="fa-solid fa-truck-fast"></i> Miễn phí vận chuyển cho đơn phù hợp</p>

@@ -1510,10 +1510,73 @@ body {
     background: #faf8f4;
 }
 
+.mobile-menu-btn{
+    display:none;
+    background:none;
+    border:none;
+    font-size:24px;
+    color:#222;
+    cursor:pointer;
+}
+
+.menu{
+    display:block;
+}
+
 /* ==========================================
    RESPONSIVE MOBILE
    ========================================== */
-@media (max-width: 768px) {
+@media (max-width: 992px) {
+
+    .mobile-menu-btn{
+        display:block;
+    }
+
+    .menu{
+        position: fixed;
+        top: 70px;
+        left: -100%;
+        width: 100%;
+        background: white;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        transition: left 0.3s ease;
+        z-index: 1999;
+    }
+
+    .menu.active{
+        left: 0;
+    }
+
+    .menu ul{
+        flex-direction: column;
+        gap: 0;
+        padding: 20px 0;
+    }
+
+    .menu li{
+        width: 100%;
+    }
+
+    .menu a,
+    .menu .nav-link{
+        display: block;
+        padding: 15px 30px;
+        width: 100%;
+    }
+
+    .dropdown-menu{
+    position: static;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    display: none;
+    box-shadow: none;
+    }
+
+    .dropdown:hover .dropdown-menu{
+    display: block !important;
+    }
+
     .header .container-fluid {
         padding: 0 20px;
     }
