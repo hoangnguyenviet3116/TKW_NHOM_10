@@ -84,11 +84,24 @@ body {
 .icon { position: relative; font-size: 18px; }
 .icon a { color: #000; text-decoration: none; }
 .badge-count {
-  position: absolute; top: -8px; right: -10px;
-  background: var(--gold); color: #fff;
-  font-size: 10px; font-weight: bold;
-  min-width: 16px; height: 16px; border-radius: 50%;
-  display: flex; align-items: center; justify-content: center; padding: 0 4px;
+  position: absolute;
+  top: -8px;
+  right: -10px;
+  background: var(--gold);
+  color: #fff;
+  font-size: 10px;
+  font-weight: bold;
+  min-width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 0 4px;
+}
+
+.badge-count.d-none {
+  display: none !important;
 }
 
 /* ===== HERO ===== */

@@ -244,15 +244,58 @@ body { font-family: 'Manrope', sans-serif; background: #fff; color: #222; }
     width: 100%;
 }
 
-#searchInput {
-    padding: 10px 15px;
+/* ==========================================
+   GIAO DIỆN THANH TÌM KIẾM MỚI
+   ========================================== */
+.custom-search-input {
+    padding: 12px 20px;
+    font-size: 15px;
     border: 1px solid #ddd;
-    border-radius: 5px;
-    width: 100%;
-    font-size: 14px;
+    border-right: none; /* Xóa viền phải để liền mạch với nút */
+    box-shadow: none !important; /* Bỏ viền xanh mặc định của Bootstrap khi click */
 }
 
-#searchInput:focus {
-    outline: none;
-    border-color: #333;
+.custom-search-input:focus {
+    border-color: #222;
+}
+
+.custom-search-btn {
+    background-color: #222; /* Màu đen tối */
+    color: #fff;
+    padding: 12px 30px;
+    font-weight: 500;
+    border: 1px solid #222;
+    transition: all 0.3s ease;
+}
+
+.custom-search-btn:hover {
+    background-color: #444; /* Sáng lên một chút khi di chuột vào */
+    color: #fff;
+    border-color: #444;
+}
+/* ==========================================
+   TỐI ƯU MENU MOBILE & DROPDOWN (ÉP CĂN TRÁI TUYỆT ĐỐI)
+   ========================================== */
+@media (max-width: 991px) {
+    .navbar-nav .dropdown-menu {
+        border: none !important;
+        box-shadow: none !important;
+        background-color: #f9f9f9 !important; 
+        padding: 5px 0 !important;
+        margin-top: 0 !important;
+        text-align: left !important; /* Xóa sổ căn giữa */
+    }
+    
+    .navbar-nav .dropdown-item {
+        padding: 12px 30px !important; /* Đẩy lề trái vào 30px để tạo thụt đầu dòng đẹp mắt */
+        font-size: 15px !important;
+        color: #333 !important;
+        text-align: left !important; 
+        display: block !important;
+        width: 100% !important;
+    }
+
+    .navbar-nav .dropdown-item:active {
+        background-color: #eee !important;
+    }
 }

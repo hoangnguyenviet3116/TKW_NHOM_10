@@ -44,13 +44,14 @@
           SẢN PHẨM <i class="fa fa-chevron-down ms-1"></i>
          </a>
           <ul class="dropdown-menu border-0 shadow-sm">
-            <li><a class="dropdown-item" href="#">ĐẦM</a></li>
-            <li><a class="dropdown-item" href="#">ÁO</a></li>
-            <li><a class="dropdown-item" href="#">QUẦN</a></li>
-            <li><a class="dropdown-item" href="#">CHÂN VÁY</a></li>
-            <li><a class="dropdown-item" href="#">ÁO KHOÁC</a></li>
-            <li><a class="dropdown-item" href="#">TÚI XÁCH</a></li>
-            <li><a class="dropdown-item" href="#">PHỤ KIỆN</a></li>
+            <li><a class="dropdown-item" href="../sanpham.html?loai=dam">ĐẦM</a></li>
+                        <li><a class="dropdown-item" href="../sanpham.html?loai=ao">ÁO</a></li>
+                        <li><a class="dropdown-item" href="../sanpham.html?loai=quan">QUẦN</a></li>
+                        <li><a class="dropdown-item" href="../sanpham.html?loai=chanvay">CHÂN VÁY</a></li>
+                        <li><a class="dropdown-item" href="../sanpham.html?loai=aokhoac">ÁO KHOÁC</a></li>
+                        <li><a class="dropdown-item" href="../sanpham.html?loai=tuixach">TÚI XÁCH</a></li>
+                        <li><a class="dropdown-item" href="../sanpham.html?loai=phukien">PHỤ KIỆN</a></li>
+                        <li><a class="dropdown-item" href="../sanpham.html?loai=giay">GIÀY</a></li>
           </ul>
         </li>
         <li><a href="../TinTuc/tintuc.html">TIN TỨC</a></li>
@@ -138,6 +139,7 @@
         <div class="gd"></div>
       </div>
     </div>
+
     <div class="look-entry-info">
       <p class="look-tag">Step Into The Spotlight, Effortlessly</p>
       <p class="look-entry-num">Look 01 · New Collection</p>
@@ -458,71 +460,6 @@
 </button>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<script>
-// ====== GALLERY SWIPE SYSTEM ======
-const galleries = ['1','2','3','4','5','6','7'];
-const states = {};
-
-galleries.forEach(id => {
-  states[id] = 0;
-  const el = document.getElementById('gallery-' + id);
-  if (!el) return;
-
-  const track = document.getElementById('track-' + id);
-  const dotsEl = document.getElementById('dots-' + id);
-  const badge = document.getElementById('badge-' + id);
-  const slides = track ? track.querySelectorAll('.look-gallery-slide') : [];
-  const total = slides.length;
-
-  function goTo(idx) {
-    if (idx < 0) idx = total - 1;
-    if (idx >= total) idx = 0;
-    states[id] = idx;
-    if (track) track.style.transform = `translateX(-${idx * 100}%)`;
-    if (dotsEl) dotsEl.querySelectorAll('.gd').forEach((d, i) => d.classList.toggle('active', i === idx));
-    if (badge) badge.textContent = `BATHORA · LOOKBOOK`;
-  }
-
-  // Mouse drag
-  let startX = 0, dragging = false;
-  el.addEventListener('mousedown', e => { startX = e.clientX; dragging = false; });
-  el.addEventListener('mousemove', e => { if (e.buttons === 1 && Math.abs(e.clientX - startX) > 5) dragging = true; });
-  el.addEventListener('mouseup', e => {
-    if (!dragging) return;
-    const diff = startX - e.clientX;
-    if (Math.abs(diff) > 40) goTo(states[id] + (diff > 0 ? 1 : -1));
-    dragging = false;
-  });
-  el.addEventListener('mouseleave', () => { dragging = false; });
-
-  // Touch swipe
-  let touchX = 0;
-  el.addEventListener('touchstart', e => { touchX = e.touches[0].clientX; }, { passive: true });
-  el.addEventListener('touchend', e => {
-    const diff = touchX - e.changedTouches[0].clientX;
-    if (Math.abs(diff) > 40) goTo(states[id] + (diff > 0 ? 1 : -1));
-  });
-
-  // Dot clicks
-  if (dotsEl) dotsEl.querySelectorAll('.gd').forEach((dot, i) => {
-    dot.addEventListener('click', () => goTo(i));
-  });
-
-  goTo(0);
-});
-
-// ====== SCROLL REVEAL ======
-const ro = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); ro.unobserve(e.target); } });
-}, { threshold: 0.08 });
-document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
-
-// ====== BACK TO TOP ======
-const btt = document.getElementById('backToTop');
-if (btt) {
-  window.addEventListener('scroll', () => { btt.classList.toggle('show', window.scrollY > 300); }, { passive: true });
-  btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-}
-</script>
+<script src="Bosuutap.js"></script>
 </body>
 </html>

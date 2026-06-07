@@ -1019,7 +1019,9 @@ body {
     font-family: 'Cormorant Garamond', serif;
     font-size: clamp(34px, 5vw, 56px);
     margin-bottom: 14px;
-    text-align: justify;
+    text-align: left;
+    color: rgba(255, 255, 255, 0.92);
+    line-height: 1.15;
 }
 
 .contact-panel p {
@@ -1046,6 +1048,7 @@ body {
     opacity: 1;
     transform: translateY(0);
 }
+
 
 @media (max-width: 991px) {
 
@@ -1119,4 +1122,20 @@ body {
     .about-gallery img {
         min-height: 260px;
     }
+}
+/* TIÊU ĐỀ SỨ MỆNH - TẦM NHÌN - GIÁ TRỊ */
+
+.mission-heading-wrapper {
+    text-align: center;
+}
+
+.mission-heading {
+    text-align: center !important;
+    max-width: 900px;
+    margin: 0 auto;
+    line-height: 1.15;
+}
+
+.mission-heading::after {
+    margin: 16px auto 0;
 }
