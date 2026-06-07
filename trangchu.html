@@ -5,7 +5,8 @@
     <title>BATHORA DRESS</title>
     <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
 
     <!-- Bootstrap -->
@@ -16,15 +17,25 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-
     <link rel="stylesheet" href="trangchu.css">
 </head>
 
 
 
 <body>
+<!--VIDEO-->
+<!--
+<div id="introOverlay">
 
-
+    <video
+        id="introVideo"
+        autoplay
+        muted
+        playsinline>
+        <source src="videos/Intro.mp4" type="video/mp4">
+    </video>
+</div>
+-->
 <!--POP-UP-->
 <div id="promoPopup" class="popup-overlay">
     <div class="popup-content">
@@ -106,7 +117,7 @@
              
                 <li><a href="TinTuc/tintuc.html">TIN TỨC</a></li>
 
-                <li><a href="#">VỀ CHÚNG TÔI</a></li>
+                <li><a href="vechungtoi.html">VỀ CHÚNG TÔI</a></li>
             </ul>
         </nav>
 
@@ -123,14 +134,14 @@
 
         <!-- Cart -->
         <div class="icon">
-            <a href="cart.html" title="Giỏ hàng">
+            <a href="GioHang/giohang.html" title="Giỏ hàng">
                 <i class="fa-solid fa-bag-shopping"></i>
             </a>
         </div>
 
         <!-- User (Login) -->
         <div class="icon">
-            <a href="login.html" title="Tài khoản">
+            <a href="TaiKhoan/taikhoan.html" title="Tài khoản">
                 <i class="fa-regular fa-user"></i>
             </a>
         </div>
@@ -179,7 +190,7 @@
 
 
 <!--DANH MỤC SẢN PHẨM-->
-<section class="category-section py-5">
+<section class="category-section py-5" data-aos="fade-up">
     <div class="container position-relative">
         
         <div class="swiper categorySwiper">
@@ -275,314 +286,44 @@
 
 
 
-<!--SẢN PHẨM NỔI BẬT-->
-<section class="featured-products py-5">
-    <div class="container">
-        <h2 class="text-center mb-5 fw-bold text-uppercase">SẢN PHẨM NỔI BẬT</h2>
+<!-- Banner chạy ngang -->
+<section class="marquee-banner-container" data-aos="fade-up">
+    <div class="marquee-track">
         
+        <!-- CỤM ẢNH GỐC -->
+        <div class="marquee-group">
+            <div class="marquee-item"><img src="images/banner1.jpg" alt="Bathora Lookbook 1"></div>
+            <div class="marquee-item"><img src="images/banner2.jpg" alt="Bathora Lookbook 2"></div>
+            <div class="marquee-item"><img src="images/banner3.jpg" alt="Bathora Lookbook 3"></div>
+            <div class="marquee-item"><img src="images/banner5.jpg" alt="Bathora Lookbook 1"></div>
+            <div class="marquee-item"><img src="images/banner6.jpg" alt="Bathora Lookbook 2"></div>
+            <div class="marquee-item"><img src="images/banner7.jpg" alt="Bathora Lookbook 3"></div>
+            <div class="marquee-item"><img src="images/banner8.jpg" alt="Bathora Lookbook 4"></div>
+        </div>
+        
+        <!-- CỤM ẢNH NHÂN ĐÔI -->
+        <div class="marquee-group" aria-hidden="true">
+            <div class="marquee-item"><img src="images/banner1.jpg" alt="Bathora Lookbook 1"></div>
+            <div class="marquee-item"><img src="images/banner2.jpg" alt="Bathora Lookbook 2"></div>
+            <div class="marquee-item"><img src="images/banner3.jpg" alt="Bathora Lookbook 3"></div>
+            <div class="marquee-item"><img src="images/banner5.jpg" alt="Bathora Lookbook 1"></div>
+            <div class="marquee-item"><img src="images/banner6.jpg" alt="Bathora Lookbook 2"></div>
+            <div class="marquee-item"><img src="images/banner7.jpg" alt="Bathora Lookbook 3"></div>
+            <div class="marquee-item"><img src="images/banner8.jpg" alt="Bathora Lookbook 4"></div>
+        </div>
+    </div>
+</section>
+
+
+
+<!--SẢN PHẨM NỔI BẬT-->
+<section class="featured-products py-5" data-aos="fade-up" data-aos-delay="100">
+    <div class="container">
+        <h2 class="section-luxury-title text-center mb-5">SẢN PHẨM NỔI BẬT</h2>        
         <div class="swiper featuredSwiper">
-            <div class="swiper-wrapper">
-                <!-- Sản phẩm 1 -->
-                <div class="swiper-slide">
-                    <div class="product-card"
-                        data-id="1"
-                        data-name="Áo dạ cổ 2 ve dáng suông, túi ốp tròn"
-                        data-price="1,150,000đ"
-                        data-img="images/SPNB1.jpg">
-                        
-                        <div class="product-img">
-                            <img src="images/SPNB1.jpg" alt="Áo dạ cổ 2 ve dáng suông, túi ốp tròn">
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-title">Áo dạ cổ 2 ve dáng suông, túi ốp tròn</h3>    
-                            <div class="price-heart-wrapper">
-                              <div class="product-price">
-                                    1,150,000đ
-                                </div>
-                                <button class="wishlist-btn">
-                                    <i class="fa-regular fa-heart heart-btn"></i>
-                                </button>
-                              </div>
-                            <div class="product-meta d-flex justify-content-between align-items-center">
-                                <div class="rating">
-                                    <i class="fa-solid fa-star"></i> (0)
-                                </div>
-                                <div class="sold-count">(0 đã bán)</div>
-                            </div>
-                        </div>
-                    </div>
+            <div class="swiper-wrapper" id="featuredProducts">
                 </div>
-                <!-- Sản phẩm 2 -->
-                <div class="swiper-slide">
-                    <div class="product-card"
-                        data-id="2"
-                        data-name="Đầm xuân hè vắt tà cổ tùng đổ"
-                        data-price="895,000đ"
-                        data-img="images/SPNB2.jpg">
 
-                        <div class="product-img">
-                            <img src="images/SPNB2.jpg" alt="Đầm xuân hè vắt tà cổ tùng đổ">
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-title">Đầm xuân hè vắt tà cổ tùng đổ</h3>
-                             <div class="price-heart-wrapper">
-                              <div class="product-price">
-                                    1,150,000đ
-                                </div>
-                                <button class="wishlist-btn">
-                                    <i class="fa-regular fa-heart heart-btn"></i>
-                                </button>
-                              </div>
-                            <div class="product-meta d-flex justify-content-between align-items-center">
-                                <div class="rating">
-                                    <i class="fa-solid fa-star"></i> (0)
-                                </div>
-                                <div class="sold-count">(0 đã bán)</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Sản phẩm 3 -->
-                <div class="swiper-slide">
-                    <div class="product-card"
-                        data-id="3"
-                        data-name="Áo len suông có khoá kéo"
-                        data-price="855,000đ"
-                        data-img="images/SPNB3.jpg">
-
-                        <div class="product-img">
-                            <img src="images/SPNB3.jpg" alt="Áo len suông có khoá kéo">
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-title">Áo len suông có khoá kéo</h3>
-                            <div class="price-heart-wrapper">
-                              <div class="product-price">
-                                    1,150,000đ
-                                </div>
-                                <button class="wishlist-btn">
-                                    <i class="fa-regular fa-heart heart-btn"></i>
-                                </button>
-                              </div>
-                            <div class="product-meta d-flex justify-content-between align-items-center">
-                                <div class="rating">
-                                    <i class="fa-solid fa-star"></i> (0)
-                                </div>
-                                <div class="sold-count">(0 đã bán)</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Sản phẩm 4 -->
-                <div class="swiper-slide">
-                    <div class="product-card"
-                        data-id="4"
-                        data-name="Quần Resort 2 ly bung"
-                        data-price="655,000đ"
-                        data-img="images/SPNB4.jpg">
-
-                        <div class="product-img">
-                            <img src="images/SPNB4.jpg" alt="Quần Resort 2 ly bung">
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-title">Quần Resort 2 ly bung</h3>
-                             <div class="price-heart-wrapper">
-                              <div class="product-price">
-                                    1,150,000đ
-                                </div>
-                                <button class="wishlist-btn">
-                                    <i class="fa-regular fa-heart heart-btn"></i>
-                                </button>
-                              </div>
-                            <div class="product-meta d-flex justify-content-between align-items-center">
-                                <div class="rating">
-                                    <i class="fa-solid fa-star"></i> (0)
-                                </div>
-                                <div class="sold-count">(0 đã bán)</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Sản phẩm 5 -->
-                <div class="swiper-slide">
-                    <div class="product-card"
-                        data-id="5"
-                        data-name="Áo dạ suông cổ tròn bèo 2 nắp túi"
-                        data-price="1,385,000đ"
-                        data-img="images/SPNB5.jpg">
-                        <div class="product-img">
-                            <img src="images/SPNB5.jpg" alt="Áo dạ suông cổ tròn bèo 2 nắp túi">
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-title">Áo dạ suông cổ tròn bèo 2 nắp túi</h3>
-                            <div class="price-heart-wrapper">
-                              <div class="product-price">
-                                    1,150,000đ
-                                </div>
-                                <button class="wishlist-btn">
-                                    <i class="fa-regular fa-heart heart-btn"></i>
-                                </button>
-                              </div>
-                            <div class="product-meta d-flex justify-content-between align-items-center">
-                                <div class="rating">
-                                    <i class="fa-solid fa-star"></i> (0)
-                                </div>
-                                <div class="sold-count">(0 đã bán)</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Sản phẩm 6 -->
-                <div class="swiper-slide">
-                    <div class="product-card"
-                        data-id="6"
-                        data-name="Đầm Xuân Hè 2 dây nhún tầng dài"
-                        data-price="875,000đ"
-                        data-img="images/SPNB6.jpg">
-
-                        <div class="product-img">
-                            <img src="images/SPNB6.jpg" alt="Đầm Xuân Hè 2 dây nhún tầng dài">
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-title">Đầm Xuân Hè 2 dây nhún tầng dài</h3>
-                            <div class="price-heart-wrapper">
-                              <div class="product-price">
-                                    1,150,000đ
-                                </div>
-                                <button class="wishlist-btn">
-                                    <i class="fa-regular fa-heart heart-btn"></i>
-                                </button>
-                              </div>
-                            <div class="product-meta d-flex justify-content-between align-items-center">
-                                <div class="rating">
-                                    <i class="fa-solid fa-star"></i> (0)
-                                </div>
-                                <div class="sold-count">(0 đã bán)</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Sản phẩm 7 -->
-                <div class="swiper-slide">
-                    <div class="product-card"
-                        data-id="7"
-                        data-name="Chân váy Resort dài nhún eo"
-                        data-price="595,000đ"
-                        data-img="images/SPNB7.jpg">
-
-                        <div class="product-img">
-                            <img src="images/SPNB7.jpg" alt="Chân váy Resort dài nhún eo">
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-title">Chân váy Resort dài nhún eo</h3>
-                            <div class="price-heart-wrapper">
-                              <div class="product-price">
-                                    1,150,000đ
-                                </div>
-                                <button class="wishlist-btn">
-                                    <i class="fa-regular fa-heart heart-btn"></i>
-                                </button>
-                              </div>
-                            <div class="product-meta d-flex justify-content-between align-items-center">
-                                <div class="rating">
-                                    <i class="fa-solid fa-star"></i> (0)
-                                </div>
-                                <div class="sold-count">(0 đã bán)</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Sản phẩm 8 -->
-                <div class="swiper-slide">
-                    <div class="product-card"
-                        data-id="8"
-                        data-name="Đầm Xuân Hè cổ sen cách điệu, phối chân xếp ly chụm"
-                        data-price="895,000đ"
-                        data-img="images/SPNB8.jpg">
-
-                        <div class="product-img">
-                            <img src="images/SPNB8.jpg" alt="Đầm Xuân Hè cổ sen cách điệu, phối chân xếp ly chụm">
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-title">Đầm Xuân Hè cổ sen cách điệu, phối chân xếp ly chụm</h3>
-                            <div class="price-heart-wrapper">
-                                <div class="product-price">
-                                    1,150,000đ
-                                </div>
-                                <button class="wishlist-btn">
-                                    <i class="fa-regular fa-heart heart-btn"></i>
-                                </button>
-                            </div>
-                            <div class="product-meta d-flex justify-content-between align-items-center">
-                                <div class="rating">
-                                    <i class="fa-solid fa-star"></i> (0)
-                                </div>
-                                <div class="sold-count">(0 đã bán)</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>                
-                <!-- Sản phẩm 9 -->
-                <div class="swiper-slide">
-                    <div class="product-card"
-                        data-id="9"
-                        data-name="Đầm Xuân Hè tay bồng, xếp ly eo, dây nơ cổ"
-                        data-price="855,000đ"
-                        data-img="images/SPNB9.jpg">
-
-                        <div class="product-img">
-                            <img src="images/SPNB9.jpg" alt="Đầm Xuân Hè tay bồng, xếp ly eo, dây nơ cổ">
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-title">Đầm Xuân Hè tay bồng, xếp ly eo, dây nơ cổ</h3>
-                           <div class="price-heart-wrapper">
-                              <div class="product-price">
-                                    1,150,000đ
-                                </div>
-                                <button class="wishlist-btn">
-                                    <i class="fa-regular fa-heart heart-btn"></i>
-                                </button>
-                              </div>
-                            <div class="product-meta d-flex justify-content-between align-items-center">
-                                <div class="rating">
-                                    <i class="fa-solid fa-star"></i> (0)
-                                </div>
-                                <div class="sold-count">(0 đã bán)</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Sản phẩm 10 -->
-                <div class="swiper-slide">
-                    <div class="product-card"
-                        data-id="10"
-                        data-name="Áo xuân hè cổ tròn phối bèo dọc"
-                        data-price="755,000đ"
-                        data-img="images/SPNB10.jpg">
-                        <div class="product-img">                            
-                            <img src="images/SPNB10.jpg" alt="Áo xuân hè cổ tròn phối bèo dọc">
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-title">Áo xuân hè cổ tròn phối bèo dọc</h3>
-                            <div class="price-heart-wrapper">
-                              <div class="product-price">
-                                    1,150,000đ
-                                </div>
-                                <button class="wishlist-btn">
-                                    <i class="fa-regular fa-heart heart-btn"></i>
-                                </button>
-                              </div>
-                            <div class="product-meta d-flex justify-content-between align-items-center">
-                                <div class="rating">
-                                    <i class="fa-solid fa-star"></i> (0)
-                                </div>
-                                <div class="sold-count">(0 đã bán)</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Các chấm phân trang ở dưới -->
             <div class="swiper-pagination mt-4"></div>
         </div>
     </div>
@@ -590,38 +331,17 @@
 
 
 
-<!--collection-->
-<!--<section class="collection-banner">
-    <div class="collection-overlay"></div>
-    <div class="collection-content">
-        <span class="collection-subtitle">
-            ✦ BỘ SƯU TẬP XUÂN HÈ 2026 ✦
-        </span>
-        <h2 class="collection-title">
-            Tỏa sáng <br>
-            theo cách <br>
-            của riêng bạn
-        </h2>
-        <p class="collection-desc">
-            BATHORA Fashion – Tinh tế trong từng đường chỉ
-        </p>
-        <a href="bosuutap.html" class="discover-btn">
-            KHÁM PHÁ
-        </a>
-    </div>
-</section>
--->
-
-<!--sản phẩm tiêu biểu-->
-<section class="editorial-spotlight">
+<!--BST-->
+<section class="editorial-spotlight" data-aos="fade-up">
     <div class="container-fluid p-0">
         <div class="row g-0">
             <div class="col-md-6 position-relative">
                 <div class="editorial-img-box">
-                    <img src="images/TieuBieu.jpg" alt="Bathora Lifestyle" class="w-100 h-100 object-fit-cover">
+                    <img src="images/TieuBieu.jpg" alt="" class="editorial-main-img">
+                    <img src="images/TieuBieu2.jpg" alt="" class="editorial-hover-img">
                     <div class="editorial-caption">
-                        <span class="caption-tag">Thanh lịch & Tự nhiên</span>
-                        <h3 class="caption-heading">Một cái nhìn sâu sắc về chất liệu đương đại.</h3>
+                        <span class="caption-tag">THANH LỊCH & KIÊU KỲ</span>
+                        <h3 class="caption-heading">Tái định nghĩa nét kiêu sa từ sự tối giản.</h3>
                     </div>
                 </div>
             </div>
@@ -647,12 +367,14 @@
 
 
 <!-- Section Tin Tức -->
-<section class="blog-section py-5">
+<section class="blog-section py-5" data-aos="fade-up">
     <div class="container">
         <!-- Header: Tiêu đề và Bộ lọc -->
         <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-end mb-4 gap-3">
             <div>
-                <h2 class="blog-main-title text-uppercase fw-bold mb-0">Tin tức</h2>
+                <h2 class="blog-main-title text-uppercase mb-0">Tin tức</h2>
+                
+                <!-- Bộ lọc tab -->
                 <div class="blog-filters d-flex gap-2 mt-3">
                     <button class="filter-btn active" data-filter="all">Tất cả</button>
                     <button class="filter-btn" data-filter="event">Sự kiện</button>
@@ -661,22 +383,24 @@
                     <button class="filter-btn" data-filter="tips">Tips</button>
                 </div>
             </div>
-            <a href="TinTuc/tintuc.html" class="view-all-link d-none d-md-block">
-                Xem tất cả <i class="fa-solid fa-arrow-right-long ms-2"></i>
-            </a>
+            <!-- Link Xem tất cả trên Desktop (Chỉ hiện từ màn hình md trở lên) -->
+            <a href="TinTuc/tintuc.html" class="view-all-link d-none d-md-block">Xem tất cả</a>
         </div>
 
-        <!-- Danh sách bài viết -->
+        <!-- Danh sách Bài viết -->
         <div class="row g-4" id="blog-grid">
+            
             <!-- Bài viết 1 -->
             <div class="col-12 col-md-6 col-lg-3 blog-item" data-category="trend">
                 <article class="blog-card">
                     <div class="blog-img-wrapper">
-                        <img src="images/Tintuc1.jpg" alt="Xu hướng thanh lịch 2026">
+                        <a href="xu-huong-thanh-lich-2026.html">
+                            <img src="images/Tintuc1.jpg" alt="Xu hướng thanh lịch 2026">
+                        </a>
                     </div>
                     <div class="blog-content">
                         <h3 class="blog-title">
-                            <a href="#">BATHORA “gây sốt” với xu hướng thanh lịch 2026 – Nàng đã bắt kịp chưa?</a>
+                            <a href="xu-huong-thanh-lich-2026.html">BATHORA “gây sốt” với xu hướng thanh lịch 2026 – Nàng đã bắt kịp chưa?</a>
                         </h3>
                         <p class="blog-excerpt">Khám phá những xu hướng thời trang nổi bật năm 2026 với phong cách tối giản, tinh tế.</p>
                     </div>
@@ -687,26 +411,30 @@
             <div class="col-12 col-md-6 col-lg-3 blog-item" data-category="event">
                 <article class="blog-card">
                     <div class="blog-img-wrapper">
-                        <img src="images/Tintuc2.jpg" alt="Sự kiện Bathora">
+                        <a href="su-kien-bathora.html">
+                            <img src="images/Tintuc2.jpg" alt="Sự kiện Bathora">
+                        </a>
                     </div>
                     <div class="blog-content">
                         <h3 class="blog-title">
-                            <a href="#">Trải nghiệm thời trang đỉnh cao cùng BATHORA – Sự kiện bạn không thể bỏ lỡ!</a>
+                            <a href="su-kien-bathora.html">Trải nghiệm thời trang đỉnh cao cùng BATHORA – Sự kiện bạn không thể bỏ lỡ!</a>
                         </h3>
                         <p class="blog-excerpt">Chuỗi sự kiện độc quyền mang đến cơ hội trải nghiệm trực tiếp các thiết kế mới nhất.</p>
                     </div>
                 </article>
             </div>
 
-            <!-- Bài viết 3 (Ví dụ thêm) -->
+            <!-- Bài viết 3 -->
             <div class="col-12 col-md-6 col-lg-3 blog-item" data-category="promo">
                 <article class="blog-card">
                     <div class="blog-img-wrapper">
-                        <img src="images/Tintuc3.jpg" alt="Sale sốc">
+                        <a href="khuyen-mai-dac-biet.html">
+                            <img src="images/Tintuc3.jpg" alt="Sale sốc">
+                        </a>
                     </div>
                     <div class="blog-content">
                         <h3 class="blog-title">
-                            <a href="#">SALE SỐC tại BATHORA – Giảm đến 50%, cơ hội vàng trong thời gian ngắn!</a>
+                            <a href="khuyen-mai-dac-biet.html">SALE SỐC tại BATHORA – Giảm đến 50%, cơ hội vàng trong thời gian ngắn!</a>
                         </h3>
                         <p class="blog-excerpt">Chương trình khuyến mãi đặc biệt dành cho khách hàng với hàng loạt sản phẩm hấp dẫn.</p>
                     </div>
@@ -717,21 +445,79 @@
             <div class="col-12 col-md-6 col-lg-3 blog-item" data-category="trend">
                 <article class="blog-card">
                     <div class="blog-img-wrapper">
-                        <img src="images/Tintuc4.png" alt="Soft Elegance">
+                        <a href="bst-soft-elegance.html">
+                            <img src="images/Tintuc4.png" alt="Soft Elegance">
+                        </a>
                     </div>
                     <div class="blog-content">
                         <h3 class="blog-title">
-                            <a href="#">Ra mắt “Soft Elegance” – Khi sự tối giản trở thành đỉnh cao của sang trọng</a>
+                            <a href="bst-soft-elegance.html">Ra mắt “Soft Elegance” – Khi sự tối giản trở thành đỉnh cao của sang trọng</a>
                         </h3>
                         <p class="blog-excerpt">Bộ sưu tập mới lấy cảm hứng từ vẻ đẹp nhẹ nhàng, nữ tính và chất liệu cao cấp.</p>
                     </div>
                 </article>
             </div>
+
         </div>
 
-        <!-- Nút Xem tất cả cho Mobile -->
-        <div class="text-center d-md-none mt-4">
-            <a href="TinTuc/tintuc.html" class="btn btn-outline-dark px-5 py-2 fw-bold" style="border-radius: 0;">XEM TẤT CẢ</a>
+        <!-- Link Xem tất cả trên Mobile (Chỉ xuất hiện trên màn hình nhỏ d-md-none) -->
+        <div class="text-center mt-5 d-block d-md-none">
+            <a href="TinTuc/tintuc.html" class="view-all-link">Xem tất cả</a>
+        </div>
+    </div>
+</section>
+
+
+
+<!-- DỊCH VỤ / TIỆN ÍCH -->
+<section class="services-section py-5" data-aos="fade-up">
+    <div class="container">
+        <div class="row g-0 services-wrapper">
+            
+            <!-- Khối 1: Giao hàng -->
+            <div class="col-12 col-md-6 col-lg-3 service-item">
+                <div class="service-box">
+                    <div class="service-icon">
+                        <i class="fa-solid fa-rocket"></i>
+                    </div>
+                    <h4 class="service-title">Giao hàng miễn phí</h4>
+                    <p class="service-desc">với đơn hàng từ 500k trở lên</p>
+                </div>
+            </div>
+
+            <!-- Khối 2: Hỗ trợ -->
+            <div class="col-12 col-md-6 col-lg-3 service-item">
+                <div class="service-box">
+                    <div class="service-icon">
+                        <i class="fa-solid fa-headset"></i>
+                    </div>
+                    <h4 class="service-title">Hỗ trợ 24/7</h4>
+                    <p class="service-desc">Hỗ trợ online / offline 24/7</p>
+                </div>
+            </div>
+
+            <!-- Khối 3: Đổi trả -->
+            <div class="col-12 col-md-6 col-lg-3 service-item">
+                <div class="service-box">
+                    <div class="service-icon">
+                        <i class="fa-solid fa-box-open"></i>
+                    </div>
+                    <h4 class="service-title">Miễn phí đổi trả</h4>
+                    <p class="service-desc">Trong vòng 15 ngày</p>
+                </div>
+            </div>
+
+            <!-- Khối 4: Đặt hàng -->
+            <div class="col-12 col-md-6 col-lg-3 service-item">
+                <div class="service-box">
+                    <div class="service-icon">
+                        <i class="fa-regular fa-credit-card"></i>
+                    </div>
+                    <h4 class="service-title">Đặt hàng trực tuyến</h4>
+                    <p class="service-desc">Hotline: 0987654321</p>
+                </div>
+            </div>
+
         </div>
     </div>
 </section>
@@ -789,7 +575,7 @@
                 <p class="footer-note">
                     Bằng cách đăng ký, bạn đồng ý với chính sách bảo mật.
                     <br>
-                    Đã có tài khoản? <a href="#">Đăng nhập</a>
+                    Đã có tài khoản? <a href="TaiKhoan/taikhoan.html">Đăng nhập</a>
                 </p>
             </div>
 
@@ -829,6 +615,6 @@
 
 <!-- JS riêng -->
 <script src="trangchu.js"></script>
-
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 </body>
 </html>
