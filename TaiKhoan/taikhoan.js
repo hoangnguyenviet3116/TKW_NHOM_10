@@ -356,3 +356,17 @@ document.addEventListener("DOMContentLoaded", function () {
         editProfileBtn.addEventListener("click", openEditProfilePopup);
     }
 });
+//MENU
+const menuToggle = document.getElementById("menuToggle");
+const menu = document.querySelector(".menu");
+
+if (menuToggle && menu) {
+    menuToggle.addEventListener("click", () => {
+        menu.classList.toggle("active");
+    });
+}
+document.querySelectorAll(".menu a").forEach(link => {
+    link.addEventListener("click", () => {
+        menu.classList.remove("active");
+    });
+});
