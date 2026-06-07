@@ -26,18 +26,61 @@ function formatMoney(number) {
 }
 
 /* LẤY GIỎ HÀNG */
-function getCart() {
-    return JSON.parse(localStorage.getItem("cart")) || [];
+function getCurrentUser() {
+    return JSON.parse(sessionStorage.getItem("bathora_current_user"));
 }
 
+function getCartKey() {
+    const user = getCurrentUser();
+
+    if (!user) {
+        return null;
+    }
+
+    return "cart_" + user.email;
+}
+
+function getCart() {
+    const cartKey = getCartKey();
+
+    if (!cartKey) {
+        return [];
+    }
+
+    return JSON.parse(localStorage.getItem(cartKey)) || [];
+}
 /* LƯU GIỎ HÀNG */
 function saveCart(cart) {
-    localStorage.setItem("cart", JSON.stringify(cart));
+    const cartKey = getCartKey();
+
+    if (!cartKey) return;
+
+    localStorage.setItem(cartKey, JSON.stringify(cart));
 }
 
 /* CẬP NHẬT BADGE YÊU THÍCH */
+function getWishlistKey() {
+    const user = getCurrentUser();
+
+    if (!user) {
+        return null;
+    }
+
+    return "favorites_" + user.email;
+}
+
+function getFavorites() {
+    const wishlistKey = getWishlistKey();
+
+    if (!wishlistKey) {
+        return [];
+    }
+
+    return JSON.parse(localStorage.getItem(wishlistKey)) || [];
+}
+
 function updateWishlistBadge() {
-    const favs = JSON.parse(localStorage.getItem("favorites")) || [];
+    const favs = getFavorites();
     const wishlistBadge = document.getElementById("wishlist-badge");
 
     if (!wishlistBadge) return;
@@ -45,7 +88,6 @@ function updateWishlistBadge() {
     wishlistBadge.innerText = favs.length;
     wishlistBadge.style.display = favs.length === 0 ? "none" : "flex";
 }
-
 /* CẬP NHẬT BADGE GIỎ HÀNG */
 function updateCartBadge() {
     const cart = getCart();
@@ -72,6 +114,31 @@ function renderCart() {
     let cart = getCart();
 
     if (!cartList) return;
+    const currentUser = getCurrentUser();
+
+if (!currentUser) {
+     updateCartBadge();
+    cartList.innerHTML = "";
+    emptyBox.classList.remove("d-none");
+    emptyBox.innerHTML = `
+        <h3>Bạn chưa đăng nhập</h3>
+        <p>Vui lòng đăng nhập để xem giỏ hàng của bạn.</p>
+        <a href="../TaiKhoan/login.html" class="btn-continue-shopping">
+            ĐĂNG NHẬP NGAY
+        </a>
+    `;
+
+    cartCount.innerText = 0;
+    subtotalEl.innerText = "0đ";
+    discountEl.innerText = "-0đ";
+    totalEl.innerText = "0đ";
+
+    updateRewardProgress(0);
+    renderStyleSuggestions();
+    updateCartBadge();
+
+    return;
+}
 
     const totalQuantity = cart.reduce((sum, item) => sum + item.quantity, 0);
 
@@ -86,8 +153,8 @@ function renderCart() {
         totalEl.innerText = "0đ";
 
         updateCartBadge();
-
         updateRewardProgress(0);
+        renderStyleSuggestions();
         return;
     }
 
@@ -99,30 +166,43 @@ function renderCart() {
                 <img src="${item.img}" alt="${item.name}">
                 <div>
                     <h4>${item.name}</h4>
-                    <p>Mã sản phẩm: ${item.id}</p>
+                  <p>${item.sku || "Mã sản phẩm: " + item.id}</p>
                     <p>Size: ${item.size || "Mặc định"}</p>
+                    <p>Màu sắc: ${item.color || "Mặc định"}</p>
                 </div>
             </div>
 
             <div class="quantity-box">
-                <button class="qty-btn" onclick="changeQuantity('${item.id}', -1)">−</button>
+                <button class="qty-btn" onclick="changeQuantity('${item.cartKey}', -1)">−</button>
                 <span class="qty-number">${item.quantity}</span>
-                <button class="qty-btn" onclick="changeQuantity('${item.id}', 1)">+</button>
+                <button class="qty-btn" onclick="changeQuantity('${item.cartKey}', 1)">+</button>
             </div>
 
             <strong class="cart-price">
                 ${formatMoney(item.price * item.quantity)}
             </strong>
 
-            <button class="remove-cart" onclick="removeCartItem('${item.id}')">
-                <i class="fa-regular fa-trash-can"></i>
-            </button>
+            <div class="cart-action-box">
+    <label class="checkout-select">
+        <input type="checkbox"
+               class="checkout-checkbox"
+               data-cart-key="${item.cartKey}"
+               ${item.selected !== false ? "checked" : ""}>
+        <span></span>
+    </label>
+
+    <button class="remove-cart" onclick="removeCartItem('${item.cartKey}')">
+        <i class="fa-regular fa-trash-can"></i>
+    </button>
+</div>
         </div>
     `).join("");
 
-    const subtotal = cart.reduce((sum, item) => {
-        return sum + item.price * item.quantity;
-    }, 0);
+    const selectedCart = cart.filter(item => item.selected !== false);
+
+const subtotal = selectedCart.reduce((sum, item) => {
+    return sum + item.price * item.quantity;
+}, 0);
 
     updateRewardProgress(subtotal);
 
@@ -138,13 +218,14 @@ function renderCart() {
 }
 
 /* ĐỔI SỐ LƯỢNG */
-function changeQuantity(id, amount) {
+function changeQuantity(cartKey, amount) {
     let cart = getCart();
 
     cart = cart.map(item => {
-        if (item.id === id) {
+        if (item.cartKey === cartKey) {
             item.quantity += amount;
         }
+
         return item;
     }).filter(item => item.quantity > 0);
 
@@ -153,14 +234,32 @@ function changeQuantity(id, amount) {
 }
 
 /* XÓA SẢN PHẨM */
-function removeCartItem(id) {
+function removeCartItem(cartKey) {
     let cart = getCart();
 
-    cart = cart.filter(item => item.id !== id);
+    cart = cart.filter(item => item.cartKey !== cartKey);
 
     saveCart(cart);
     renderCart();
 }
+/* CHỌN SẢN PHẨM */
+document.addEventListener("change", function (e) {
+    if (!e.target.classList.contains("checkout-checkbox")) return;
+
+    const cartKey = e.target.dataset.cartKey;
+    let cart = getCart();
+
+    cart = cart.map(item => {
+        if (item.cartKey === cartKey) {
+            item.selected = e.target.checked;
+        }
+
+        return item;
+    });
+
+    saveCart(cart);
+    renderCart();
+});
 
 /* BACK TO TOP */
 const backToTopBtn = document.querySelector("#backToTop");
@@ -194,18 +293,27 @@ document.addEventListener("DOMContentLoaded", function () {
 function addToCart(product) {
     let cart = getCart();
 
-    const existingProduct = cart.find(item => item.id === product.id);
+    const cartKey = product.cartKey || `${product.id}-${product.size || "Mặc định"}-${product.color || "Mặc định"}`;
+
+    const existingProduct = cart.find(item => item.cartKey === cartKey);
 
     if (existingProduct) {
-        existingProduct.quantity += 1;
+        existingProduct.quantity += product.quantity || 1;
     } else {
         cart.push({
             id: product.id,
+            sku: product.sku || product.id,
             name: product.name,
             price: product.price,
+            oldPrice: product.oldPrice || "",
+            discount: product.discount || "",
             img: product.img,
-            size: product.size || "M",
-            quantity: 1
+            size: product.size || "Mặc định",
+            color: product.color || "Mặc định",
+            quantity: product.quantity || 1,
+            type: product.type || "",
+            selected: true,
+            cartKey: cartKey
         });
     }
 
@@ -248,6 +356,101 @@ function addSuggestToCart(id, name, price, img) {
     });
 }
 
+function getAllProductsForSuggest() {
+    return JSON.parse(localStorage.getItem("bathora_products")) || [];
+}
+
+function fixImagePath(img) {
+    if (!img) return "https://placehold.co/600x800/f8f3ec/222?text=BATHORA";
+
+    if (img.startsWith("../")) return img;
+
+    return "../" + img;
+}
+
+function getSuggestTypesByCart(cart) {
+    const cartTypes = cart.map(item => item.type || "").join(" ");
+    const cartNames = cart.map(item => item.name.toLowerCase()).join(" ");
+
+    if (cartTypes.includes("ao") || cartNames.includes("áo")) {
+        return ["chanvay", "quan", "tuixach", "giay", "phukien", "aokhoac"];
+    }
+
+    if (cartTypes.includes("dam") || cartNames.includes("đầm")) {
+        return ["tuixach", "giay", "phukien", "aokhoac"];
+    }
+
+    if (cartTypes.includes("quan") || cartNames.includes("quần")) {
+        return ["ao", "aokhoac", "tuixach", "giay"];
+    }
+
+    if (cartTypes.includes("chanvay") || cartNames.includes("chân váy")) {
+        return ["ao", "aokhoac", "tuixach", "giay", "phukien"];
+    }
+
+    return ["ao", "chanvay", "quan", "tuixach"];
+}
+
+function getSuggestReason(type) {
+    const reasons = {
+        ao: "Phối làm phần trên",
+        quan: "Cân bằng dáng áo",
+        chanvay: "Tăng nét nữ tính",
+        aokhoac: "Hoàn thiện layer",
+        tuixach: "Điểm nhấn outfit",
+        giay: "Tôn dáng thanh lịch",
+        phukien: "Tạo điểm nhấn nhỏ"
+    };
+
+    return reasons[type] || "Gợi ý phối đồ";
+}
+function normalizeColor(colorText) {
+    const color = (colorText || "").toLowerCase();
+
+    if (color.includes("đen")) return "đen";
+    if (color.includes("trắng")) return "trắng";
+    if (color.includes("be") || color.includes("kem")) return "be";
+    if (color.includes("hồng")) return "hồng";
+    if (color.includes("xanh")) return "xanh";
+    if (color.includes("đỏ")) return "đỏ";
+    if (color.includes("nâu")) return "nâu";
+    if (color.includes("xám") || color.includes("ghi")) return "xám";
+    if (color.includes("vàng")) return "vàng";
+
+    return color;
+}
+
+function getMainCartColor(cart) {
+    if (cart.length === 0) return "";
+
+    return normalizeColor(cart[0].color);
+}
+
+function colorMatchScore(product, cartColor) {
+    if (!cartColor) return 0;
+
+    const productColors = (product.colors || []).map(color => normalizeColor(color));
+
+    const colorRules = {
+        "hồng": ["trắng", "be", "đen", "hồng", "nâu"],
+        "xanh": ["trắng", "be", "đen", "xanh"],
+        "đỏ": ["đen", "trắng", "be", "nâu", "đỏ"],
+        "trắng": ["be", "đen", "trắng", "nâu", "hồng"],
+        "be": ["trắng", "nâu", "đen", "be", "hồng"],
+        "đen": ["trắng", "be", "đỏ", "đen", "xám"],
+        "nâu": ["be", "trắng", "nâu", "đen"],
+        "xám": ["trắng", "đen", "be", "xám"],
+        "vàng": ["trắng", "be", "nâu", "đen"]
+    };
+
+    const suitableColors = colorRules[cartColor] || [];
+
+    if (productColors.includes(cartColor)) return 4;
+
+    if (productColors.some(color => suitableColors.includes(color))) return 2;
+
+    return 0;
+}
 function renderStyleSuggestions() {
     const suggestList = document.getElementById("suggest-list");
     const suggestDesc = document.getElementById("suggest-desc");
@@ -255,153 +458,333 @@ function renderStyleSuggestions() {
     if (!suggestList) return;
 
     const cart = getCart();
-    const cartNames = cart.map(item => item.name.toLowerCase()).join(" ");
+        if (cart.length === 0) {
+
+        suggestDesc.innerText =
+            "Thêm sản phẩm vào giỏ để nhận gợi ý phối đồ từ BATHORA.";
+
+        suggestList.innerHTML = "";
+
+        return;
+    }
+    const allProducts = getAllProductsForSuggest();
+
+    if (allProducts.length === 0) {
+        suggestDesc.innerText =
+            "Bạn hãy mở trang sản phẩm một lần để hệ thống lấy dữ liệu gợi ý phối đồ.";
+        suggestList.innerHTML = "";
+        return;
+    }
+
+    const cartIds = cart.map(item => item.id);
+    const suggestTypes = getSuggestTypesByCart(cart);
+    const mainCartColor = getMainCartColor(cart);
 
     let suggestions = [];
 
-    if (
-        cartNames.includes("đầm") ||
-        cartNames.includes("váy")
-    ) {
-        suggestions = [
-            {
-                id: "PK001",
-                name: "Túi xách kem thanh lịch",
-                price: 495000,
-                img: "images/Tuixach.jpg"
-            },
-            {
-                id: "PK002",
-                name: "Giày cao gót nude",
-                price: 650000,
-                img: "images/Giaycaogot.jpg"
-            },
-            {
-                id: "PK003",
-                name: "Khuyên tai ngọc trai",
-                price: 220000,
-                img: "images/Phukien.jpg"
-            },
-            {
-                id: "PK004",
-                name: "Áo khoác nhẹ nữ tính",
-                price: 780000,
-                img: "images/AoKhoac.jpg"
-            }
-        ];
+suggestTypes.forEach((type, index) => {
+    const matchedProducts = allProducts
+        .filter(item => item.type === type)
+        .filter(item => !cartIds.includes(item.id))
+        .sort((a, b) => {
+            const colorScoreA = colorMatchScore(a, mainCartColor);
+            const colorScoreB = colorMatchScore(b, mainCartColor);
 
-        suggestDesc.innerText =
-            "Sản phẩm trong giỏ có đầm/váy, vì vậy BATHORA gợi ý phụ kiện, giày và áo khoác để hoàn thiện outfit.";
+            return colorScoreB - colorScoreA || b.rating - a.rating || b.sold - a.sold;
+        });
+
+    if (matchedProducts.length > 0) {
+        const pickIndex = Math.min(index, matchedProducts.length - 1);
+        suggestions.push(matchedProducts[pickIndex]);
     }
-    else if (cartNames.includes("áo")) {
-        suggestions = [
-            {
-                id: "PH001",
-                name: "Chân váy dài nhún eo",
-                price: 595000,
-                img: "images/Chanvay.jpg"
-            },
-            {
-                id: "PH002",
-                name: "Quần resort 2 ly bung",
-                price: 655000,
-                img: "images/Quan.jpg"
-            },
-            {
-                id: "PH003",
-                name: "Túi xách tối giản",
-                price: 495000,
-                img: "images/Tuixach.jpg"
-            },
-            {
-                id: "PH004",
-                name: "Giày cao gót nude",
-                price: 650000,
-                img: "images/Giaycaogot.jpg"
-            }
-        ];
+});
+    suggestions = suggestions.slice(0, 4);
 
+    if (cart.length === 0) {
         suggestDesc.innerText =
-            "Sản phẩm trong giỏ có áo, vì vậy BATHORA gợi ý chân váy, quần và phụ kiện để phối thành set hoàn chỉnh.";
-    }
-    else if (
-        cartNames.includes("quần") ||
-        cartNames.includes("chân váy")
-    ) {
-        suggestions = [
-            {
-                id: "SET001",
-                name: "Áo kiểu nữ thanh lịch",
-                price: 520000,
-                img: "images/Ao.jpg"
-            },
-            {
-                id: "SET002",
-                name: "Áo khoác nhẹ nữ tính",
-                price: 780000,
-                img: "images/AoKhoac.jpg"
-            },
-            {
-                id: "SET003",
-                name: "Túi xách kem thanh lịch",
-                price: 495000,
-                img: "images/Tuixach.jpg"
-            },
-            {
-                id: "SET004",
-                name: "Phụ kiện ngọc trai",
-                price: 220000,
-                img: "images/Phukien.jpg"
-            }
-        ];
-
+            "BATHORA gợi ý một vài sản phẩm dễ phối để bạn bắt đầu hoàn thiện outfit.";
+    } else {
         suggestDesc.innerText =
-            "Sản phẩm trong giỏ có quần hoặc chân váy, vì vậy BATHORA gợi ý áo và phụ kiện để cân bằng tổng thể outfit.";
-    }
-    else {
-        suggestions = [
-            {
-                id: "GOIY001",
-                name: "Đầm thanh lịch dễ mặc",
-                price: 895000,
-                img: "images/SPNB8.jpg"
-            },
-            {
-                id: "GOIY002",
-                name: "Túi xách kem thanh lịch",
-                price: 495000,
-                img: "images/Tuixach.jpg"
-            },
-            {
-                id: "GOIY003",
-                name: "Giày cao gót nude",
-                price: 650000,
-                img: "images/Giaycaogot.jpg"
-            },
-            {
-                id: "GOIY004",
-                name: "Phụ kiện ngọc trai",
-                price: 220000,
-                img: "images/Phukien.jpg"
-            }
-        ];
-
-        suggestDesc.innerText =
-            "Chưa có đủ dữ liệu sản phẩm trong giỏ, BATHORA hiển thị các gợi ý phối đồ phổ biến nhất.";
+    mainCartColor
+        ? "Dựa trên kiểu dáng và tone màu " + mainCartColor + " trong giỏ, BATHORA gợi ý các món phối hài hòa hơn."
+        : "Dựa trên sản phẩm trong giỏ, BATHORA gợi ý các món phối cùng để tạo set đồ hoàn chỉnh.";
     }
 
     suggestList.innerHTML = suggestions.map(item => `
         <div class="col-6 col-lg-3">
             <div class="suggest-card">
-                <img src="${item.img}" alt="${item.name}">
+                <img src="${fixImagePath(item.img)}" alt="${item.name}"
+                     onerror="this.src='https://placehold.co/600x800/f8f3ec/222?text=BATHORA'">
+
                 <div class="suggest-info">
+                    <span class="suggest-tag">${getSuggestReason(item.type)}</span>
                     <h4>${item.name}</h4>
                     <p>${formatMoney(item.price)}</p>
-                    <button onclick="addSuggestToCart('${item.id}', '${item.name}', ${item.price}, '${item.img}')">
+
+                    <button onclick="addSuggestProductToCart('${item.id}')">
                         Thêm vào giỏ
                     </button>
                 </div>
             </div>
         </div>
     `).join("");
+}
+
+function addSuggestProductToCart(productId) {
+    const allProducts = getAllProductsForSuggest();
+    const product = allProducts.find(item => item.id === productId);
+
+    if (!product) return;
+
+    addToCart({
+        id: product.id,
+        sku: "Mã SP: " + product.id.toUpperCase(),
+        name: product.name,
+        price: product.price,
+        oldPrice: product.oldPrice || "",
+        discount: "",
+        img: fixImagePath(product.img),
+        size: product.sizes ? product.sizes[0] : "Freesize",
+        color: product.colors ? product.colors[0] : "Mặc định",
+        quantity: 1,
+        type: product.type,
+        cartKey: `${product.id}-${product.sizes ? product.sizes[0] : "Freesize"}-${product.colors ? product.colors[0] : "Mặc định"}`
+    });
+}
+
+/* LẤY NGƯỜI DÙNG ĐANG ĐĂNG NHẬP */
+function getCurrentUser() {
+    return JSON.parse(sessionStorage.getItem("bathora_current_user"));
+}
+
+/* LẤY CÁC SẢN PHẨM ĐÃ CHỌN ĐỂ THANH TOÁN */
+function getSelectedCartItems() {
+    const cart = getCart();
+
+    return cart.filter(item => item.selected !== false);
+}
+
+/* TẠO MÃ ĐƠN HÀNG */
+function generateOrderId() {
+    return "BH" + Date.now();
+}
+
+/* XỬ LÝ ĐẶT HÀNG */
+function isMissingCustomerInfo(user) {
+    return (
+        !user.name ||
+        user.name === "Chưa cập nhật" ||
+        !user.phone ||
+        user.phone === "Chưa cập nhật" ||
+        !user.address ||
+        user.address === "Chưa cập nhật"
+    );
+}
+function handleCheckout() {
+    const currentUser = getCurrentUser();
+
+    if (!currentUser) {
+        Swal.fire({
+            icon: "warning",
+            title: "Bạn chưa đăng nhập",
+            text: "Vui lòng đăng nhập trước khi đặt hàng.",
+            confirmButtonText: "Đăng nhập",
+            showCancelButton: true,
+            cancelButtonText: "Ở lại giỏ hàng",
+            confirmButtonColor: "#c9a45c",
+            cancelButtonColor: "#1b1b1b"
+        }).then(result => {
+            if (result.isConfirmed) {
+                window.location.href = "../TaiKhoan/login.html";
+            }
+        });
+
+        return;
+    }
+    if (isMissingCustomerInfo(currentUser)) {
+    Swal.fire({
+        icon: "warning",
+        title: "Thiếu thông tin nhận hàng",
+        html: `
+            <p>Bạn cần cập nhật đầy đủ thông tin trước khi đặt hàng:</p>
+            <ul style="text-align:left; display:inline-block;">
+                <li>Họ tên người nhận</li>
+                <li>Số điện thoại</li>
+                <li>Địa chỉ giao hàng</li>
+            </ul>
+        `,
+        confirmButtonText: "Cập nhật tài khoản",
+        showCancelButton: true,
+        cancelButtonText: "Ở lại giỏ hàng",
+        confirmButtonColor: "#c9a45c",
+        cancelButtonColor: "#1b1b1b"
+    }).then(result => {
+        if (result.isConfirmed) {
+            window.location.href = "../TaiKhoan/taikhoan.html";
+        }
+    });
+
+    return;
+}
+
+    const selectedItems = getSelectedCartItems();
+
+    if (selectedItems.length === 0) {
+        Swal.fire({
+            icon: "info",
+            title: "Chưa chọn sản phẩm",
+            text: "Vui lòng tick chọn ít nhất một sản phẩm để thanh toán.",
+            confirmButtonColor: "#c9a45c"
+        });
+
+        return;
+    }
+
+    const subtotal = selectedItems.reduce((sum, item) => {
+        return sum + item.price * item.quantity;
+    }, 0);
+
+    const discount = subtotal >= 1500000 ? 100000 : 0;
+    const total = subtotal - discount;
+
+    Swal.fire({
+        title: "Chọn phương thức thanh toán",
+        html: `
+            <div class="checkout-popup">
+                <p><b>Người nhận:</b> ${currentUser.name || "Chưa cập nhật"}</p>
+                <p><b>Email:</b> ${currentUser.email || "Chưa cập nhật"}</p>
+                <p><b>SĐT:</b> ${currentUser.phone || "Chưa cập nhật"}</p>
+                <p><b>Địa chỉ:</b> ${currentUser.address || "Chưa cập nhật"}</p>
+
+                <hr>
+
+                <p><b>Số sản phẩm:</b> ${selectedItems.length}</p>
+                <p><b>Tổng thanh toán:</b> ${formatMoney(total)}</p>
+
+                <select id="paymentMethod" class="swal2-input">
+                    <option value="">-- Chọn phương thức --</option>
+                    <option value="COD">Thanh toán khi nhận hàng</option>
+                    <option value="BANK">Chuyển khoản ngân hàng</option>
+                    <option value="MOMO">Ví điện tử MoMo</option>
+                </select>
+            </div>
+        `,
+        confirmButtonText: "Xác nhận đặt hàng",
+        showCancelButton: true,
+        cancelButtonText: "Hủy",
+        confirmButtonColor: "#c9a45c",
+        cancelButtonColor: "#1b1b1b",
+        preConfirm: () => {
+            const method = document.getElementById("paymentMethod").value;
+
+            if (!method) {
+                Swal.showValidationMessage("Vui lòng chọn phương thức thanh toán.");
+                return false;
+            }
+
+            return method;
+        }
+    }).then(result => {
+        if (!result.isConfirmed) return;
+
+        const paymentMethod = result.value;
+let paymentStatus = "";
+let orderStatus = "";
+
+if (paymentMethod === "COD") {
+    paymentStatus = "Chưa thanh toán";
+    orderStatus = "Đang xử lý";
+} else {
+    paymentStatus = "Chờ thanh toán";
+    orderStatus = "Chờ xác nhận thanh toán";
+}
+        const order = {
+            id: generateOrderId(),
+            userEmail: currentUser.email,
+            customerName: currentUser.name || "Chưa cập nhật",
+            phone: currentUser.phone || "Chưa cập nhật",
+            address: currentUser.address || "Chưa cập nhật",
+            items: selectedItems,
+            subtotal: subtotal,
+            discount: discount,
+            total: total,
+            paymentMethod: paymentMethod,
+            paymentStatus: paymentStatus,
+status: orderStatus,
+            status: "Đang xử lý",
+            createdAt: new Date().toLocaleString("vi-VN")
+        };
+
+        const orders = JSON.parse(localStorage.getItem("bathora_orders")) || [];
+        orders.push(order);
+        localStorage.setItem("bathora_orders", JSON.stringify(orders));
+
+        let cart = getCart();
+
+        cart = cart.filter(item => item.selected === false);
+
+        saveCart(cart);
+        renderCart();
+
+       let paymentGuide = "";
+
+if (paymentMethod === "BANK") {
+    paymentGuide = `
+        <hr>
+        <p><b>Thông tin chuyển khoản:</b></p>
+        <p>Ngân hàng: MB Bank</p>
+        <p>Số tài khoản: 0123456789</p>
+        <p>Chủ tài khoản: BATHORA DRESS</p>
+        <p>Nội dung CK: ${order.id}</p>
+        <p style="font-size:13px;color:#777">
+            Sau khi chuyển khoản, đơn hàng sẽ được xác nhận bởi nhân viên BATHORA.
+        </p>
+    `;
+}
+
+if (paymentMethod === "MOMO") {
+    paymentGuide = `
+        <hr>
+        <p><b>Thanh toán MoMo:</b></p>
+        <p>Số ví: 0987654321</p>
+        <p>Chủ ví: BATHORA DRESS</p>
+        <p>Nội dung: ${order.id}</p>
+        <p style="font-size:13px;color:#777">
+            Sau khi thanh toán MoMo, đơn hàng sẽ chuyển sang trạng thái xác nhận.
+        </p>
+    `;
+}
+
+let popupTitle = "";
+let popupIntro = "";
+
+if (paymentMethod === "COD") {
+    popupTitle = "Đặt hàng thành công";
+    popupIntro = "Đơn hàng của bạn đã được ghi nhận và đang chờ xử lý.";
+} else {
+    popupTitle = "Tạo đơn hàng thành công";
+    popupIntro = "Vui lòng hoàn tất thanh toán để đơn hàng được xác nhận.";
+}
+
+Swal.fire({
+    icon: "success",
+    title: popupTitle,
+    html: `
+        <p>${popupIntro}</p>
+        <p>Mã đơn hàng của bạn:</p>
+        <h3 style="color:#c9a45c">${order.id}</h3>
+        <p>Trạng thái đơn: <b>${orderStatus}</b></p>
+        <p>Thanh toán: <b>${paymentStatus}</b></p>
+        ${paymentGuide}
+    `,
+    confirmButtonColor: "#c9a45c"
+});
+    });
+}
+
+/* GÁN SỰ KIỆN CHO NÚT ĐẶT HÀNG */
+const checkoutBtn = document.getElementById("checkoutBtn");
+
+if (checkoutBtn) {
+    checkoutBtn.addEventListener("click", handleCheckout);
 }

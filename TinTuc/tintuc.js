@@ -22,32 +22,70 @@ window.addEventListener('scroll', function() {
 
     lastScrollTop = scrollTop;
 });
+
 // =========================================================
 // HÀM CẬP NHẬT VÀ TỰ ĐỘNG ẨN SỐ LƯỢNG YÊU THÍCH TRÊN MENU
 // =========================================================
+function getWishlistKey() {
+    const user = getCurrentUser();
+
+    if (!user) return null;
+
+    return "favorites_" + user.email;
+}
+
+function getFavorites() {
+    const wishlistKey = getWishlistKey();
+
+    if (!wishlistKey) return [];
+
+    return JSON.parse(localStorage.getItem(wishlistKey)) || [];
+}
+
 function updateMenuWishlistBadge() {
     const wishlistBadge = document.getElementById("wishlist-badge");
-    if (wishlistBadge) {
-        // Lấy danh sách từ localStorage dùng chung của hệ thống
-        let favs = JSON.parse(localStorage.getItem("favorites")) || [];
-        wishlistBadge.innerText = favs.length;
-        
-        // Sử dụng style.display trực tiếp để ẩn hoàn toàn số 0, tránh xung đột CSS
-        if (favs.length === 0) {
-            wishlistBadge.style.display = "none";
-        } else {
-            wishlistBadge.style.display = "flex";
-        }
-    }
+
+    if (!wishlistBadge) return;
+
+    const favs = getFavorites();
+
+    wishlistBadge.innerText = favs.length;
+    wishlistBadge.style.display = favs.length === 0 ? "none" : "flex";
 }
 
 // Tự động kiểm tra và cập nhật số lượng ngay khi người dùng vừa vào trang tin tức
 document.addEventListener("DOMContentLoaded", () => {
     updateMenuWishlistBadge();
+    updateCartBadge();
 });
 
 
+// =========================================================
+// HÀM CẬP NHẬT VÀ TỰ ĐỘNG ẨN/HIỆN SỐ LƯỢNG GIỎ HÀNG TRÊN MENU
+// =========================================================
+function updateMenuCartBadge() {
+    const cartBadge = document.getElementById("cart-badge");
+    if (cartBadge) {
+        // Lấy danh sách giỏ hàng từ localStorage (Nếu lưu dạng mảng object)
+        const cart = JSON.parse(localStorage.getItem("cart")) || [];
+        
+        //Đếm tổng số lượng (bao gồm cả số lượng mua thêm của từng sản phẩm)
+        const totalItems = cart.reduce((total, item) => total + (parseInt(item.quantity) || 1), 0);
 
+        cartBadge.innerText = totalItems;
+        
+        // Tự động ẩn badge nếu giỏ hàng trống (bằng 0)
+        if (totalItems === 0) {
+            cartBadge.style.display = "none";
+        } else {
+            cartBadge.style.display = "flex"; // Hoặc "inline-block" tùy layout của bạn
+        }
+    }
+}
+// Gọi hàm chạy ngay lập tức khi trang vừa tải xong
+document.addEventListener("DOMContentLoaded", () => {
+    updateMenuCartBadge();
+});
 
 
 
@@ -70,4 +108,32 @@ if (backToTopBtn) {
             behavior: 'smooth'
         });
     });
+}
+function getCurrentUser() {
+    return JSON.parse(sessionStorage.getItem("bathora_current_user"));
+}
+
+function getCartKey() {
+    const user = getCurrentUser();
+    if (!user) return null;
+    return "cart_" + user.email;
+}
+
+function updateCartBadge() {
+    const badge = document.getElementById("cart-badge");
+    if (!badge) return;
+
+    const cartKey = getCartKey();
+
+    if (!cartKey) {
+        badge.innerText = 0;
+        badge.style.display = "none";
+        return;
+    }
+
+    const cart = JSON.parse(localStorage.getItem(cartKey)) || [];
+    const total = cart.reduce((sum, item) => sum + item.quantity, 0);
+
+    badge.innerText = total;
+    badge.style.display = total === 0 ? "none" : "flex";
 }

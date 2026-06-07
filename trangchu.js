@@ -1,5 +1,5 @@
 /*POP-UP*/
-window.addEventListener('load', function() {
+window.addEventListener('load', function () {
     const popup = document.getElementById('promoPopup');
     const closeBtn = document.querySelector('.close-popup');
 
@@ -27,19 +27,19 @@ window.addEventListener('load', function() {
             sessionStorage.setItem('promo_popup_seen', 'true');
         }
     });
-}); 
+});
 
 
 /*MENU*/
 let lastScrollTop = 0;
 const header = document.querySelector('.header');
-window.addEventListener('scroll', function() {
+window.addEventListener('scroll', function () {
     let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
     // Nếu đang ở sát mép trên cùng (ví dụ dưới 50px)
     if (scrollTop <= 50) {
         header.classList.remove('header-hidden'); // Luôn hiện menu
-    } 
+    }
     // Nếu bắt đầu cuộn xuống dưới
     else {
         if (scrollTop > lastScrollTop) {
@@ -54,125 +54,90 @@ window.addEventListener('scroll', function() {
 });
 
 
-//DỮ LIỆU SẢN PHẨM NỔI BẬT
-const featuredProducts = [
-    {
-        id:1,
-        name:"Áo dạ cổ 2 ve dáng suông, túi ốp tròn",
-        price:"1,150,000đ",
-        image:"images/SPNB1.jpg"
-    },
+// =======================
+// SẢN PHẨM NỔI BẬT - LẤY THEO LƯỢT BÁN CAO NHẤT
+// =======================
 
-    {
-        id:2,
-        name:"Đầm xuân hè vắt tà cổ tùng đổ",
-        price:"895,000đ",
-        image:"images/SPNB2.jpg"
-    },
+function formatHomePrice(price) {
+    return Number(price).toLocaleString("vi-VN") + "đ";
+}
 
-    {
-        id:3,
-        name:"Áo len suông có khoá kéo",
-        price:"855,000đ",
-        image:"images/SPNB3.jpg"
-    },
+function getBestSellingProducts() {
+    const products = JSON.parse(localStorage.getItem("bathora_products")) || [];
 
-    {
-        id:4,
-        name:"Quần Resort 2 ly bung",
-        price:"655,000đ",
-        image:"images/SPNB4.jpg"
-    },
+    return products
+        .sort((a, b) => b.sold - a.sold)
+        .slice(0, 10);
+}
 
-    {
-        id:5,
-        name:"Áo dạ suông cổ tròn bèo 2 nắp túi",
-        price:"1,385,000đ",
-        image:"images/SPNB5.jpg"
-    },
+function renderBestSellingProducts() {
+    const productContainer = document.getElementById("featuredProducts");
 
-    {
-        id:6,
-        name:"Đầm Xuân Hè 2 dây nhún tầng dài",
-        price:"875,000đ",
-        image:"images/SPNB6.jpg"
-    },
+    if (!productContainer) return;
 
-    {
-        id:7,
-        name:"Chân váy Resort dài nhún eo",
-        price:"595,000đ",
-        image:"images/SPNB7.jpg"
-    },
+    const bestSellingProducts = getBestSellingProducts();
 
-    {
-        id:8,
-        name:"Đầm Xuân Hè cổ sen cách điệu, phối chân xếp ly chụm",
-        price:"895,000đ",
-        image:"images/SPNB8.jpg"
-    },
-
-    {
-        id:9,
-        name:"Đầm Xuân Hè tay bồng, xếp ly eo, dây nơ cổ",
-        price:"855,000đ",
-        image:"images/SPNB9.jpg"
-    },
-
-    {
-        id:10,
-        name:"Áo xuân hè cổ tròn phối bèo dọc",
-        price:"755,000đ",
-        image:"images/SPNB10.jpg"
+    if (bestSellingProducts.length === 0) {
+        productContainer.innerHTML = `
+            <div class="swiper-slide">
+                <p class="text-center w-100">
+                    Hãy mở trang sản phẩm một lần để hệ thống cập nhật sản phẩm bán chạy.
+                </p>
+            </div>
+        `;
+        return;
     }
 
-];
-//giao diện
-const productContainer = document.getElementById("featuredProducts");
-featuredProducts.forEach(product => {
-    productContainer.innerHTML += `
-    <div class="swiper-slide">
-        <div class="product-card"
-            data-id="${product.id}"
-            data-name="${product.name}"
-            data-price="${product.price}"
-            data-img="${product.image}">
-            <div class="product-img">
-                <img src="${product.image}" alt="${product.name}">
-            </div>
-            <div class="product-info">
-                <h3 class="product-title">
-                    ${product.name}
-                </h3>
-                <div class="price-heart-wrapper">
-                    <div class="product-price">
-                        ${product.price}
-                    </div>
-                    <button class="wishlist-btn">
-                        <i class="fa-regular fa-heart heart-btn"></i>
-                    </button>
+    productContainer.innerHTML = bestSellingProducts.map(product => `
+        <div class="swiper-slide">
+            <div class="product-card"
+                data-id="${product.id}"
+                data-name="${product.name}"
+                data-price="${formatHomePrice(product.price)}"
+                data-img="${product.img}">
+                
+                <div class="product-img">
+                    <img src="${product.img}" alt="${product.name}">
                 </div>
-                <div class="product-meta d-flex justify-content-between align-items-center">
-                    <div class="rating">
-                        <i class="fa-solid fa-star"></i> (0)
+
+                <div class="product-info">
+                    <h3 class="product-title">
+                        ${product.name}
+                    </h3>
+
+                    <div class="price-heart-wrapper">
+                        <div class="product-price">
+                            ${formatHomePrice(product.price)}
+                        </div>
+
+                        <button class="wishlist-btn">
+                            <i class="fa-regular fa-heart heart-btn"></i>
+                        </button>
                     </div>
-                    <div class="sold-count">
-                        (0 đã bán)
+
+                    <div class="product-meta d-flex justify-content-between align-items-center">
+                        <div class="rating">
+                            <i class="fa-solid fa-star"></i> ${product.rating}
+                        </div>
+
+                        <div class="sold-count">
+                            ${product.sold} đã bán
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    `).join("");
+}
 
-    `;
 
-});
+
 
 /*DANH MỤC SẢN PHẨM*/
 var swiper = new Swiper(".categorySwiper", {
-    slidesPerView: 1,      
-    spaceBetween: 20,     
-    loop: true,         
+    slidesPerView: 1,
+    spaceBetween: 20,
+    loop: true,
     navigation: {
         nextEl: ".swiper-button-next",
         prevEl: ".swiper-button-prev",
@@ -186,69 +151,97 @@ var swiper = new Swiper(".categorySwiper", {
 
 /*SẢN PHẨM NỔI BẬT*/
 var swiper = new Swiper(".featuredSwiper", {
-    slidesPerView:4,
-    spaceBetween:25,
-    loop:true, // tạo vòng lặp khi kéo hết ảnh
-    pagination:{
-        el:".swiper-pagination",
-        clickable:true,
+    slidesPerView: 4,
+    spaceBetween: 25,
+    loop: true, // tạo vòng lặp khi kéo hết ảnh
+    pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
     },
-    breakpoints:{
-        0:{
-            slidesPerView:1.2
+    breakpoints: {
+        0: {
+            slidesPerView: 1.2
         },
 
-        576:{
-            slidesPerView:2
+        576: {
+            slidesPerView: 2
         },
 
-        768:{
-            slidesPerView:3
+        768: {
+            slidesPerView: 3
         },
 
-        1200:{
-            slidesPerView:4
+        1200: {
+            slidesPerView: 4
         }
     }
 });
 
+function getWishlistKey() {
+    const user = getCurrentUser();
 
-// =======================
-// CLICK TRÁI TIM & CẬP NHẬT SỐ LƯỢNG
-// =======================
-const hearts = document.querySelectorAll(".heart-btn");
+    if (!user) return null;
 
-hearts.forEach(icon => {
-  icon.addEventListener("click", function () {
+    return "favorites_" + user.email;
+}
 
-    const card = this.closest(".product-card");
+function getFavorites() {
+    const wishlistKey = getWishlistKey();
+
+    if (!wishlistKey) return [];
+
+    return JSON.parse(localStorage.getItem(wishlistKey)) || [];
+}
+
+function saveFavorites(favs) {
+    const wishlistKey = getWishlistKey();
+
+    if (!wishlistKey) return;
+
+    localStorage.setItem(wishlistKey, JSON.stringify(favs));
+}
+document.addEventListener("click", function (e) {
+    const heart = e.target.closest(".heart-btn");
+
+    if (!heart) return;
+
+    const currentUser = getCurrentUser();
+
+    if (!currentUser) {
+        alert("Vui lòng đăng nhập để thêm sản phẩm vào yêu thích.");
+        window.location.href = "TaiKhoan/login.html";
+        return;
+    }
+
+    const card = heart.closest(".product-card");
+
     if (!card) return;
 
     const product = {
-      id: card.dataset.id,
-      name: card.dataset.name,
-      price: card.dataset.price,
-      img: card.dataset.img
+        id: card.dataset.id,
+        name: card.dataset.name,
+        price: card.dataset.price,
+        img: card.dataset.img
     };
 
-    let favs = JSON.parse(localStorage.getItem("favorites")) || [];
+    let favs = getFavorites();
+
     const index = favs.findIndex(item => item.id === product.id);
 
     if (index === -1) {
-      favs.push(product);
-     this.classList.add("active");
+        favs.push(product);
+        heart.classList.add("active");
     } else {
-      favs.splice(index, 1);
-     this.classList.remove("active");
+        favs.splice(index, 1);
+        heart.classList.remove("active");
     }
 
-    // Lưu danh sách mới vào LocalStorage
-    localStorage.setItem("favorites", JSON.stringify(favs));
-
-    // Gọi hàm cập nhật lại số lượng hiển thị trên menu ngay lập tức
+    saveFavorites(favs);
     updateHeartIcons();
-  });
 });
+// =======================
+// CLICK TRÁI TIM & CẬP NHẬT SỐ LƯỢNG
+// =======================
 
 
 // =======================
@@ -256,13 +249,13 @@ hearts.forEach(icon => {
 // =======================
 function updateHeartIcons() {
     // 1. Lấy danh sách yêu thích từ localStorage
-    let favs = JSON.parse(localStorage.getItem("favorites")) || [];
+    let favs = getFavorites();
 
     // 2. Cập nhật số lượng hiển thị bên cạnh icon trái tim trên Header
     const wishlistBadge = document.getElementById("wishlist-badge");
     if (wishlistBadge) {
         wishlistBadge.innerText = favs.length;
-        
+
         // Nếu không có sản phẩm nào, ẩn số đi cho thanh lịch. Có sản phẩm thì hiện lại.
         if (favs.length === 0) {
             wishlistBadge.classList.add("d-none");
@@ -291,15 +284,16 @@ function updateHeartIcons() {
 // KHỞI CHẠY KHI TẢI TRANG
 // =======================
 document.addEventListener("DOMContentLoaded", () => {
+    renderBestSellingProducts();
     updateHeartIcons();
+    updateCartBadge();
 });
-
 
 /*Back to top*/
 const backToTopBtn = document.querySelector('#backToTop');
 
 if (backToTopBtn) {
-    window.addEventListener('scroll', function() {
+    window.addEventListener('scroll', function () {
         if (window.pageYOffset > 300) {
             backToTopBtn.classList.add('show');
         } else {
@@ -307,7 +301,7 @@ if (backToTopBtn) {
         }
     });
 
-    backToTopBtn.addEventListener('click', function() {
+    backToTopBtn.addEventListener('click', function () {
         window.scrollTo({
             top: 0,
             behavior: 'smooth'
@@ -316,7 +310,7 @@ if (backToTopBtn) {
 }
 
 /*VIDEO*/
-/*
+
 window.addEventListener("DOMContentLoaded", () => {
 
     const introOverlay = document.getElementById("introOverlay");
@@ -369,4 +363,31 @@ window.addEventListener("DOMContentLoaded", () => {
     }
 
 });
-*/
+function getCurrentUser() {
+    return JSON.parse(sessionStorage.getItem("bathora_current_user"));
+}
+
+function getCartKey() {
+    const user = getCurrentUser();
+    if (!user) return null;
+    return "cart_" + user.email;
+}
+
+function updateCartBadge() {
+    const badge = document.getElementById("cart-badge");
+    if (!badge) return;
+
+    const cartKey = getCartKey();
+
+    if (!cartKey) {
+        badge.innerText = 0;
+        badge.style.display = "none";
+        return;
+    }
+
+    const cart = JSON.parse(localStorage.getItem(cartKey)) || [];
+    const total = cart.reduce((sum, item) => sum + item.quantity, 0);
+
+    badge.innerText = total;
+    badge.style.display = total === 0 ? "none" : "flex";
+}

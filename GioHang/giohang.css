@@ -825,3 +825,65 @@ body {
         font-size: 13px;
     }
 }
+
+.suggest-tag {
+    display: inline-block;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #b58a3c;
+    margin-bottom: 6px;
+}
+
+.cart-action-box {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.checkout-select {
+    position: relative;
+    cursor: pointer;
+    margin: 0;
+}
+
+.checkout-select input {
+    display: none;
+}
+
+.checkout-select span {
+    width: 19px;
+    height: 19px;
+    border: 1px solid #ccc;
+    display: inline-block;
+    position: relative;
+    transition: 0.25s;
+}
+
+.checkout-select input:checked + span {
+    background: #c9a45c;
+    border-color: #c9a45c;
+}
+
+.checkout-select input:checked + span::after {
+    content: "✓";
+    position: absolute;
+    color: #fff;
+    font-size: 13px;
+    font-weight: bold;
+    left: 4px;
+    top: 0px;
+}
+
+.checkout-popup {
+    text-align: left;
+    font-size: 14px;
+}
+
+.checkout-popup p {
+    margin-bottom: 8px;
+}
+
+.checkout-popup hr {
+    margin: 14px 0;
+}

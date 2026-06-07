@@ -322,6 +322,10 @@ document.addEventListener("DOMContentLoaded", () => {
     bindActionsEvents();
     renderRelatedProductsGrid();
     setupSliderControls();
+
+    // Cập nhật số lượng giỏ hàng đã lưu trước đó
+    updateCartBadgeFromStorage();
+    updateWishlistBadgeFromStorage();
 });
 
 function renderReviews(product) {
@@ -605,36 +609,265 @@ function bindActionsEvents() {
     });
 
     // Trái tim trên thanh Menu điều hướng tăng chỉ số
-    document.getElementById("wishlistActionBtn").addEventListener("click", () => {
-        hasLikedProduct = !hasLikedProduct;
-        const heartIco = document.querySelector("#wishlistActionBtn i");
-        const badge = document.getElementById("wishlist-badge");
-        
-        if(hasLikedProduct) {
-            countWishlistItems = 1; heartIco.className = "fa-solid fa-heart text-danger";
-            badge.classList.remove("d-none");
-            fireAlertNotification("Đã lưu mẫu trang phục này vào mục yêu thích!");
-        } else {
-            countWishlistItems = 0; heartIco.className = "fa-regular fa-heart";
-            badge.classList.add("d-none");
-            fireAlertNotification("Đã xoá khỏi danh mục yêu thích.");
+function getWishlistKey() {
+    const user = getCurrentUser();
+
+    if (!user) return null;
+
+    return "favorites_" + user.email;
+}
+
+function getFavorites() {
+    const wishlistKey = getWishlistKey();
+
+    if (!wishlistKey) return [];
+
+    return JSON.parse(localStorage.getItem(wishlistKey)) || [];
+}
+
+function saveFavorites(favs) {
+    const wishlistKey = getWishlistKey();
+
+    if (!wishlistKey) return;
+
+    localStorage.setItem(wishlistKey, JSON.stringify(favs));
+}
+
+function updateWishlistBadgeFromStorage() {
+    const badge = document.getElementById("wishlist-badge");
+    const favs = getFavorites();
+
+    if (!badge) return;
+
+    badge.textContent = favs.length;
+
+    if (favs.length > 0) {
+        badge.classList.remove("d-none");
+    } else {
+        badge.classList.add("d-none");
+    }
+}
+
+document.getElementById("wishlistActionBtn").addEventListener("click", () => {
+    if (!requireLoginBeforeBuy()) return;
+
+    const heartIco = document.querySelector("#wishlistActionBtn i");
+    const currentImagesList = getAllImages();
+    const selectedImage = currentImagesList[selectedImageIndex].src;
+
+    const product = {
+        id: currentActiveProduct.id,
+        name: currentActiveProduct.title,
+        price: currentActiveProduct.price,
+        img: selectedImage
+    };
+
+    let favs = getFavorites();
+    const index = favs.findIndex(item => item.id === product.id);
+
+    if (index === -1) {
+        favs.push(product);
+        heartIco.className = "fa-solid fa-heart text-danger";
+        fireAlertNotification("Đã lưu mẫu trang phục này vào mục yêu thích!");
+    } else {
+        favs.splice(index, 1);
+        heartIco.className = "fa-regular fa-heart";
+        fireAlertNotification("Đã xoá khỏi danh mục yêu thích.");
+    }
+
+    saveFavorites(favs);
+    updateWishlistBadgeFromStorage();
+});
+    // CHUYỂN CHUỖI GIÁ "755.000₫" THÀNH SỐ 755000
+function parsePriceToNumber(priceText) {
+    return Number(
+        String(priceText)
+            .replace(/[^\d]/g, "")
+    );
+}
+
+// LẤY GIỎ HÀNG TỪ LOCALSTORAGE
+function getCartKey() {
+    const user = JSON.parse(sessionStorage.getItem("bathora_current_user"));
+
+    if (!user) {
+        return null;
+    }
+
+    return "cart_" + user.email;
+}
+
+function getCartFromStorage() {
+    const cartKey = getCartKey();
+
+    if (!cartKey) {
+        return [];
+    }
+
+    return JSON.parse(localStorage.getItem(cartKey)) || [];
+}
+
+// LƯU GIỎ HÀNG VÀO LOCALSTORAGE
+function saveCartToStorage(cart) {
+    const cartKey = getCartKey();
+
+    if (!cartKey) return;
+
+    localStorage.setItem(cartKey, JSON.stringify(cart));
+}
+// CẬP NHẬT BADGE GIỎ HÀNG Ở HEADER
+function updateCartBadgeFromStorage() {
+    const cart = getCartFromStorage();
+    const badge = document.getElementById("cart-badge");
+
+    if (!badge) return;
+
+    const totalQuantity = cart.reduce((sum, item) => {
+        return sum + item.quantity;
+    }, 0);
+
+    badge.textContent = totalQuantity;
+
+    if (totalQuantity > 0) {
+        badge.classList.remove("d-none");
+    } else {
+        badge.classList.add("d-none");
+    }
+}
+//KIỂM TRA ĐÃ ĐĂNG NHẬP CHƯA
+function getCurrentUser() {
+    return JSON.parse(sessionStorage.getItem("bathora_current_user"));
+}
+
+function requireLoginBeforeBuy() {
+    const currentUser = getCurrentUser();
+
+    if (currentUser) {
+        return true;
+    }
+
+    Swal.fire({
+        icon: "warning",
+        title: "Bạn chưa đăng nhập",
+        text: "Vui lòng đăng nhập để tiếp tục mua sắm.",
+        confirmButtonText: "Đăng nhập",
+        showCancelButton: true,
+        cancelButtonText: "Ở lại",
+        confirmButtonColor: "#c9a45c"
+    }).then(result => {
+        if (result.isConfirmed) {
+            window.location.href = "../TaiKhoan/login.html";
         }
-        badge.textContent = countWishlistItems;
     });
 
-    // Nút Thêm giỏ hàng (Cart) nhảy số Badge
-    const execAddCartLogic = () => {
-        countCartItems += quantityOrder;
-        const badge = document.getElementById("cart-badge");
-        badge.classList.remove("d-none");
-        badge.textContent = countCartItems;
-        fireAlertNotification(`Thêm thành công ${quantityOrder} sản phẩm vào giỏ hàng!`);
-    };
-    document.getElementById("addToCartActionBtn").addEventListener("click", execAddCartLogic);
-    document.getElementById("stickyAddCartBtn").addEventListener("click", execAddCartLogic);
+    return false;
+}
 
-    document.getElementById("buyNowActionBtn").addEventListener("click", () => fireAlertNotification("Đang chuẩn bị cổng thanh toán trực tuyến an toàn..."));
-    document.getElementById("stickyBuyNowBtn").addEventListener("click", () => fireAlertNotification("Đang chuẩn bị cổng thanh toán trực tuyến an toàn..."));
+// NÚT THÊM VÀO GIỎ HÀNG
+const execAddCartLogic = () => {
+
+    if (!requireLoginBeforeBuy()) return;
+
+    const cart = getCartFromStorage();
+
+    const selectedSize = document.getElementById("sizeTextValue").textContent.trim();
+    const selectedColor = document.getElementById("colorTextValue").textContent.trim();
+
+    const currentImagesList = getAllImages();
+    const selectedImage = currentImagesList[selectedImageIndex].src;
+
+    const productToCart = {
+        id: currentActiveProduct.id,
+        sku: currentActiveProduct.sku,
+        name: currentActiveProduct.title,
+        price: parsePriceToNumber(currentActiveProduct.price),
+        oldPrice: currentActiveProduct.oldPrice,
+        discount: currentActiveProduct.discount,
+        img: selectedImage,
+        size: selectedSize,
+        color: selectedColor,
+        quantity: quantityOrder,
+        type: "ao",
+        selected: true,
+
+        // cartKey dùng để phân biệt cùng sản phẩm nhưng khác size/màu
+        cartKey: `${currentActiveProduct.id}-${selectedSize}-${selectedColor}`
+    };
+
+    const existingProduct = cart.find(item => item.cartKey === productToCart.cartKey);
+
+    if (existingProduct) {
+        existingProduct.quantity += quantityOrder;
+    } else {
+        cart.push(productToCart);
+    }
+
+    saveCartToStorage(cart);
+    updateCartBadgeFromStorage();
+
+    fireAlertNotification(`Đã thêm ${quantityOrder} sản phẩm vào giỏ hàng!`);
+};
+
+document.getElementById("addToCartActionBtn").addEventListener("click", execAddCartLogic);
+document.getElementById("stickyAddCartBtn").addEventListener("click", execAddCartLogic);
+/* MUA NGAY */
+function buyNowProduct() {
+
+    if (!requireLoginBeforeBuy()) return;
+
+    let cart = getCartFromStorage();
+
+    const selectedSize = document.getElementById("sizeTextValue").textContent.trim();
+    const selectedColor = document.getElementById("colorTextValue").textContent.trim();
+
+    const currentImagesList = getAllImages();
+    const selectedImage = currentImagesList[selectedImageIndex].src;
+
+    const productToCart = {
+        id: currentActiveProduct.id,
+        sku: currentActiveProduct.sku,
+        name: currentActiveProduct.title,
+        price: parsePriceToNumber(currentActiveProduct.price),
+        oldPrice: currentActiveProduct.oldPrice,
+        discount: currentActiveProduct.discount,
+        img: selectedImage,
+        size: selectedSize,
+        color: selectedColor,
+        quantity: quantityOrder,
+        type: "ao",
+        selected: true,
+        cartKey: `${currentActiveProduct.id}-${selectedSize}-${selectedColor}`
+    };
+
+    // Bỏ chọn tất cả sản phẩm khác để chỉ thanh toán sản phẩm mua ngay
+    cart = cart.map(item => {
+        item.selected = false;
+        return item;
+    });
+
+    const existingProduct = cart.find(item => item.cartKey === productToCart.cartKey);
+
+    if (existingProduct) {
+        existingProduct.quantity += quantityOrder;
+        existingProduct.selected = true;
+    } else {
+        cart.push(productToCart);
+    }
+
+    saveCartToStorage(cart);
+    updateCartBadgeFromStorage();
+
+    window.location.href = "../GioHang/giohang.html";
+}
+const buyNowBtn = document.getElementById("buyNowActionBtn");
+if (stickyBuyNowBtn) {
+    stickyBuyNowBtn.addEventListener("click", buyNowProduct);
+}
+
+if (buyNowBtn) {
+    buyNowBtn.addEventListener("click", buyNowProduct);
+}
+
 
     // Nút cuộn mượt về đầu trang (Back to top)
     const backToTopBtn = document.getElementById("backToTop");
