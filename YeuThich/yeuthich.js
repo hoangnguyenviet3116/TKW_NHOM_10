@@ -171,8 +171,12 @@ document.addEventListener("DOMContentLoaded", function () {
         emptyMsg.classList.add("d-none");
     }
 
-    if (gridContainer) {
-        gridContainer.innerHTML = favs.map(item => `
+   if (gridContainer) {
+        gridContainer.innerHTML = favs.map(item => {
+            const currentPriceNum = Number(String(item.price).replace(/[^\d]/g, ""));
+            const currentPriceFormatted = !isNaN(currentPriceNum) ? currentPriceNum.toLocaleString('vi-VN') : item.price;
+
+            return `
             <div class="col-6 col-md-4 col-lg-3 animate-card">
                 <div class="wishlist-card">
 
@@ -186,15 +190,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
                     <div class="wishlist-info">
                         <h4 class="wishlist-item-name">${item.name}</h4>
-                        <p class="wishlist-item-price">${item.price}</p>
+                        <p class="wishlist-item-price">${currentPriceFormatted}đ</p>
 
-                        <button onclick="addToCartQuick('${item.id}')" class="btn-add-cart-quick">
+                    	<button onclick="addToCartQuick('${item.id}')" class="btn-add-cart-quick">
                             Thêm Vào Giỏ
                         </button>
                     </div>
                 </div>
             </div>
-        `).join("");
+        `;
+        }).join("");
     }
 });
 
