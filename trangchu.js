@@ -52,6 +52,56 @@ window.addEventListener('scroll', function () {
     }
     lastScrollTop = scrollTop;
 });
+/*Menu trên điện thoại*/
+// Điều khiển đóng mở Sidebar di động cho Trang Chủ
+    const openBtn = document.getElementById("openMobileMenuBtn");
+    const closeBtn = document.getElementById("closeMobileMenuBtn");
+    const sidebar = document.getElementById("mobileMenuPopup");
+    const overlay = document.getElementById("sidebarPopupOverlay");
+
+    if (openBtn && sidebar && overlay) {
+        openBtn.addEventListener("click", function () {
+            sidebar.classList.add("open");
+            overlay.classList.add("show");
+            document.body.style.overflow = "hidden";
+        });
+    }
+
+    function hideMobileMenu() {
+        if (sidebar && overlay) {
+            sidebar.classList.remove("open");
+            overlay.classList.remove("show");
+            document.body.style.overflow = "";
+        }
+    }
+
+    if (closeBtn) closeBtn.addEventListener("click", hideMobileMenu);
+    if (overlay) overlay.addEventListener("click", hideMobileMenu);
+
+    // Kéo thả trượt thả các phân mục Dropdown Mobile (SALE & SẢN PHẨM)
+    const dropdownToggles = document.querySelectorAll('.mobile-dropdown-toggle');
+    dropdownToggles.forEach(toggle => {
+        toggle.addEventListener('click', function (e) {
+            e.preventDefault();
+            const parentLi = this.parentElement;
+            const submenu = parentLi.querySelector('.mobile-submenu');
+            
+            if (submenu) {
+                const isOpen = parentLi.classList.contains('active');
+                if (isOpen) {
+                    parentLi.classList.remove('active');
+                    $(submenu).slideUp(300); // Thu menu lên
+                } else {
+                    parentLi.classList.add('active');
+                    $(submenu).slideDown(300); // Thả xuống xem các mục con
+                }
+            }
+        });
+    });
+
+
+
+
 
 
 // =======================

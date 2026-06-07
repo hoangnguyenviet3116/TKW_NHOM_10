@@ -15,95 +15,191 @@
 
 <body>
 
- <header class="header">
-        <div class="container-fluid d-flex align-items-center justify-content-between">
+ <header class="header border-bottom sticky-top bg-white">
+        <nav class="navbar navbar-expand-lg py-2">
+            <div class="container-fluid align-items-center">
 
-            <!-- LOGO -->
-            <div class="logo">
-                <a href="trangchu.html">
-                    <img src="images/logo.png" alt="Bathora Logo">
+                <a class="navbar-brand logo m-0" href="trangchu.html">
+                    <img src="images/logo.png" alt="Bathora" height="40">
                 </a>
-            </div>
 
-            <!-- MENU -->
-            <nav class="menu">
-                <ul class="d-flex align-items-center mb-0">
-
-                    <li><a href="trangchu.html" class="active">TRANG CHỦ</a></li>
-
-                    <li class="nav-item dropdown">
-                        <a class="nav-link sale-link" href="#" id="saleDropdown" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            SALE <i class="fa fa-chevron-down ms-1"></i>
+                <div class="icons d-flex align-items-center order-lg-3">
+                    <div class="icon">
+                        <a href="YeuThich/yeuthich.html" title="Yêu thích">
+                            <i class="fa-regular fa-heart"></i>
+                            <span id="wishlist-badge" class="badge-count">0</span>
                         </a>
-                        <ul class="dropdown-menu border-0 shadow-sm" aria-labelledby="saleDropdown">
-                            <li><a class="dropdown-item" href="#">Giảm 5%</a></li>
-                            <li><a class="dropdown-item" href="#">Giảm 10%</a></li>
-                            <li><a class="dropdown-item" href="#">Giảm 15%</a></li>
-                            <li><a class="dropdown-item" href="#">Giảm 20%</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li> <!-- Thanh gạch ngang phân cách -->
-                            <li><a class="dropdown-item" href="#">Giảm 30%</a></li>
-                            <li><a class="dropdown-item" href="#">Giảm 40%</a></li>
-                            <li><a class="dropdown-item" title="Đặc biệt" class="dropdown-item fw-bold text-danger"
-                                    href="#">SIÊU SALE 50%</a></li>
-                        </ul>
-                    </li>
+                    </div>
 
-                    <li class="nav-item dropdown">
-                        <a class="nav-link" href="sanpham.html" id="productDropdown" role="button"
-                            aria-expanded="false">
-                            SẢN PHẨM <i class="fa fa-chevron-down ms-1"></i>
+                    <div class="icon">
+                        <a href="GioHang/giohang.html" title="Giỏ hàng">
+                            <i class="fa-solid fa-bag-shopping"></i>
+                            <span id="cart-badge" class="badge-count">0</span>
                         </a>
-                        <ul class="dropdown-menu border-0 shadow-sm" aria-labelledby="productDropdown">
-                            <li><a class="dropdown-item" href="sanpham.html?loai=dam">ĐẦM</a></li>
-                            <li><a class="dropdown-item" href="sanpham.html?loai=ao">ÁO</a></li>
-                            <li><a class="dropdown-item" href="sanpham.html?loai=quan">QUẦN</a></li>
-                            <li><a class="dropdown-item" href="sanpham.html?loai=chanvay">CHÂN VÁY</a></li>
-                            <li><a class="dropdown-item" href="sanpham.html?loai=aokhoac">ÁO KHOÁC</a></li>
-                            <li><a class="dropdown-item" href="sanpham.html?loai=tuixach">TÚI XÁCH</a></li>
-                            <li><a class="dropdown-item" href="sanpham.html?loai=phukien">PHỤ KIỆN</a></li>
-                            <li><a class="dropdown-item" href="sanpham.html?loai=giay">GIÀY</a></li>
-                        </ul>
-                    </li>
-                    
-                    <li><a href="TinTuc/tintuc.html">TIN TỨC</a></li>
+                    </div>
 
-                    <li><a href="vechungtoi.html">VỀ CHÚNG TÔI</a></li>
-                    <li><a href="Bosuutap/Bosuutap.html">BỘ SƯU TẬP</a></li>
-                </ul>
-            </nav>
+                    <div class="icon">
+                        <a href="TaiKhoan/taikhoan.html" title="Tài khoản">
+                            <i class="fa-regular fa-user"></i>
+                        </a>
+                    </div>
 
-            <!-- Icon -->
-            <div class="icons d-flex align-items-center">
-
-                <!-- Wishlist -->
-                <div class="icon">
-                    <a href="YeuThich/yeuthich.html" title="Yêu thích">
-                        <i class="fa-regular fa-heart"></i>
-                        <span id="wishlist-badge" class="badge-count">0</span>
-                    </a>
+                    <button class="btn-hamburgerMenu" id="openMobileMenuBtn" title="Mở menu">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
                 </div>
 
-                <!-- Cart -->
-                <div class="icon">
-                    <a href="GioHang/giohang.html" title="Giỏ hàng">
-                        <i class="fa-solid fa-bag-shopping"></i>
-                        <span id="cart-badge" class="badge-count">0</span>
-                    </a>
+                <div class="collapse navbar-collapse justify-content-center order-lg-2 menu" id="navbarNav">
+                    <ul class="navbar-nav mb-0">
+                        <li class="nav-item"><a class="nav-link" href="trangchu.html">TRANG CHỦ</a></li>
+                        
+                        <li class="nav-item dropdown">
+                            <a class="nav-link sale-link dropdown-toggle" href="#" id="saleDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                SALE
+                            </a>
+                            <ul class="dropdown-menu border-0 shadow-sm" aria-labelledby="saleDropdown">
+                                <li><a class="dropdown-item" href="#">Giảm 5%</a></li>
+                                <li><a class="dropdown-item" href="#">Giảm 10%</a></li>
+                                <li><a class="dropdown-item" href="#">Giảm 15%</a></li>
+                                <li><a class="dropdown-item" href="#">Giảm 20%</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="#">Giảm 30%</a></li>
+                                <li><a class="dropdown-item" href="#">Giảm 40%</a></li>
+                                <li><a class="dropdown-item fw-bold text-danger" href="#">SIÊU SALE 50%</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle active" href="sanpham.html" id="productDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                SẢN PHẨM
+                            </a>
+                            <ul class="dropdown-menu border-0 shadow-sm" aria-labelledby="productDropdown">
+                                <li><a class="dropdown-item" href="sanpham.html">TẤT CẢ SẢN PHẨM</a></li>
+                                <li><a class="dropdown-item" href="sanpham.html?loai=dam">ĐẦM</a></li>
+                                <li><a class="dropdown-item" href="sanpham.html?loai=ao">ÁO</a></li>
+                                <li><a class="dropdown-item" href="sanpham.html?loai=quan">QUẦN</a></li>
+                                <li><a class="dropdown-item" href="sanpham.html?loai=chanvay">CHÂN VÁY</a></li>
+                                <li><a class="dropdown-item" href="sanpham.html?loai=aokhoac">ÁO KHOÁC</a></li>
+                                <li><a class="dropdown-item" href="sanpham.html?loai=tuixach">TÚI XÁCH</a></li>
+                                <li><a class="dropdown-item" href="sanpham.html?loai=phukien">PHỤ KIỆN</a></li>
+                                <li><a class="dropdown-item" href="sanpham.html?loai=giay">GIÀY</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item"><a class="nav-link" href="TinTuc/tintuc.html">TIN TỨC</a></li>
+                        <li class="nav-item"><a class="nav-link" href="vechungtoi.html">VỀ CHÚNG TÔI</a></li>
+                        <li class="nav-item"><a class="nav-link" href="Bosuutap/Bosuutap.html">BỘ SƯU TẬP</a></li>
+                    </ul>
                 </div>
 
-                <!-- User (Login) -->
-                <div class="icon">
-                    <a href="TaiKhoan/taikhoan.html" title="Tài khoản">
-                        <i class="fa-regular fa-user"></i>
-                    </a>
-                </div>
             </div>
-        </div>
+        </nav>
     </header>
 
+    <div class="mobile-sidebar-popup" id="mobileMenuPopup">
+        <div class="sidebar-popup-header d-flex justify-content-between align-items-center">
+            <div class="sidebar-popup-logo">
+                <img src="images/logo.png" alt="Bathora Logo" height="35">
+            </div>
+            <button class="btn-close-sidebar-popup" id="closeMobileMenuBtn">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+        
+        <div class="sidebar-popup-body">
+            <ul class="mobile-popup-menu-list">
+                <li><a href="trangchu.html">TRANG CHỦ</a></li>
+                
+                <li class="mobile-dropdown">
+                    <a href="javascript:void(0);" class="mobile-dropdown-toggle">
+                        SALE <i class="fa fa-chevron-down ms-1" style="font-size: 11px;"></i>
+                    </a>
+                    <ul class="mobile-submenu">
+                        <li><a href="#">Giảm 5%</a></li>
+                        <li><a href="#">Giảm 10%</a></li>
+                        <li><a href="#">Giảm 15%</a></li>
+                        <li><a href="#">Giảm 20%</a></li>
+                        <li><a href="#">Giảm 30%</a></li>
+                        <li><a href="#">Giảm 40%</a></li>
+                        <li><a href="#" class="text-danger fw-bold">SIÊU SALE 50%</a></li>
+                    </ul>
+                </li>
+
+                <li class="mobile-dropdown">
+                    <a href="javascript:void(0);" class="mobile-dropdown-toggle active">
+                        SẢN PHẨM <i class="fa fa-chevron-down ms-1" style="font-size: 11px;"></i>
+                    </a>
+                    <ul class="mobile-submenu" style="display: block;">
+                        <li><a href="sanpham.html">TẤT CẢ SẢN PHẨM</a></li>
+                        <li><a href="sanpham.html?loai=dam">ĐẦM</a></li>
+                        <li><a href="sanpham.html?loai=ao">ÁO</a></li>
+                        <li><a href="sanpham.html?loai=quan">QUẦN</a></li>
+                        <li><a href="sanpham.html?loai=chanvay">CHÂN VÁY</a></li>
+                        <li><a href="sanpham.html?loai=aokhoac">ÁO KHOÁC</a></li>
+                        <li><a href="sanpham.html?loai=tuixach">TÚI XÁCH</a></li>
+                        <li><a href="sanpham.html?loai=phukien">PHỤ KIỆN</a></li>
+                        <li><a href="sanpham.html?loai=giay">GIÀY</a></li>
+                    </ul>
+                </li>
+
+                <li><a href="TinTuc/tintuc.html">TIN TỨC</a></li>
+                <li><a href="vechungtoi.html">VỀ CHÚNG TÔI</a></li>
+                <li><a href="Bosuutap/Bosuutap.html">BỘ SƯU TẬP</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="sidebar-popup-overlay" id="sidebarPopupOverlay"></div>
+    <div class="mobile-sidebar-popup" id="mobileMenuPopup">
+        <div class="sidebar-popup-header d-flex justify-content-between align-items-center">
+            <div class="sidebar-popup-logo">
+                <img src="images/logo.png" alt="Bathora Logo" height="35">
+            </div>
+            <button class="btn-close-sidebar-popup" id="closeMobileMenuBtn">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+        
+        <div class="sidebar-popup-body">
+            <ul class="mobile-popup-menu-list">
+                <li><a href="trangchu.html">TRANG CHỦ</a></li>
+                
+                <li class="mobile-dropdown">
+                    <a href="javascript:void(0);" class="mobile-dropdown-toggle active">
+                        SẢN PHẨM <i class="fa fa-chevron-down ms-1" style="font-size: 11px;"></i>
+                    </a>
+                    <ul class="mobile-submenu" style="display: block;"> <li><a href="sanpham.html">TẤT CẢ SẢN PHẨM</a></li>
+                        <li><a href="sanpham.html?loai=dam">ĐẦM</a></li>
+                        <li><a href="sanpham.html?loai=ao">ÁO</a></li>
+                        <li><a href="sanpham.html?loai=quan">QUẦN</a></li>
+                        <li><a href="sanpham.html?loai=chanvay">CHÂN VÁY</a></li>
+                        <li><a href="sanpham.html?loai=aokhoac">ÁO KHOÁC</a></li>
+                        <li><a href="sanpham.html?loai=tuixach">TÚI XÁCH</a></li>
+                        <li><a href="sanpham.html?loai=phukien">PHỤ KIỆN</a></li>
+                        <li><a href="sanpham.html?loai=giay">GIÀY</a></li>
+                    </ul>
+                </li>
+
+                <li class="mobile-dropdown">
+                    <a href="javascript:void(0);" class="mobile-dropdown-toggle">
+                        SALE <i class="fa fa-chevron-down ms-1" style="font-size: 11px;"></i>
+                    </a>
+                    <ul class="mobile-submenu">
+                        <li><a href="#">Giảm 5%</a></li>
+                        <li><a href="#">Giảm 10%</a></li>
+                        <li><a href="#">Giảm 20%</a></li>
+                        <li><a href="#" class="text-danger fw-bold">SIÊU SALE 50%</a></li>
+                    </ul>
+                </li>
+
+                <li><a href="TinTuc/tintuc.html">TIN TỨC</a></li>
+                <li><a href="vechungtoi.html">VỀ CHÚNG TÔI</a></li>
+                <li><a href="Bosuutap/Bosuutap.html">BỘ SƯU TẬP</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="sidebar-popup-overlay" id="sidebarPopupOverlay"></div>
     <main class="product-page">
         <section class="breadcrumb-bg cart-breadcrumb">
             <div class="container">

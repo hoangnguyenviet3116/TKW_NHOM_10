@@ -130,3 +130,52 @@ function checkFade() {
 
 window.addEventListener('scroll', checkFade);
 window.addEventListener('load', checkFade);
+
+
+// ========================================================
+    // LOGIC ĐÓNG MỞ SIDEBAR POPUP & DROPDOWN CHO TRANG TIN TỨC
+    // ========================================================
+    const openBtn = document.getElementById("openMobileMenuBtn");
+    const closeBtn = document.getElementById("closeMobileMenuBtn");
+    const sidebar = document.getElementById("mobileMenuPopup");
+    const overlay = document.getElementById("sidebarPopupOverlay");
+
+    if (openBtn && sidebar && overlay) {
+        openBtn.addEventListener("click", function () {
+            sidebar.classList.add("open");
+            overlay.classList.add("show");
+            document.body.style.overflow = "hidden"; // Khóa cuộn trang nền
+        });
+    }
+
+    function hideMobileMenu() {
+        if (sidebar && overlay) {
+            sidebar.classList.remove("open");
+            overlay.classList.remove("show");
+            document.body.style.overflow = ""; // Mở lại cuộn trang nền
+        }
+    }
+
+    if (closeBtn) closeBtn.addEventListener("click", hideMobileMenu);
+    if (overlay) overlay.addEventListener("click", hideMobileMenu);
+
+    // Kéo thả trượt mượt danh mục SALE & SẢN PHẨM trên Mobile bằng jQuery
+    const dropdownToggles = document.querySelectorAll('.mobile-dropdown-toggle');
+    dropdownToggles.forEach(toggle => {
+        toggle.addEventListener('click', function (e) {
+            e.preventDefault(); // Ngăn chặn nhảy trang
+            const parentLi = this.parentElement;
+            const submenu = parentLi.querySelector('.mobile-submenu');
+            
+            if (submenu) {
+                const isOpen = parentLi.classList.contains('active');
+                if (isOpen) {
+                    parentLi.classList.remove('active');
+                    $(submenu).slideUp(300); // Trượt ẩn lên
+                } else {
+                    parentLi.classList.add('active');
+                    $(submenu).slideDown(300); // Trượt xổ xuống
+                }
+            }
+        });
+    });

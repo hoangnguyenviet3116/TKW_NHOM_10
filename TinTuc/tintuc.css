@@ -1307,3 +1307,128 @@ body {
 #backToTop:hover svg {
     transform: translateY(-3px);
 }
+
+
+/* ========================================================
+   CSS ĐÁP ỨNG POPUP MENU CHO ĐIỆN THOẠI (MOBILE SIDEBAR)
+   ======================================================== */
+.btn-hamburgerMenu {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 22px;
+    color: #222;
+    cursor: pointer;
+    padding: 0 0 0 15px;
+    align-items: center;
+}
+
+.mobile-sidebar-popup {
+    position: fixed;
+    top: 0;
+    left: -310px; 
+    width: 290px;
+    height: 100vh;
+    background-color: #ffffff;
+    z-index: 9999;
+    box-shadow: 4px 0 25px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    transition: left 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.mobile-sidebar-popup.open {
+    left: 0;
+}
+
+.sidebar-popup-header {
+    padding: 20px;
+    border-bottom: 1px solid #f5f5f5;
+}
+
+.btn-close-sidebar-popup {
+    background: none;
+    border: none;
+    font-size: 22px;
+    color: #222;
+    cursor: pointer;
+}
+
+.sidebar-popup-body {
+    padding: 25px 20px;
+    overflow-y: auto;
+    flex: 1;
+}
+
+.mobile-popup-menu-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.mobile-popup-menu-list li {
+    margin-bottom: 20px;
+}
+
+.mobile-popup-menu-list a {
+    text-decoration: none;
+    color: #222222;
+    font-weight: 600;
+    font-size: 15px;
+    letter-spacing: 1px;
+    display: block;
+    padding: 5px 0;
+    transition: color 0.3s;
+}
+
+.mobile-popup-menu-list a:hover,
+.mobile-popup-menu-list a.active {
+    color: #c9a45c;
+}
+
+/* XỬ LÝ DROPDOWN CON (SUBMENU) TRÊN MOBILE */
+.mobile-submenu {
+    list-style: none;
+    padding-left: 20px;
+    margin: 5px 0 10px 0;
+    display: none; 
+    border-left: 1px solid #eee;
+}
+
+.mobile-submenu li {
+    margin-bottom: 12px !important;
+}
+
+.mobile-submenu a {
+    font-size: 14px !important;
+    color: #666666 !important;
+    font-weight: 500 !important;
+}
+
+.sidebar-popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 9998;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.sidebar-popup-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* KHI MÀN HÌNH NHỎ HƠN 991PX */
+@media (max-width: 991px) {
+    .menu {
+        display: none !important; /* Ẩn menu ngang chữ */
+    }
+    .btn-hamburgerMenu {
+        display: flex; /* Hiện nút 3 gạch */
+    }
+}
